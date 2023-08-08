@@ -42,11 +42,11 @@
       // width, height here too
       margin-top: calc(var(--fs_m) * 0.5);
       margin-bottom: calc(var(--fs_m) * 0.5);
+      margin-right: calc(var(--fs_m) * 0.75);
     }
     .bapf_sfilter .bapf_img_span{
       width: calc(var(--fs_m) * 2);
       height: calc(var(--fs_m) * 2);
-      margin-right: calc(var(--fs_m) * 0.75);
       background-color: $white !important;
       //border: var(--bw_s) solid $black;
       //border-radius: var(--br_l);
@@ -61,8 +61,7 @@
       width: calc(var(--fs_m) * 1.5);
       height: calc(var(--fs_m) * 1.5);
       padding: calc(var(--fs_m) * 0.125);
-      margin-left: calc(var(--fs_m) * 0.5);
-      margin-right: calc(var(--fs_m) * 0.75);
+      margin-left: calc(var(--fs_m) * 0.25);
       border: none;
       box-shadow: $shadow;
       &:checked {
