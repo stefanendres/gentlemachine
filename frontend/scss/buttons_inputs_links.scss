@@ -1,0 +1,146 @@
+@mixin pill() {
+  background-color: $white;
+  border-radius: var(--br_l);
+  overflow: clip;
+  box-shadow: $shadow;
+}
+@mixin reset_pill() {
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+@mixin button($font_size) {
+  font-size: $font_size;
+  line-height: $font_size;
+  padding: calc(#{$font_size}*0.5) $font_size;
+}
+button {
+  @include pill;
+  @include button(var(--fs_m));
+}
+/*.button,
+.wc-forward,
+.wc-backward,
+.shipping-calculator-button,
+h3#ship-to-different-address span,
+.woocommerce-account-fields span,
+.woocommerce-form-login span:not(.required),
+.wc_payment_method label,
+.contact-mail-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: $text_m * 2;
+  font-size: $text_m;
+  line-height: $text_m;
+  text-align: center;
+  padding: 0.125em 0.75em;
+  color: $black;
+  background-color: transparent;
+  border-radius: $text_m;
+  border: solid 0.1em $black;
+
+  &:active {
+    text-transform: uppercase;
+  }
+
+  html.no-touchevents & {
+    &:hover {
+    }
+  }
+
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out,
+  color 0.15s ease-in-out;
+}
+
+
+input,
+textarea {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  appearance: none !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+
+  transition: box-shadow 0.5s ease-in-out 0.5s;
+
+  &:not(.input-text.qty.text) {
+    padding: 0.125em 0.75em;
+
+    font-size: $text_m;
+    line-height: $text_m;
+
+    border-radius: $line_m;
+    overflow: clip;
+    transform: translate3d(0, 0, 0);
+
+    background-color: $white;
+    border: 0.1em solid $grey;
+  }
+
+}
+
+input {
+  height: $text_m * 2;
+}
+
+// Chrome, Safari, Edge, Opera 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+// Firefox 
+input[type=number] {
+  -moz-appearance: textfield !important;
+}
+
+// does not apply style
+input:-internal-autofill-selected {
+  background-color: $grey !important;
+}
+
+::placeholder {
+  color: $grey;
+}
+
+@media all and (max-width: $break_s) {
+  .button,
+  .wc-forward,
+  .wc-backward,
+  .shipping-calculator-button,
+  h3#ship-to-different-address span,
+  .woocommerce-account-fields span,
+  .woocommerce-form-login span:not(.required),
+  .wc_payment_method label,
+  .contact-mail-button {
+    font-size: $text_m_s;
+    line-height: $text_m_s;
+    padding: $text_m_s * 0.375 $text_m_s * 1.5 $text_m_s * 0.5 $text_m_s * 1.5;
+    border-radius: $text_m_s;
+    //border: solid 1px $grey;
+  }
+
+  input,
+  textarea {
+
+    //width: 100%;
+    //margin: 0;
+    &:not(.input-text.qty.text) {
+      padding: $text_m_s * 0.375 $text_m_s * 1.5 $text_m_s * 0.5 $text_m_s * 1.5;
+      font-size: $text_m_s;
+      line-height: $text_m_s;
+      border-radius: $line_m_s;
+      //border: 0.1em solid $grey;
+    }
+
+  }
+
+  input {
+    height: $text_m_s * 2;
+  }
+}*/

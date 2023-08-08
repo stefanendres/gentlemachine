@@ -1,0 +1,32 @@
+/*
+Theme Name: GENTLEMACHINE 
+Version: 1.0.0
+Description: Storefront Child Theme
+Author: Stefan Endres – @_stefanendres
+Author URI: https://stefanendres.com
+Template: storefront
+*/
+
+@import 'variables';
+@import 'fonts';
+@import 'main';
+@import 'buttons_inputs_links';
+//@import 'components/flickity';
+//@import 'components/cookie';
+
+@import 'header';
+
+@import 'shop/shop_products';
+@import 'shop/shop_products_filter';
+//@import 'shop/single_product';
+//@import 'shop/cart';
+//@import 'shop/checkout';
+//@import 'shop/thankyou';
+
+//@import 'pages/layout';
+//@import 'pages/404';
+//@import 'pages/terms_imprint_privacy';
+
+//@import 'footer';
+
+

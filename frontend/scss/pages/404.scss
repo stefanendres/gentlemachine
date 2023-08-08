@@ -1,0 +1,62 @@
+.error404 {
+  .page-content {
+    min-height: 100%;
+    padding: $col_sp * 4;
+    h2, h3 {
+      font-family: $g_medium;
+      font-size: $text_l;
+      line-height: $line_l;
+      font-weight: normal;
+    }
+    p{
+      font-size: $text_l;
+      line-height: $line_l;
+    }
+    a {
+      display: inline-block;
+      margin-right: $col_sp;
+      margin-top: 0.375em;
+
+      html.no-touchevents &:hover,
+      &:active{
+        background-color: $purple;
+        border-color: $purple;
+      }
+    }
+  }
+  .page-background {
+    position: fixed;
+    z-index: -1;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+
+    background-color: $purple;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+
+@media all and (max-width: 800px) {
+  .error404 {
+    .page-content {
+      padding: $col_sp * 1.5;
+      h2, h3 {
+        font-size: $text_l_s;
+        line-height: $line_l_s;
+      }
+      p{
+        font-size: $text_l_s;
+        line-height: $line_l_s;
+      }
+      a {
+        margin-right: 0;
+        margin-top: $col_sp * 0.75;
+        margin-bottom: $col_sp * 0.75;
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+body {
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	margin: 0;
+	width: 100%;
+	overflow-x: clip;
+	overflow-y: scroll;
+	&.fixed{
+		position: fixed;
+	}
+}
+* {
+	font-family: $sans_regular;
+	font-size: var(--fs_m);
+	line-height: calc(var(--fs_m) * 1.25);
+
+	color: $black;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: geometricPrecision;
+
+	-webkit-touch-callout: none;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+
+	box-sizing: border-box;
+
+	outline: none !important;
+	box-shadow: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+h1, h2, h3, h4, h5, h6, a, p, button {
+	margin: 0;
+}
+
+a{
+	color: $black;
+	text-decoration: none;
+	text-decoration-thickness: 1px;
+	cursor: pointer;
+}
+
+ul, ol{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+button{
+	cursor: pointer;
+	padding: 0;
+	background: none;
+	border: none;
+	font: inherit;
+}
+
+img.lazyload,
+img.ls-is-cached{
+	opacity: 0;
+	transition: opacity .125s ease-in-out;
+	&.lazyloaded{
+		opacity: 1;
+	}
+}
+
+
+.variations_form.cart { // reset form table on single-product-page
+	table, caption, tbody, tfoot, thead, tr, th, td, label {
+		display: flex;
+		//margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+}
+
+
+
+
+
+
+
+.woocommerce-cart-form { // reset form table on cart-page
+	table,
+	thead,
+	tbody,
+	tfoot,
+	tr,
+	th,
+	td {
+	  display: block;
+	  width: auto;
+	  height: auto;
+	  margin: 0;
+	  padding: 0;
+	  border: none;
+	  border-collapse: inherit;
+	  border-spacing: 0;
+	  border-color: inherit;
+	  vertical-align: inherit;
+	  text-align: left;
+	  font-weight: inherit;
+	  -webkit-border-horizontal-spacing: 0;
+	  -webkit-border-vertical-spacing: 0;
+	}
+}
+
+.page-title,
+.entry-title,
+.edit-link {
+	display: none;
+}
+
+.site-content {
+	//display: flex;
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	min-height: calc(var(--vp_ih) - var(--h_h));
+	padding-top: var(--h_h);
+	opacity: 0;
+	will-change: opacity;
+	transition: opacity 0.25s ease-in-out;
+	background-color: $white;
+	.page-loaded & {
+		opacity: 1;
+	}
+}
+.content-area{
+	width: 100%;
+}
+
+
+
+
+
+
+
+

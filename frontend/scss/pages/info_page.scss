@@ -1,0 +1,194 @@
+/*.content-row{
+  display: flex;
+  flex-flow: wrap;
+  align-items: baseline;
+  //justify-content: space-between;
+  justify-content: space-evenly;
+  padding: 0 $col_x;
+}
+
+.content-images-row {
+  justify-content: space-evenly;
+  padding: 0;
+  margin-bottom: $col_x * 0.5;
+}
+
+.content-image-container,
+.content-image-spacer {
+  --large-width: calc(100vw - 1px - #{$col_x} * 2);
+  --medium-width: calc(100vw * 2/3 - 1px - #{$col_x} * 5/3);
+  --small-width: calc(100vw * 1/3 - 1px - #{$col_x} * 4/3);
+  --tiny-width: calc(100vw * 1/6 - 1px - #{$col_x} * 6/3);
+  position: relative;
+  width: var(--large-width);
+  height: calc(var(--large-width) * var(--ratio));
+  &.medium {
+    width: var(--medium-width);
+    height: calc(var(--medium-width) * var(--ratio));
+  }
+  &.small {
+    width: var(--small-width);
+    height: calc(var(--small-width) * var(--ratio));
+  }
+  &.tiny {
+    width: var(--tiny-width);
+    height: calc(var(--tiny-width) * var(--ratio));
+  }
+}
+.content-image-container {
+  border-radius: $text_s * 0.5;
+  overflow: hidden;
+  background-color: $lightgrey;
+  background-repeat: no-repeat;
+  background-size: 36px;
+  background-position: center;
+  margin: $line_m 0;
+  transform: translate3d(0,0,0);
+  transition: background 0.5s linear 0.5s;
+  &.lazyloaded {
+    background-size: 0;
+    background-color: transparent;
+  }
+}
+
+.content-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 0.5s ease-out 0.5s;
+  &.lazyloaded {
+    opacity: 1;
+  }
+}
+
+.content-slider-container {
+}
+
+.content-heading,
+.content-textbox {
+  width: 100%;
+  letter-spacing: -0.02em;
+}
+
+.content-heading {
+  font-size: $headline_l;
+  line-height: $headline_l * 0.95;
+  margin-top: $headline_l;
+  margin-bottom: $headline_l * 0.5;
+}
+
+.content-spacer {
+  width: 100%;
+  height: $headline_xl;
+}
+
+.content-textbox {
+  width: 100%;
+  letter-spacing: -0.02em;
+  p,
+  ul li {
+    font-size: $headline_xl;
+    line-height: $headline_xl;
+    margin-bottom: $headline_xl * 0.25;
+    margin-top: 0;
+  }
+  p a {
+    font-size: $headline_xl;
+    line-height: $headline_xl;
+    color: $black;
+    text-decoration: underline;
+    &:active,
+    html.no-touchevents &:hover {
+      text-decoration: none;
+    }
+  }
+  ul {
+    width: 100%;
+    padding-left: $headline_xl;
+    margin-top: 0;
+    margin-bottom: $headline_xl;
+  }
+
+}
+
+.content-link-row {
+  margin: $col_x * 0.5 0 $col_x 0;
+}
+.content-link.button {
+  font-size: $text_l;
+	line-height: $text_l;
+	padding: $text_l * 0.5;
+	border-radius: $text_l;
+	border: solid 2px $black;
+  margin: $col_x * 0.5;
+}
+
+@media all and (max-width: 800px) {
+  .content-image-container {
+    margin: $col_x * 0.5 0;
+  }
+  .content-image-container,
+  .content-image-spacer {
+    position: relative;
+    width: var(--large-width);
+    height: calc(var(--large-width) * var(--ratio));
+    &.medium,
+    &.small {
+      width: var(--large-width);
+      height: calc(var(--large-width) * var(--ratio));
+    }
+    &.tiny {
+      width: var(--small-width);
+      height: calc(var(--small-width) * var(--ratio));
+    }
+  }
+  .content-heading,
+  .content-textbox {
+    letter-spacing: 0em;
+  }
+
+  .content-heading {
+    font-size: $mobile_headline_xl;
+    line-height: $mobile_headline_xl;
+    margin-top: $mobile_headline_xl;
+    margin-bottom: $mobile_headline_xl * 0.5;
+  }
+
+  .content-spacer {
+    height: $mobile_headline_xxl;
+  }
+  .content-textbox {
+    width: 100%;
+    p,
+    ul li {
+      font-size: $mobile_headline_xxl;
+      line-height: $mobile_headline_xxl * 1.1;
+      margin-top: 0;
+      margin-bottom: $mobile_headline_xxl * 0.5;
+    }
+    p a {
+      font-size: $mobile_headline_xxl;
+      line-height: $mobile_headline_xxl * 1.1;
+    }
+    ul {
+      padding-left: $mobile_headline_xxl;
+      margin-top: $mobile_headline_xxl * 0.25;
+      margin-bottom: $mobile_headline_xxl;
+    }
+  }
+
+  .content-link-row {
+    margin: $col_x 0 $col_x * 3 0;
+  }
+
+  .content-link.button {
+    font-size: $text_m;
+  	line-height: $text_m;
+  	padding: $text_m * 0.5;
+  	border-radius: $text_m;
+  	border: solid 1px $black;
+    min-width: $col_x * 8;
+  }
+}*/

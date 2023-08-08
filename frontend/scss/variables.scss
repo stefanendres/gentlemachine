@@ -1,0 +1,87 @@
+// colors
+$black: #000;
+$grey_d: 	#4d4d4d;
+$grey_m: #999;
+$grey_l: #e6e6e6;
+$white: #fff; // mind head.php theme-color
+
+//layout
+$break_xs: 375px;
+$break_s: 800px;
+$break_m: 1024px;
+$break_l: 1440px;
+
+//fonts
+$sans_regular: Helvetica, sans-serif;
+$sans_bold: Helvetica, sans-serif;
+$rounded_bold: 'Arial Rounded', sans-serif;
+
+:root {
+  --fs_xxs: 12px;
+  --fs_xs: 14px;
+  --fs_s: 16px; 
+  --fs_m: 21px;
+  --fs_l: 32px;
+  --fs_xl: 48px;
+
+  --ls_xl: -0.025em;
+  --ls_xxl: -0.0375em;
+
+  --space_0: 8px;
+  //--dist_y_0: 5vh;
+
+  --br_s: 4px;
+  --br_m: 12px;
+  --br_l: 24px;
+
+  --bw_s: 1px; // maybe try 1
+  --bw_m: 2px;
+  --bw_l: 3px;
+
+  --vp_h: 100vh; // fallback
+}
+
+$shadow: 0 calc(var(--space_0)*0.25) calc(var(--space_0)*0.5) calc(var(--space_0)*0.25) rgba($black, 0.25);
+
+/*@media all and (min-width: #{$break_xs + 1px}) {
+  :root{
+    --fs_s: 14px;
+    --fs_m: 26px;
+  }
+}*/
+
+@media all and (min-width: #{$break_s + 1px}) {
+  :root {
+    --fs_xxs: #{100*12vw/1920};
+    --fs_xs: #{100*16vw/1920};
+    --fs_s: #{100*18vw/1920};
+    --fs_m: #{100*24vw/1920};
+    --fs_l: #{100*36vw/1920};
+    --fs_xl: #{100*56vw/1920};
+
+    --space_0: #{100*8vw/1920};
+    --dist_y_0: 7.5vh;
+
+    --br_s: #{100*8vw/1920};
+    --br_m: #{100*24vw/1920};
+    --br_l: #{100*48vw/1920};
+
+    --bw_s: #{100*1.75vw/1920};
+    --bw_m: #{100*3vw/1920};
+    --bw_l: #{100*4vw/1920};
+  }
+}
+
+@media all and (min-width: #{$break_m + 1px}) {
+  :root {
+    --fs_xxs: #{100*16vw/1920};
+    //--fs_xs: #{100*18vw/1920};
+  }
+}
+
+/*@media all and (min-width: $break_l) {
+  :root{
+    --fs_s: #{100*12vw/1440};
+    --fs_m: #{100*28vw/1440};
+  }
+}*/

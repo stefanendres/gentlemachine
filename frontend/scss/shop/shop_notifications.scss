@@ -1,0 +1,89 @@
+// shop notifications
+.page:not(.woocommerce-cart):not(.woocommerce-checkout),
+.archive {
+
+  // maybe include more other pages too
+  .flexible-shipping-notice-container,
+  .woocommerce-error,
+  .woocommerce-message,
+  .woocommerce-info {
+    display: none;
+  }
+}
+
+.woocommerce-notices-wrapper,
+.woocommerce-form-coupon-toggle {
+  padding: 0 $col_sp * 4;
+}
+
+.woocommerce-error,
+.woocommerce-message,
+.woocommerce-info {
+  display: inline-flex;
+  min-height: $text_m * 2;
+  padding: $text_m * 0.375 $text_m * 1.5 $text_m * 0.5 $text_m * 1.5;
+  margin-top: $col_sp * 0.5;
+  margin-bottom: $col_sp * 0.5;
+  margin-right: $col_sp;
+  list-style: none;
+  background-color: $offwhite;
+  color: $black;
+  border-radius: $line_m;
+  overflow: clip;
+  transform: translate3d(0, 0, 0);
+  text-align: center;
+
+  a {
+    margin: 0 0.25em;
+    color: $purple;
+
+    &:active {
+      color: $grey;
+    }
+
+    html.no-touchevents & {
+      &:hover {
+        color: $grey;
+      }
+    }
+
+    &.wc_forward {
+      //width: $col_x * 3 !important;
+    }
+  }
+
+  li {}
+
+  .button {
+    //color: $lightgrey;
+  }
+}
+
+@media all and (max-width: $break_s) {
+  // shop notifications
+  .woocommerce-notices-wrapper,
+  .woocommerce-form-coupon-toggle {
+    margin-top: $col_sp;
+    padding: 0 $col_sp * 1.5;
+  }
+
+  .woocommerce-error,
+  .woocommerce-message,
+  .woocommerce-info {
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: $text_m_s * 2;
+    padding: $text_m_s * 0.375 $text_m_s * 1.5 $text_m_s * 0.5 $text_m_s * 1.5;
+    margin-top: $col_sp * 0.5;
+    margin-bottom: $col_sp * 0.5;
+    margin-right: $col_sp * 0.5;
+    margin-left: $col_sp * 0.5;
+    border-radius: $line_m_s;
+
+    a {
+      margin: 0;
+    }
+
+    text-align: center;
+  }
+}

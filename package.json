@@ -1,0 +1,36 @@
+{
+  "name": "gentlemachine_2023",
+  "description": "Basic Frontend-Development-Environment for WooCommerce Customizations",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "stefanendres.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.5.1",
+    "browserify": "^16.5.0",
+    "esmify": "^2.1.1",
+    "node-sass": "^9.0.0"
+  },
+  "scripts": {
+    "hash-style": "rm ./style.*.css && mv ./style.css \"./style.$(md5 -q style.css).css\"",
+    "hash-script": "rm ./app.*.js && mv ./app.js \"./app.$(md5 -q app.js).js\"",
+    "build-styles": "node-sass --include-path scss ./frontend/scss/index.scss ./junk/bundle.css --output-style compressed && npx postcss ./junk/bundle.css --no-map --use autoprefixer -o ./style.css && rm ./junk/bundle.css && npm run hash-style",
+    "build-scripts": "babel frontend/js/*.js --compact --presets=babel-preset-es2015 -o ./junk/build.js && browserify -p esmify ./junk/build.js -o ./junk/bundle.js && babel ./junk/bundle.js --presets=babel-preset-minify -o ./app.js --no-comments && rm ./junk/build.js ./junk/bundle.js && npm run hash-script",
+    "build": "npm run build-styles && npm run build-scripts",
+    "dev": "node file-watcher.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.6.5",
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
+    "node-watch": "^0.6.3",
+    "postcss-cli": "^9.1.0"
+  }
+}

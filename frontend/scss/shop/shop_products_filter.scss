@@ -1,0 +1,76 @@
+.product-filter {
+	position: fixed;
+	top: calc(var(--h_h) - var(--space_0) * 3);
+	left: calc(var(--space_0) * 2);
+	z-index: 10;
+  padding: calc(var(--space_0) * 4);
+  transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
+  &.is-visible {
+    @include pill;
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
+    .product-filter-button{
+      @include reset_pill;
+      //font-weight: 600;
+      //color: $grey_m;
+    }
+    .product-filter-container {
+      max-height: calc(var(--vp_ih) - var(--h_h));
+      opacity: 1;
+      transition: max-height 0.3s ease-out;
+    }
+  }
+
+	.product-filter-container{
+		display: flex;
+    flex-direction: column;
+    padding: 0 calc(var(--fs_m) * 3) 0 var(--fs_m); // button-h-padding
+    margin-top: var(--fs_m);
+    overflow: clip;
+    max-height: 0;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out, max-height 0.15s ease-out;
+
+    .bapf_sfilter {
+      margin-bottom: var(--fs_m);
+    }
+    .bapf_sfilter .bapf_head h3 {
+      font-weight: 600;
+      margin-bottom: calc(var(--fs_m) * 0.5);
+    }
+    .bapf_sfilter .bapf_img_span,
+    .bapf_asradio2 ul li input[type=checkbox] {
+      // width, height here too
+      margin-top: calc(var(--fs_m) * 0.5);
+      margin-bottom: calc(var(--fs_m) * 0.5);
+    }
+    .bapf_sfilter .bapf_img_span{
+      width: calc(var(--fs_m) * 2);
+      height: calc(var(--fs_m) * 2);
+      margin-right: calc(var(--fs_m) * 0.75);
+      background-color: $white !important;
+      //border: var(--bw_s) solid $black;
+      //border-radius: var(--br_l);
+      //overflow: clip;
+      @include pill;
+    }
+    .bapf_sfilter.brchecked_default input:checked+label .bapf_img_span {
+      transform: none;
+      filter: invert(1);
+    }
+    .bapf_asradio2 ul li input[type=checkbox] {
+      width: calc(var(--fs_m) * 1.5);
+      height: calc(var(--fs_m) * 1.5);
+      padding: calc(var(--fs_m) * 0.125);
+      margin-left: calc(var(--fs_m) * 0.5);
+      margin-right: calc(var(--fs_m) * 0.75);
+      border: none;
+      box-shadow: $shadow;
+      &:checked {
+        background-color: $black;
+        box-shadow: none;
+        border: var(--bw_s) solid $black;
+      }
+    }
+	}
+
+}
