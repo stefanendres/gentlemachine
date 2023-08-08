@@ -5,7 +5,8 @@
 	z-index: 10;
   padding: calc(var(--space_0) * 4);
   transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
-  &.is-visible {
+  &:hover {
+  //&.is-visible {
     @include pill;
     transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
     .product-filter-button{
@@ -58,8 +59,8 @@
       filter: invert(1);
     }
     .bapf_asradio2 ul li input[type=checkbox] {
-      width: calc(var(--fs_m) * 1.5);
-      height: calc(var(--fs_m) * 1.5);
+      width: calc(var(--fs_m) * 1);
+      height: calc(var(--fs_m) * 1);
       padding: calc(var(--fs_m) * 0.125);
       margin-left: calc(var(--fs_m) * 0.25);
       border: none;

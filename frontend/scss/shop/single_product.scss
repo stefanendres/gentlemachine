@@ -54,7 +54,7 @@
       transition: opacity 0s ease-in-out, max-height 0s ease-out;
     }
     .product-description-wrapper{
-      max-height: calc(var(--vp_ih) - var(--h_h) * 0.5);
+      max-height: calc(var(--vp_ih) * 0.5 - var(--h_h));
       opacity: 1;
       transition: opacity 0.15s ease-in-out, max-height 0.3s ease-out;
     }
@@ -177,7 +177,7 @@
 .single-product-back-link {
   position: absolute;
   bottom: 0;
-  left: 50%;
+  right: calc(var(--space_0) * 10);
   height: calc(var(--space_0) * 8);
-  transform: translate3d(-50%, calc(var(--space_0) * -16), 0); // -8 = summary-height, -4 = summary-bottom
+  transform: translate3d(0, calc(var(--space_0) * -16), 0); // -8 = summary-height, -4 = summary-bottom
 }
