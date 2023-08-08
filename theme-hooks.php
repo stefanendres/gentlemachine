@@ -154,8 +154,12 @@ add_filter( 'post_thumbnail_html','gm_add_lazyload_placeholders' , 11 );
 add_filter( 'get_avatar', 'gm_add_lazyload_placeholders' , 11 );*/
 
 
-// disable sold out Variations
+// disable sold out variations
 add_filter( 'woocommerce_variation_is_active', 'gm_variation_is_active', 10, 2 );
+
+// change text for single-product varations select options
+add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'custom_dropdown_args', 10 );
+
 /*
 // custom cross-sells text
 add_filter( 'gettext', 'gm_translate_may_also_like' );
