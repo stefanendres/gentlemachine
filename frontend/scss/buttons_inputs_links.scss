@@ -1,5 +1,6 @@
 @mixin pill() {
   background-color: $white;
+  border: none;
   border-radius: var(--br_l);
   overflow: clip;
   box-shadow: $shadow;
@@ -10,14 +11,43 @@
   box-shadow: none;
 }
 @mixin button($font_size) {
+  display: flex;
+  align-items: center;
   font-size: $font_size;
   line-height: $font_size;
   padding: calc(#{$font_size}*0.5) $font_size;
+  white-space: nowrap;
 }
-button {
+@mixin button_interaction() {
+  &:not(.disabled) {
+    transition: box-shadow 0.15s ease-in-out;
+    html.no-touchevents &:hover,
+    &:active {
+      box-shadow: $shadow_double;
+    }
+  }
+}
+button,
+input,
+select,
+.single-product-checkout-link,
+.single-product-back-link {
   @include pill;
   @include button(var(--fs_m));
+  @include button_interaction();
 }
+// Chrome, Safari, Edge, Opera 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  //-webkit-appearance: none !important;
+  display: none;
+  margin: 0;
+}
+// Firefox 
+/*input[type=number] {
+  -moz-appearance: textfield !important;
+}*/
+
 /*.button,
 .wc-forward,
 .wc-backward,

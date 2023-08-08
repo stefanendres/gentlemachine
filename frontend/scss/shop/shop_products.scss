@@ -1,13 +1,13 @@
 .woocommerce-products-header {
   //display: none;
 }
-.products{
+.woocommerce-shop .products{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   padding: 0 calc(var(--space_0) * 9);
 }
-.product {
+.woocommerce-shop .product {
   width: 25%;
   padding: var(--space_0);
 }
@@ -18,7 +18,7 @@
   border-radius: var(--br_s);
   overflow: clip;
 }
-.product-image-container{
+.product-image-wrapper{
   .product-image {
     width: 100%;
     height: 100%;
@@ -29,36 +29,41 @@
 .product-info-container {
   position: absolute;
   bottom: 0;
-  .product-tags {
-    display: flex;
-    padding: calc(var(--space_0) * 2);
-  }
-  .product-tag {
-    @include pill();
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: calc(var(--space_0) * 8);
-    max-width: calc(var(--space_0) * 8);
-    margin-right: calc(-2 * var(--space_0));
+}
+.product-tags {
+  display: flex;
+  padding: calc(var(--space_0) * 2);
+}
 
-    transition: max-width 0.3s ease-out;
-    html.no-touchevents &:hover{
-      max-width: 12.5vw; // rough max-width, change for 1 col layout
-      transition: max-width 0.3s ease-out 0.15s;
-      .product-tag-name{
-        opacity: 1;
-        transition: opacity 0.15s ease-in-out 0.3s;
-      }
+.product-tag {
+  @include pill();
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(var(--space_0) * 8);
+  max-width: calc(var(--space_0) * 8);
+  margin-right: calc(-2 * var(--space_0));
+
+  transition: max-width 0.3s ease-out;
+
+  html.no-touchevents &:hover {
+    max-width: 12.5vw; // rough max-width, change for 1 col layout
+    transition: max-width 0.3s ease-out 0.15s;
+
+    .product-tag-name {
+      opacity: 1;
+      transition: opacity 0.15s ease-in-out 0.3s;
     }
   }
-  .product-tag-icon{
-    height: 100%;
-  }
-  .product-tag-name{
-    @include button(var(--fs_m));
-    padding-left: 0;
-    opacity: 0;
-    transition: opacity 0.15s ease-in-out 0.15s;
-  }
+}
+
+.product-tag-icon {
+  height: 100%;
+}
+
+.product-tag-name {
+  @include button(var(--fs_m));
+  padding-left: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out 0.15s;
 }

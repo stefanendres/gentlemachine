@@ -41,7 +41,8 @@ $rounded_bold: 'Arial Rounded', sans-serif;
   --vp_h: 100vh; // fallback
 }
 
-$shadow: 0 calc(var(--space_0)*0.25) calc(var(--space_0)*0.5) calc(var(--space_0)*0.25) rgba($black, 0.25);
+$shadow: 0 calc(var(--space_0)*0.25) calc(var(--space_0)*0.5) calc(var(--space_0)*0.25) rgba($grey_d, 0.6);
+$shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--space_0)*0.25) rgba($grey_d, 0.9);
 
 /*@media all and (min-width: #{$break_xs + 1px}) {
   :root{

@@ -64,6 +64,7 @@
       margin-left: calc(var(--fs_m) * 0.25);
       border: none;
       box-shadow: $shadow;
+      border-radius: var(--br_l);
       &:checked {
         background-color: $black;
         box-shadow: none;

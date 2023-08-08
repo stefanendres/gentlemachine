@@ -28,7 +28,7 @@ function gm_shop_loop_item() {
   $product_tags = get_product_tags($product);
   ?>
   <a class="product-thumb-container product-link" href="<?= get_permalink( $product->get_id() ); ?>">
-    <div class="product-image-container" style="--ratio: <?= $product_image_file_ratio ?>;">
+    <div class="product-image-wrapper" style="--ratio: <?= $product_image_file_ratio ?>;">
     <?php if ($product_image_file_id): ?>
       <img class="product-image lazyload" srcset="<?= wp_get_attachment_image_srcset($product_image_file_id); ?>" data-sizes="auto" data-src="<?= wp_get_attachment_url($product_image_file_id); ?>" alt="<?= gm_get_context()['site_title'] ?> – <?= $product_name; ?>"/>
     <?php endif?>

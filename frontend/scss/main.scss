@@ -58,7 +58,9 @@ button{
 	border: none;
 	font: inherit;
 }
-
+img {
+	display: flex;
+}
 img.lazyload,
 img.ls-is-cached{
 	opacity: 0;
@@ -69,7 +71,7 @@ img.ls-is-cached{
 }
 
 
-.variations_form.cart { // reset form table on single-product-page
+.variations_form { // reset form table on single-product-page
 	table, caption, tbody, tfoot, thead, tr, th, td, label {
 		display: flex;
 		//margin: 0;
