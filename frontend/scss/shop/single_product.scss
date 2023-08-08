@@ -20,7 +20,7 @@
   .product-description-button {
     height: calc(var(--space_0) * 8);
     max-height: calc(var(--space_0) * 8);
-    transition: opacity 0.025s ease-out 0.275s, max-height 0s ease-out 0.15s;
+    transition: opacity 0.075s ease-out 0.3s, max-height 0s ease-out 0.15s;
     .product-button-icon{
       height: 100%;
     }
@@ -29,24 +29,25 @@
     max-height: 0;
     opacity: 0;
     overflow: clip;
-    transition: opacity 0s ease-in-out, max-height 0.3s ease-out;
+    transition: opacity 0.15s ease-in-out, max-height 0.3s ease-out, background-color 0.3s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
     h3, p {
       padding: 0 calc(var(--fs_m)*2);
     }
     h3 {
       font-weight: 600;
+      padding-top: var(--fs_m);
       margin-bottom: var(--fs_m);
     }
     p{
-      padding-bottom: calc(var(--fs_m)*2);
+      padding-bottom: var(--fs_m);
     }
   }
   
-  transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
+  //transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
   html.no-touchevents &:hover,
   &.is-visible {
-    @include pill;
-    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
+    //@include pill;
+    //transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
     .product-description-button{
       max-height: calc(var(--fs_m)*2); // replace padding-top
       opacity: 0;
@@ -54,9 +55,10 @@
       transition: opacity 0s ease-in-out, max-height 0s ease-out;
     }
     .product-description-wrapper{
+      @include pill;
       max-height: calc(var(--vp_ih) * 0.5 - var(--h_h));
       opacity: 1;
-      transition: opacity 0.15s ease-in-out, max-height 0.3s ease-out;
+      transition: opacity 0.15s ease-in-out, max-height 0.3s ease-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
     }
   }
 }
