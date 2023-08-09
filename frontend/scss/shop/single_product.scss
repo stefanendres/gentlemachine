@@ -8,9 +8,14 @@
     width: 100%;
   }
 }
+.single-product .product-stock-notice {
+  top: calc(var(--space_0) * 4);
+  right: calc(var(--space_0) * 10);
+}
 .product-description-container,
 .summary {
   position: fixed;
+  z-index: 10;
   bottom: calc(var(--space_0) * 4);
 }
 
@@ -20,7 +25,7 @@
   .product-description-button {
     height: calc(var(--space_0) * 8);
     max-height: calc(var(--space_0) * 8);
-    transition: opacity 0.075s ease-out 0.3s, max-height 0s ease-out 0.15s;
+    transition: opacity 0s ease-out 0.3s, max-height 0s ease-out 0.3s;
     .product-button-icon{
       height: 100%;
     }
@@ -31,23 +36,20 @@
     overflow: clip;
     transition: opacity 0.15s ease-in-out, max-height 0.3s ease-out, background-color 0.3s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
     h3, p {
-      padding: 0 calc(var(--fs_m)*2);
+      padding: 0 calc(var(--fs_m)*1.5) 0 calc(var(--fs_m)*2);
     }
     h3 {
       font-weight: 600;
-      padding-top: var(--fs_m);
+      padding-top: calc(var(--fs_m)*2);
       margin-bottom: var(--fs_m);
     }
     p{
-      padding-bottom: var(--fs_m);
+      padding-bottom: calc(var(--fs_m)*2.5);
     }
   }
   
-  //transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
   html.no-touchevents &:hover,
   &.is-visible {
-    //@include pill;
-    //transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
     .product-description-button{
       max-height: calc(var(--fs_m)*2); // replace padding-top
       opacity: 0;
@@ -72,7 +74,7 @@
   .product-prices {
     display: flex;
     padding: 0 calc(var(--space_0) * 2);
-    .logged-in & {
+    .logged-in .product:not(.outofstock) & {
       padding-right: 0;
     }
     .product-price{
@@ -80,10 +82,9 @@
       justify-content: center;
       align-items: center;
       @include pill;
+      @include button(var(--fs_m));
       height: calc(var(--space_0) * 8);
       min-width: calc(var(--space_0) * 8);
-      padding: calc(var(--space_0) * 2);
-      white-space: nowrap;
     }
   }
   .product-tags{
@@ -102,6 +103,9 @@
   }
   .variations_form {
     display: flex;
+    .stock {
+      display: none;
+    }
     .variations{
       tbody {
         padding: 0 calc(var(--space_0) * 2);
@@ -133,11 +137,11 @@
         display: none !important;
       }
     }
-    .single_variation_wrap { // names could change for simple-products!!!
+    .single_variation_wrap { // names could change for simple-products!!! (but for now variable-products are good)
       .woocommerce-variation{
         display: none !important;
       }
-      .woocommerce-variation-add-to-cart{ // names could change for simple-products!!!
+      .woocommerce-variation-add-to-cart{ // names could change for simple-products!!! (but for now variable-products are good)
         display: flex;
         padding-right: calc(var(--space_0) * 2);
         gap: calc(var(--space_0) * 2);
@@ -149,6 +153,7 @@
             height: calc(var(--space_0) * 8);
             min-width: calc(var(--space_0) * 8);
             max-width: calc(var(--space_0) * 8);
+            padding: calc(var(--fs_m)*0.5) calc(var(--fs_m)*0.75);
             text-align: center;
             transition: max-width 0.15s ease-out;
             html.no-touchevents &:hover {

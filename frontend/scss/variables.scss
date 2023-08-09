@@ -8,8 +8,8 @@ $white: #fff; // mind head.php theme-color
 //layout
 $break_xs: 375px;
 $break_s: 800px;
-$break_m: 1024px;
-$break_l: 1440px;
+$break_m: 1200px;
+$break_l: 1600px;
 
 //fonts
 $sans_regular: Helvetica, sans-serif;
@@ -55,10 +55,10 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
   :root {
     --fs_xxs: #{100*12vw/1920};
     --fs_xs: #{100*16vw/1920};
-    --fs_s: #{100*18vw/1920};
-    --fs_m: #{100*24vw/1920};
-    --fs_l: #{100*36vw/1920};
-    --fs_xl: #{100*56vw/1920};
+    --fs_s: #{100*21vw/1920};
+    --fs_m: #{100*27vw/1920};
+    --fs_l: #{100*42vw/1920};
+    --fs_xl: #{100*64vw/1920};
 
     --space_0: #{100*8vw/1920};
     --dist_y_0: 7.5vh;
@@ -75,8 +75,23 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
 
 @media all and (min-width: #{$break_m + 1px}) {
   :root {
-    --fs_xxs: #{100*16vw/1920};
-    //--fs_xs: #{100*18vw/1920};
+    --fs_xxs: #{100*10vw/1920};
+    --fs_xs: #{100*12vw/1920};
+    --fs_s: #{100*16vw/1920};
+    --fs_m: #{100*21vw/1920};
+    --fs_l: #{100*27vw/1920};
+    --fs_xl: #{100*48vw/1920};
+  
+    --space_0: #{100*6vw/1920};
+    --dist_y_0: 7.5vh;
+  
+    --br_s: #{100*8vw/1920};
+    --br_m: #{100*24vw/1920};
+    --br_l: #{100*48vw/1920};
+  
+    --bw_s: #{100*1.75vw/1920};
+    --bw_m: #{100*3vw/1920};
+    --bw_l: #{100*4vw/1920};
   }
 }
 

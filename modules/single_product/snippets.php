@@ -7,6 +7,7 @@ function gm_before_single_product_summary() {
   global $product;
   $product_image_ids = $product->get_gallery_image_ids();
   $product_images_count = count($product_image_ids);
+  $product_stock_status = $product->get_stock_status();
   $read_more_icon_url = wp_get_attachment_image_src(get_field('read_more_icon', 'options'))[0];
 
   if ($product_images_count > 0): ?>
@@ -20,7 +21,7 @@ function gm_before_single_product_summary() {
           <div class="single-product-image-wrapper swiper-slide" style="--ratio: <?= $product_image_file_ratio ?>;">
             <img class="single-product-image lazyload"
               data-srcset="<?= wp_get_attachment_image_srcset($id); ?>"
-              sizes="<?= wp_get_attachment_image_sizes($id); ?>"
+              sizes="<?= 'auto';//wp_get_attachment_image_sizes($id); ?>"
               data-src="<?= wp_get_attachment_url($id); ?>"
               alt="<?= gm_get_context()['site_title'] ?> – <?= $product->get_name() ?>"/>
           </div>
@@ -33,6 +34,11 @@ function gm_before_single_product_summary() {
       </div>
     </div>
   </div>
+  <?php endif ?>
+  <?php if ($product_stock_status === 'outofstock'): ?>
+    <div class="product-stock-notice">
+      Currently unavailable
+    </div>
   <?php endif ?>
   <div class="product-description-container">
     <button class="product-description-button">

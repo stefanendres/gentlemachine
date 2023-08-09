@@ -42,12 +42,12 @@ function gm_shop_loop_item() {
           </div>
         <?php endforeach ?>
       </div>
-      <?php if ($product_stock_status === 'outofstock'): ?>
-      <div class="product-stock">
-        Out of Stock
-      </div>
-      <?php endif ?>
     </div>
+    <?php if ($product_stock_status === 'outofstock'): ?>
+      <div class="product-stock-notice">
+        Currently unavailable
+      </div>
+    <?php endif ?>
   </a>
   <?php
 }

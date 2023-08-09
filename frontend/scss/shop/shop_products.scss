@@ -34,7 +34,6 @@
   display: flex;
   padding: calc(var(--space_0) * 2);
 }
-
 .product-tag {
   @include pill();
   display: flex;
@@ -56,14 +55,23 @@
     }
   }
 }
-
 .product-tag-icon {
   height: 100%;
 }
-
 .product-tag-name {
   @include button(var(--fs_m));
   padding-left: 0;
   opacity: 0;
-  transition: opacity 0.15s ease-in-out 0.15s;
+  transition: opacity 0.15s ease-in-out 0s;
+}
+
+.product-stock-notice {
+  position: absolute;
+  top: calc(var(--space_0) * 2);
+  right: calc(var(--space_0) * 2);
+  height: calc(var(--space_0) * 8);
+  @include pill();
+  @include button(var(--fs_m));
+  background-color: rgba($white, 0.6);
+  box-shadow: none;
 }

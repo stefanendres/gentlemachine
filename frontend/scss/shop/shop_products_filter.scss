@@ -5,14 +5,12 @@
 	z-index: 10;
   padding: calc(var(--space_0) * 4);
   transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
-  &:hover {
-  //&.is-visible {
+  html.no-touchevents &:hover,
+  &.is-visible {
     @include pill;
     transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
     .product-filter-button{
       @include reset_pill;
-      //font-weight: 600;
-      //color: $grey_m;
     }
     .product-filter-container {
       max-height: calc(var(--vp_ih) - var(--h_h));
@@ -38,9 +36,16 @@
       font-weight: 600;
       margin-bottom: calc(var(--fs_m) * 0.5);
     }
+    .bapf_sfilter ul li {
+      display: flex;
+      align-items: center;
+      label {
+        margin-top: calc(var(--fs_m) * 0.125);
+      }
+    }
     .bapf_sfilter .bapf_img_span,
     .bapf_asradio2 ul li input[type=checkbox] {
-      // width, height here too
+      // width, height here possible too
       margin-top: calc(var(--fs_m) * 0.5);
       margin-bottom: calc(var(--fs_m) * 0.5);
       margin-right: calc(var(--fs_m) * 0.75);
@@ -49,9 +54,6 @@
       width: calc(var(--fs_m) * 2);
       height: calc(var(--fs_m) * 2);
       background-color: $white !important;
-      //border: var(--bw_s) solid $black;
-      //border-radius: var(--br_l);
-      //overflow: clip;
       @include pill;
     }
     .bapf_sfilter.brchecked_default input:checked+label .bapf_img_span {
