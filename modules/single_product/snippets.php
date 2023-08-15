@@ -58,7 +58,7 @@ function gm_before_single_product_summary() {
 function gm_single_product_summary() {
   global $product;
   $product_id = $product->get_id();
-  $product_tags = get_product_tags($product);
+  $product_tags = get_product_tags($product_id);
   ?>
   <div class="product-tags">
     <?php if (is_user_logged_in()): ?>
@@ -85,7 +85,7 @@ function gm_single_product_summary() {
     <?php endif ?>
     <?php if (has_term('change', 'product_tag')): ?>
       <div class="product-price product-price-change">
-        <?= get_field('coin_price') ?> Coins
+        <?= get_field('coin_price') ?> <?= get_field('coin_currency_text', 'options') ?>
       </div>
     <?php endif ?>
   </div>

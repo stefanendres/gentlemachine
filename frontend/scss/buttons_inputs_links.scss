@@ -10,6 +10,21 @@
   border-radius: 0;
   box-shadow: none;
 }
+@mixin input_text($font_size) {
+  width: auto;
+  font-size: $font_size;
+  line-height: $font_size;
+  padding: calc(#{$font_size}*0.5) $font_size;
+  background-color: $white;
+  border: var(--bw_s) solid $grey_l;
+  border-radius: var(--br_m);
+  overflow: clip;
+  html.no-touchevents &:hover,
+  &:active,
+  &:focus {
+    border-color: $grey_m;
+  }
+}
 @mixin button($font_size) {
   display: flex;
   align-items: center;
@@ -28,15 +43,19 @@
   }
 }
 button,
-input,
+input:not([type='radio']):not([type='text']),
 select,
 .single-product-checkout-link,
-.single-product-back-link {
+.single-product-back-link,
+.checkout-button {
   @include pill;
   @include button(var(--fs_m));
   &:not(.product-filter-button):not(.product-description-button){
     @include button_interaction();
   }
+}
+input[type='text']{
+  @include input_text(var(--fs_m));
 }
 // Chrome, Safari, Edge, Opera 
 input::-webkit-outer-spin-button,

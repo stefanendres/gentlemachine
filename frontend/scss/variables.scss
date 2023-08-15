@@ -5,6 +5,8 @@ $grey_m: #999;
 $grey_l: #e6e6e6;
 $white: #fff; // mind head.php theme-color
 
+$red: #f00;
+
 //layout
 $break_xs: 375px;
 $break_s: 800px;
@@ -31,8 +33,8 @@ $rounded_bold: 'Arial Rounded', sans-serif;
   //--dist_y_0: 5vh;
 
   --br_s: 4px;
-  --br_m: 12px;
-  --br_l: 24px;
+  --br_m: 16px;
+  --br_l: 48px;
 
   --bw_s: 1px; // maybe try 1
   --bw_m: 2px;
@@ -64,10 +66,10 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
     --dist_y_0: 7.5vh;
 
     --br_s: #{100*8vw/1920};
-    --br_m: #{100*24vw/1920};
+    --br_m: #{100*16vw/1920};
     --br_l: #{100*48vw/1920};
 
-    --bw_s: #{100*1.75vw/1920};
+    --bw_s: 1px;//#{100*1.75vw/1920};
     --bw_m: #{100*3vw/1920};
     --bw_l: #{100*4vw/1920};
   }

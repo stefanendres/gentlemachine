@@ -5,8 +5,8 @@
 	z-index: 10;
   padding: calc(var(--space_0) * 4);
   transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
-  html.no-touchevents &:hover,
-  &.is-visible {
+  html.no-touchevents &:hover {
+  //&.is-visible {
     @include pill;
     transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
     .product-filter-button{

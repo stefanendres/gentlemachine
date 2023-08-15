@@ -41,10 +41,12 @@
   justify-content: flex-start;
   height: calc(var(--space_0) * 8);
   max-width: calc(var(--space_0) * 8);
-  margin-right: calc(-2 * var(--space_0));
+  &:not(:last-child) {
+    margin-right: calc(-2 * var(--space_0));
+  }
 
   transition: max-width 0.3s ease-out;
-
+  
   html.no-touchevents &:hover {
     max-width: 12.5vw; // rough max-width, change for 1 col layout
     transition: max-width 0.3s ease-out 0.15s;

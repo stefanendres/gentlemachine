@@ -89,10 +89,6 @@ img.ls-is-cached{
 
 
 
-
-
-
-
 .woocommerce-cart-form { // reset form table on cart-page
 	table,
 	thead,
@@ -120,7 +116,8 @@ img.ls-is-cached{
 
 .page-title,
 .entry-title,
-.edit-link {
+.edit-link,
+.screen-reader-text {
 	display: none;
 }
 

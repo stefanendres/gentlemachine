@@ -1,8 +1,8 @@
 <?php 
 
-    function get_product_tags($product) {
+    function get_product_tags($product_id) {
         $product_tags = [];
-        foreach (wp_get_post_terms( $product->get_id(), 'product_tag' ) as $product_tag_terms) {
+        foreach (wp_get_post_terms( $product_id, 'product_tag' ) as $product_tag_terms) {
             $product_tag = [
                 'slug' => $product_tag_terms->slug,
                 'name' => $product_tag_terms->name,
