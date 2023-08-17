@@ -58,7 +58,7 @@ function gm_content($content) {
  */
 function gm_content_image($content) {
   $content_image_file_id = $content['content_image_file'];
-  $content_image_file_ratio = (getimagesize(wp_get_attachment_url($content_image_file_id))) ? (getimagesize(wp_get_attachment_url($content_image_file_id))[1] / getimagesize(wp_get_attachment_url($content_image_file_id))[0]) : 1;
+  $content_image_file_ratio = (getimagesize(wp_get_attachment_url($content_image_file_id))) ? (getimagesize(wp_get_attachment_url($content_image_file_id))[1] / getimagesize(wp_get_attachment_url($content_image_file_id))[0]) : 'auto';
   if (array_key_exists('content_link', $content) && $content['content_link']['link_array']): ?>
     <a class="content-image-wrapper"
       href="<?= $content['content_link']['link_array']['url']; ?>"
@@ -88,7 +88,7 @@ function gm_content_image_slider($content) {
     <div class="swiper" data-slide-count="<?= $content_images_count ?>">
       <div class="swiper-wrapper">
         <?php foreach ($content['content_slider_files'] as $content_image_file_id): ?>
-          <?php $content_image_file_ratio = (getimagesize(wp_get_attachment_url($content_image_file_id))) ? (getimagesize(wp_get_attachment_url($content_image_file_id))[1] / getimagesize(wp_get_attachment_url($content_image_file_id))[0]) : 1; ?>
+          <?php $content_image_file_ratio = (getimagesize(wp_get_attachment_url($content_image_file_id))) ? (getimagesize(wp_get_attachment_url($content_image_file_id))[1] / getimagesize(wp_get_attachment_url($content_image_file_id))[0]) : 'auto'; ?>
           <div class="swiper-slide">
             <div class="content-slider-image-wrapper"
               style="--ratio: <?= $content_image_file_ratio ?>">

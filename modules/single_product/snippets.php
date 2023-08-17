@@ -16,7 +16,7 @@ function gm_before_single_product_summary() {
       <div class="swiper-wrapper">
         <?php foreach ($product_image_ids as $id): ?>
           <?php
-            $product_image_file_ratio = (getimagesize(wp_get_attachment_url($id))) ? (getimagesize(wp_get_attachment_url($id))[1] / getimagesize(wp_get_attachment_url($id))[0]) : 1;
+            $product_image_file_ratio = (getimagesize(wp_get_attachment_url($id))) ? (getimagesize(wp_get_attachment_url($id))[1] / getimagesize(wp_get_attachment_url($id))[0]) : 'auto';
           ?>
           <div class="single-product-image-wrapper swiper-slide" style="--ratio: <?= $product_image_file_ratio ?>;">
             <img class="single-product-image lazyload"
