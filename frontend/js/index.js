@@ -17,10 +17,8 @@ import {
   resizeObserveVpItems,
   observeScrollPos,
   updateScrollDirection,
-  updateSubheaderMenus,
   fixPage,
   unfixPage,
-  updateMenuScrollTo,
   initSwiper
 } from '../frontend/js/main-functions.js'
 import { getCookie, setCookie } from '../frontend/js/main-functions.js' //this is imported automatically????
@@ -81,13 +79,6 @@ window.onload = () => {
     /* internal links / page transitions */
     page.internalLinks.forEach(link => {
       link.addEventListener('click', (ev) => {
-        if (page.vp.isSmall && page.vp.orientation == 'portrait' && page.header.menu.isVi) {
-          page.header.menu.wr.classList.remove('is-visible')
-          page.header.menu.isVi = false
-          page.header.menu.btn.el.classList.remove('is-active')
-          page.header.menu.btn.isAc = false
-          //unfixPage(page)
-        }
         if (Modernizr.touchevents && page.vp.isSmall && page.vp.orientation == 'portrait' && window.location.hash) {
           resize() // because ios prevents page reload here
           scroll()
@@ -100,31 +91,35 @@ window.onload = () => {
       })
     })
 
-    /* header 
-    if (!Modernizr.touchevents) {
-      page.header.cr.addEventListener('mouseenter', () => {
-        if (!page.header.isVi) {
-          page.header.cr.classList.add('is-visible')
-          page.header.isVi = true
-        }
-      })
-    }
-    page.header.menu.btn.el.addEventListener('click', () => {
-      if (!page.header.menu.isVi && !page.header.menu.btn.isAc) {
-        page.header.menu.wr.classList.add('is-visible')
+    /* header menu */
+    page.header.menu.btn.addEventListener('click', () => {
+      if (!page.header.menu.isVi) {
+        page.header.menu.cr.classList.add('is-visible')
+        page.header.menu.btn.classList.add('is-active')
         page.header.menu.isVi = true
-        page.header.menu.btn.el.classList.add('is-active')
-        page.header.menu.btn.isAc = true
         fixPage(page)
       } else {
-        page.header.menu.wr.classList.remove('is-visible')
+        page.header.menu.cr.classList.remove('is-visible')
+        page.header.menu.btn.classList.remove('is-active')
         page.header.menu.isVi = false
-        page.header.menu.btn.el.classList.remove('is-active')
-        page.header.menu.btn.isAc = false
         unfixPage(page)
       }
-    })*/
-
+    })
+    page.header.menu.bg.addEventListener('click', () => {
+      page.header.menu.cr.classList.remove('is-visible')
+      page.header.menu.btn.classList.remove('is-active')
+      page.header.menu.isVi = false
+      unfixPage(page)
+    })
+    page.header.menu.links.forEach(link => {
+      link.addEventListener('click', () => {
+        page.header.menu.cr.classList.remove('is-visible')
+        page.header.menu.btn.classList.remove('is-active')
+        page.header.menu.isVi = false
+        unfixPage(page)
+      })
+    })
+    
   }
 
 

@@ -19,15 +19,18 @@ function gm_close_products_list_wrapper() {
 /*
  * Setup Single-Product in loop
  */
-function gm_shop_loop_item() {
-  global $product;
+function gm_shop_loop_item($product) {
+  if (!$product) {
+    global $product;
+  }
   $product_id = $product->get_id();
   $product_name = $product->get_name();
   $product_stock_status = $product->get_stock_status();
   $product_image_file_id = $product->get_image_id();
   $product_image_file_ratio = (getimagesize(wp_get_attachment_url($product_image_file_id))) ? (getimagesize(wp_get_attachment_url($product_image_file_id))[1] / getimagesize(wp_get_attachment_url($product_image_file_id))[0]) : 'auto';
   $product_tags = get_product_tags($product_id);
-  ?>
+
+  if(!has_term(array('subscription'), 'product_cat', $product_id)) : ?>
   <a class="product-thumb-container product-link" href="<?= get_permalink($product_id); ?>">
     <div class="product-image-wrapper" style="--ratio: <?= $product_image_file_ratio ?>;">
     <?php if ($product_image_file_id): ?>
@@ -46,11 +49,26 @@ function gm_shop_loop_item() {
     </div>
     <?php if ($product_stock_status === 'outofstock'): ?>
       <div class="product-stock-notice">
-        Currently unavailable
+        Nicht verfügbar
       </div>
     <?php endif ?>
   </a>
-  <?php 
+  <?php else : ?>
+    <div class="subscription-product-container">
+      <div class="subscription-product-content">
+        <img class="subscription-title" src="<?= wp_get_attachment_url($product_image_file_id) ?>" alt="<?= $product_name ?>"/>
+        <div class="subscription-description-wrapper">
+          <?= get_field('gm_product_description', $product_id) ?>
+          <div class="subscription-price">
+            <?= WC_Subscriptions_Product::get_price( $product ) . ' € / ' . WC_Subscriptions_Product::get_period( $product ) ?>
+          </div>
+        </div>
+      </div>
+      <a class="subscription-product-link" href="<?= get_permalink($product_id); ?>">
+        Zur Bestellung
+      </a>
+    </div>
+  <?php endif;
 }
 
 
@@ -64,7 +82,7 @@ function gm_cart_emtpy_shop_links() {
   );
   $product_categories = get_terms($args); ?>
   <div class="return-to-shop-container">
-    <h2 class="return-to-shop-heading">Continue Shopping</h2>
+    <h2 class="return-to-shop-heading">Weiter einkaufen</h2>
     <!-- link -->
   </div>
   <?php
@@ -107,4 +125,22 @@ function gm_add_background_content_thankyou() {
   <?php
 }
 */
+
+
+/* 
+ * My Account Coin balance
+ */
+function gm_coin_balance($current_user) {
+  $user_id = 'user_' . $current_user->ID;
+  $user_coin_balance = (!get_field('coin_credit', $user_id)) ? 0 : get_field('coin_credit', $user_id);
+  ?>
+  <div class="coin-balance-container">
+    <h3><?= get_field('coin_summary_headline', 'options'); ?></h3>
+    <div class="coin-balance">
+      <div class="coin-balance-value"><?= $user_coin_balance; ?></div>
+      <img class="coin-balance-icon" src="<?= wp_get_attachment_url(get_field('coin_icon', 'options')); ?>">
+    </div>
+  </div>
+  <?php
+}
 ?>

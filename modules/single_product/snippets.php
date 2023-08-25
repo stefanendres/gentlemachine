@@ -5,51 +5,67 @@
  */
 function gm_before_single_product_summary() {
   global $product;
+  $product_image_file_id = $product->get_image_id();
   $product_image_ids = $product->get_gallery_image_ids();
   $product_images_count = count($product_image_ids);
   $product_stock_status = $product->get_stock_status();
   $read_more_icon_url = wp_get_attachment_image_src(get_field('read_more_icon', 'options'))[0];
-
-  if ($product_images_count > 0): ?>
-  <div class="product-images-container slider-container">
-    <div class="swiper" data-slide-count="<?= $product_images_count ?>">
-      <div class="swiper-wrapper">
-        <?php foreach ($product_image_ids as $id): ?>
-          <?php
-            $product_image_file_ratio = (getimagesize(wp_get_attachment_url($id))) ? (getimagesize(wp_get_attachment_url($id))[1] / getimagesize(wp_get_attachment_url($id))[0]) : 'auto';
-          ?>
-          <div class="single-product-image-wrapper swiper-slide" style="--ratio: <?= $product_image_file_ratio ?>;">
-            <img class="single-product-image lazyload"
-              data-srcset="<?= wp_get_attachment_image_srcset($id); ?>"
-              sizes="<?= 'auto';//wp_get_attachment_image_sizes($id); ?>"
-              data-src="<?= wp_get_attachment_url($id); ?>"
-              alt="<?= gm_get_context()['site_title'] ?> – <?= $product->get_name() ?>"/>
-          </div>
-        <?php endforeach ?>
+  if(!has_term(array('subscription'), 'product_cat', $product_id)) : 
+    if ($product_images_count > 0): ?>
+    <div class="product-images-container slider-container">
+      <div class="swiper" data-slide-count="<?= $product_images_count ?>">
+        <div class="swiper-wrapper">
+          <?php foreach ($product_image_ids as $id): ?>
+            <?php
+              $product_image_file_ratio = (getimagesize(wp_get_attachment_url($id))) ? (getimagesize(wp_get_attachment_url($id))[1] / getimagesize(wp_get_attachment_url($id))[0]) : 'auto';
+            ?>
+            <div class="single-product-image-wrapper swiper-slide" style="--ratio: <?= $product_image_file_ratio ?>;">
+              <img class="single-product-image lazyload"
+                data-srcset="<?= wp_get_attachment_image_srcset($id); ?>"
+                sizes="<?= 'auto';//wp_get_attachment_image_sizes($id); ?>"
+                data-src="<?= wp_get_attachment_url($id); ?>"
+                alt="<?= gm_get_context()['site_title'] ?> – <?= $product->get_name() ?>"/>
+            </div>
+          <?php endforeach ?>
+        </div>
+        <div class="swiper-controls">
+          <div class="swiper-button swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button swiper-button-next"></div>
+        </div>
       </div>
-      <div class="swiper-controls">
-        <div class="swiper-button swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button swiper-button-next"></div>
+    </div>
+    <?php endif ?>
+    <?php if ($product_stock_status === 'outofstock'): ?>
+      <div class="product-stock-notice">
+        Nicht verfügbar
+      </div>
+    <?php endif ?>
+    <div class="product-description-container">
+      <button class="product-description-button">
+        <img class="product-button-icon" src="<?= $read_more_icon_url ?>" alt="Read More/Less"/>
+      </button>
+      <div class="product-description-wrapper">
+        <h3><?= $product->get_name(); ?></h3>
+        <?= get_field('gm_product_description') ?>
       </div>
     </div>
-  </div>
-  <?php endif ?>
-  <?php if ($product_stock_status === 'outofstock'): ?>
-    <div class="product-stock-notice">
-      Currently unavailable
+  <?php else: ?>
+    <div class="subscription-product-container">
+      <div class="subscription-product-content">
+        <img class="subscription-title" src="<?= wp_get_attachment_url($product_image_file_id) ?>" alt="<?= $product->get_title() ?>"/>
+        <div class="subscription-description-wrapper">
+          <?= get_field('gm_product_description') ?>
+          <!--<div class="subscription-price">
+            <?= WC_Subscriptions_Product::get_price( $product ) . ' € / ' . WC_Subscriptions_Product::get_period( $product ) ?>
+          </div>-->
+        </div>
+        <div class="subscription-price">
+          <?= WC_Subscriptions_Product::get_price( $product ) . ' € / ' . WC_Subscriptions_Product::get_period( $product ) ?>
+        </div>
+      </div>
     </div>
-  <?php endif ?>
-  <div class="product-description-container">
-    <button class="product-description-button">
-      <img class="product-button-icon" src="<?= $read_more_icon_url ?>" alt="Read More/Less"/>
-    </button>
-    <div class="product-description-wrapper">
-      <h3><?= $product->get_name(); ?></h3>
-      <?= get_field('gm_product_description') ?>
-    </div>
-  </div>
-  <?php
+  <?php endif;
 }
 
 /*
@@ -101,7 +117,7 @@ function gm_after_single_product_summary_form() {
   if (!is_user_logged_in()): ?>
     </div><?php // close <div class="summary-wrapper-lock">
   endif; ?>
-  <a class="single-product-checkout-link" href="<?= gm_get_context()['site_url'];?>/checkout">Checkout</a>
+  <a class="single-product-checkout-link" href="<?= gm_get_context()['site_url'];?>/checkout">Zur Kasse</a>
   <?php
 }
 
@@ -111,7 +127,7 @@ function gm_after_single_product_summary_form() {
  */
 function gm_after_single_product_summary() {
   ?>
-  <a class="single-product-back-link" href="<?= get_permalink(wc_get_page_id('shop')); ?>">Back</a>
+  <a class="single-product-back-link" href="<?= get_permalink(wc_get_page_id('shop')); ?>">Zurück zum Shop</a>
   <?php
 }
 

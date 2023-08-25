@@ -13,4 +13,19 @@
         return $product_tags;
     };
 
+    // hide subscriptions in shop
+    function gm_hide_products_category_shop( $q ) {
+        if (!is_product_category()) {
+            $tax_query = (array) $q->get( 'tax_query' );
+            $tax_query[] = array(
+                'taxonomy' => 'product_cat',
+                'field' => 'slug',
+                'terms' => array( 'subscription' ), // Category slug here
+                'operator' => 'NOT IN'
+            );
+            $q->set( 'tax_query', $tax_query );
+        }
+    }
+    add_action( 'woocommerce_product_query', 'gm_hide_products_category_shop' );
+
 ?>

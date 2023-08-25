@@ -1,9 +1,8 @@
-
 .woocommerce-cart-form {
   display: flex;
   flex-flow: wrap;
   width: 100%;
-  padding: 0 calc(var(--space_0) * 4);
+  padding: 0 calc(var(--space_0) * 10);
   margin-top: calc(var(--space_0) * 4);
   margin-bottom: calc(var(--space_0) * 4);
   table {
@@ -22,9 +21,9 @@
     }
     thead{
       width: 100%;
-      tr{
+      /*tr{
         margin-bottom: calc(var(--fs_m) * 0.5);
-      }
+      }*/
     }
     tr {
       display: flex;
@@ -32,7 +31,7 @@
       padding: calc(var(--space_0) * 2) var(--space_0);
     }
     th {
-      color: $grey_m;
+      //color: $grey_m;
       &.product-quantity{
         text-align: center;
       }
@@ -105,6 +104,8 @@
             @include reset_pill;
             padding: 0;
             pointer-events: none;
+            border: none;
+            text-align: center;
           }
         }
         .qib-container {
@@ -161,9 +162,9 @@
 .cart-collaterals {
   display: flex;
   width: 100%;
-  padding: 0 calc(var(--space_0) * 4);
+  padding: 0 calc(var(--space_0) * 10);
   margin-top: calc(var(--space_0) * 8);
-  margin-bottom: calc(var(--space_0) * 4);
+  margin-bottom: calc(var(--space_0) * 12);
   .cross-sells,
   .up-sells {
     display: none;
@@ -178,6 +179,7 @@
     font-weight: normal;
     font-size: var(--fs_l);
     line-height: var(--fs_l);
+    //color: $grey_m;
   }
   .shop_table {
     display: flex;
@@ -248,19 +250,14 @@
           margin-top: calc(var(--fs_m) * 0.5);
         }
         .shipping-calculator-button {
-          white-space: nowrap;
-          margin-right: 100%;
-
-          html.no-touchevents &:hover,
-          &:active {
-            box-shadow: $shadow_double;
-          }
+          margin-bottom: var(--space_0);
         }
         .shipping-calculator-form {
           width: 100%;
           margin-top: var(--space_0);
-          .form-row {
-            margin-bottom: calc(var(--fs_m) * 0.5)
+          .form-row,
+          label {
+            margin-bottom: calc(var(--fs_m) * 0.5);
           }
         }
       }
@@ -268,6 +265,11 @@
         border-bottom: var(--bw_s) solid $grey_l;
         strong{
           font-weight: normal;
+        }
+        .first-payment-date {
+          padding-left: 0.5em;
+          margin-left: 0.5em;
+          border-left: var(--bw_s) solid $grey_l;
         }
       }
     }
@@ -301,6 +303,7 @@
     justify-content: center;
     .checkout-button {
       display: inline-flex;
+      margin-top: calc(var(--space_0) * 2);
       html.no-touchevents &:hover,
       &:active {
         background-color: transparent;

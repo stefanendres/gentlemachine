@@ -1,4 +1,17 @@
+@mixin link($font_size) {
+  font-size: $font_size;
+  line-height: $font_size;
+  color: $grey_m;
+  text-decoration: none;
+  cursor: pointer;
+  html.no-touchevents &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+}
 @mixin pill() {
+  color: $black;
   background-color: $white;
   border: none;
   border-radius: var(--br_l);
@@ -15,6 +28,7 @@
   font-size: $font_size;
   line-height: $font_size;
   padding: calc(#{$font_size}*0.5) $font_size;
+  margin: 0;
   background-color: $white;
   border: var(--bw_s) solid $grey_l;
   border-radius: var(--br_m);
@@ -26,12 +40,14 @@
   }
 }
 @mixin button($font_size) {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  height: calc(var(--space_0) * 8);
   font-size: $font_size;
   line-height: $font_size;
   padding: calc(#{$font_size}*0.5) $font_size;
   white-space: nowrap;
+  cursor: pointer;
 }
 @mixin button_interaction() {
   &:not(.disabled) {
@@ -42,21 +58,42 @@
     }
   }
 }
-button,
-input:not([type='radio']):not([type='text']),
+.button-style,
+button:not(.menu-button),
+input:not([type='radio']):not([type='text']):not(.input-text):not([type='password']):not([type='checkbox']):not([type='email']),
 select,
 .single-product-checkout-link,
 .single-product-back-link,
-.checkout-button {
+.shipping-calculator-button,
+.checkout-button,
+.checkout h3#ship-to-different-address label span,
+.woocommerce-MyAccount-navigation-link a,
+.woocommerce-MyAccount-content .woocommerce-Addresses a.edit,
+.xoo-el-tabs li,
+.subscription-product-link {
   @include pill;
   @include button(var(--fs_m));
   &:not(.product-filter-button):not(.product-description-button){
     @include button_interaction();
   }
 }
-input[type='text']{
-  @include input_text(var(--fs_m));
+.button-style,
+.single_add_to_cart_button,
+.single-product-checkout-link,
+.single-product-back-link,
+.checkout-button,
+.button#place_order,
+.subscription-product-link,
+.woocommerce-MyAccount-navigation-link.is-active a{
+  font-weight: 600;
 }
+
+p>a,
+.xoo-aff-checkbox_single a,
+a.xoo-el-lostpw-tgr {
+  @include link(var(--fs_m));
+}
+
 // Chrome, Safari, Edge, Opera 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -64,7 +101,36 @@ input::-webkit-inner-spin-button {
   display: none;
   margin: 0;
 }
-
+input[type='text'],
+.input-text:not(.qty),
+.select2-container--default .select2-selection--single{
+  @include input_text(var(--fs_m));
+}
+.select2-container--default .select2-selection--single{
+  height: auto;
+  html.no-touchevents &:hover,
+  &:active,
+  &:focus {
+    .select2-selection__arrow b {
+      border-color: $black transparent transparent transparent;
+    }
+  }
+}
+.select2-container .select2-selection--single .select2-selection__rendered{
+  line-height: var(--fs_m);
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0.075em;
+  padding-bottom: 0.075em;
+  color: $black;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  top: 0;
+  b{
+    border-color: $grey_m transparent transparent transparent;
+  }
+}
 
 
 // Firefox 

@@ -12,9 +12,7 @@
 		<?php //</div><!-- .col-full -->?>
 	</div><?php //<!-- #content -->?>
 	<footer class="site-footer">
-		<div class="main-footer-container">
-			<?php //do_action( 'gm_footer' ); ?>
-		</div>
+		<?php do_action( 'gm_footer' ); ?>
 	</footer>
 <?php //</div><!-- #page -->?>
 <script type="text/javascript">

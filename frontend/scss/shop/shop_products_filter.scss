@@ -55,10 +55,20 @@
       height: calc(var(--fs_m) * 2);
       background-color: $white !important;
       @include pill;
+      html.no-touchevents &:hover,
+      &:active{
+        box-shadow: $shadow_double;
+      }
     }
     .bapf_sfilter.brchecked_default input:checked+label .bapf_img_span {
       transform: none;
-      filter: invert(1);
+      //filter: invert(1);
+      box-shadow: $shadow_double;
+      //box-shadow: none;
+      //border: var(--bw_s) solid $black;
+    }
+    .checked {
+      font-weight: 600;
     }
     .bapf_asradio2 ul li input[type=checkbox] {
       width: calc(var(--fs_m) * 1);

@@ -15,13 +15,18 @@ Template: storefront
 //@import 'components/cookie';
 
 @import 'header';
+@import 'components/menu_main';
 
 @import 'shop/shop_products';
 @import 'shop/shop_products_filter';
 @import 'shop/single_product';
+@import 'shop/shop_subscriptions';
 @import 'shop/subscription_product';
 @import 'shop/cart';
 @import 'shop/checkout';
+@import 'shop/shop_notifications';
+@import 'shop/my_account';
+@import 'shop/login_signup';
 //@import 'shop/thankyou';
 
 //@import 'pages/layout';

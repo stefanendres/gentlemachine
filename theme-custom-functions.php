@@ -111,7 +111,7 @@ function gm_verysimple_toolbar( $toolbars )
 	// Add a new toolbar called "Very Simple"
 	// - this toolbar has only 1 row of buttons
 	$toolbars['Very Simple' ] = array();
-	$toolbars['Very Simple' ][1] = array('bold', 'italic', 'link' , 'unlink', 'undo', 'redo' );
+	$toolbars['Very Simple' ][1] = array('bold', 'italic', 'link' , 'unlink', 'bullist', 'numlist', 'undo', 'redo' );
 
 	// Edit the "Full" toolbar and remove 'code'
 	// - delet from array code from http://stackoverflow.com/questions/7225070/php-array-delete-by-value-not-key

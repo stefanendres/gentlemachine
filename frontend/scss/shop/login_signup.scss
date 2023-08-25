@@ -1,0 +1,94 @@
+.xoo-el-form-container.xoo-el-form-inline{
+  @include pill;
+  width: 50%;
+  padding: calc(var(--space_0) * 8);
+  .xoo-el-header{
+    padding: 0;
+    .xoo-el-tabs{
+      justify-content: center;
+      gap: calc(var(--space_0)*4);
+      li {
+        padding: calc(var(--fs_m)*0.5) var(--fs_m);
+        background-color: $white !important;
+        color: $black !important;
+        flex-grow: unset;
+        &.xoo-el-active{
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .xoo-el-section{
+    padding-left: 0;
+  }
+  .xoo-el-action-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .xoo-aff-group {
+    width: 100%;
+    margin-bottom: calc(var(--space_0) * 4);
+    .xoo-aff-input-group{
+      .xoo-aff-input-icon{
+        display: none;
+      }
+      input{
+        border-bottom-left-radius: unset;
+        border-top-left-radius: unset;
+        height: unset;
+        padding: calc(var(--fs_m)*0.5) var(--fs_m) !important;
+        font-size: var(--fs_m) !important;
+        line-height: var(--fs_m) !important;
+        background-color: #fff !important;
+        border: var(--bw_s) solid #e6e6e6 !important;
+        border-radius: var(--br_m) !important;
+        box-shadow: none;
+      }
+      .xoo-aff-pw-toggle {
+        opacity: 0.3;
+        html.no-touchevents &:hover,
+        &:active {
+          opacity: 1;
+        }
+      }
+    }
+    .xoo-el-form-label{ //remember me
+      input{
+        filter: saturate(0);
+      }
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+      font-weight: normal;
+    }
+    .xoo-aff-checkbox_single{//"I accept terms…"
+      label{
+        input {
+          filter: saturate(0);
+        }
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        font-weight: normal;
+        a {
+          margin-left: 0.25em;
+        }
+      }
+    }
+  }
+  .xoo-el-action-btn{//submit
+    width: auto !important;
+    text-transform: none !important;
+    margin: 0 auto !important;
+  }
+  .xoo-el-notice{
+    width: 100%;
+    margin: calc(var(--space_0) * 4) 0;
+    .xoo-el-notice-error {
+      @include pill;
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+}

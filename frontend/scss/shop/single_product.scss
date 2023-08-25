@@ -15,11 +15,11 @@
 .product-description-container,
 .summary {
   position: fixed;
-  z-index: 10;
   bottom: calc(var(--space_0) * 4);
 }
 
 .product-description-container {
+  z-index: 10;
   width: 25%;
   left: calc(var(--space_0) * 10);
   .product-description-button {
@@ -66,6 +66,7 @@
 }
 
 .summary {
+  z-index: 9;
   width: 75%;
   right: calc(var(--space_0) * 10);
   display: flex;
@@ -125,10 +126,11 @@
           top: calc(var(--space_0) * 2);
           right: var(--fs_m);
           pointer-events: none;
+          color: $grey_m;
         }
         html.no-touchevents &:hover {
           &::after {
-            color: $grey_d;
+            color: $black;
           }
         }
       }
@@ -150,6 +152,7 @@
             display: none;
           }
           input{
+            @include pill;
             height: calc(var(--space_0) * 8);
             min-width: calc(var(--space_0) * 8);
             max-width: calc(var(--space_0) * 8);

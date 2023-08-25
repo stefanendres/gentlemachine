@@ -31,7 +31,11 @@ export let page = {
     },
     isVi: undefined,
     menu: {
-
+      cr: document.querySelector('.main-menu-container'),
+      btn: document.querySelector('.menu-button'),
+      bg: document.querySelector('.menu-background'),
+      links: document.querySelectorAll('.main-menu-container a'),
+      isVi: false
     }
   },
 
@@ -42,7 +46,7 @@ export let page = {
   footer: {
 
   },
-  internalLinks: document.querySelectorAll('a:not([target="_blank"])'),
+  internalLinks: document.querySelectorAll('a:not([target="_blank"]):not(.remove):not(.shipping-calculator-button):not(.xoo-el-lostpw-tgr)'),
   cookieNotice: {
     cr: document.querySelector('.cookie-cr'),
     btn: document.querySelector('.cookie-cr button')

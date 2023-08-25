@@ -1,92 +1,107 @@
 .main-menu-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
-  bottom: 0;
   right: 0;
   left: 0;
-  z-index: -1;
-
-  width: 100%; //vw
-  padding: var(--header_h) $col_sp*4 var(--header_h) $col_sp*4;
-
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-
+  bottom: 0;
+  z-index: 11; // over header
+  padding-top: calc(var(--h_h) + var(--space_0));
+  padding-bottom: calc(var(--h_h) + var(--space_0));
   opacity: 0;
   pointer-events: none;
-  background-color: $white;
-  /*background-color: rgba($white, 0.85);
-
-  transform: translate3d(0,0,0);
-  backdrop-filter: blur(2vh);
-  isolation: isolate;*/
-
-  transition: opacity 0.15s ease-in-out;
-
-  &.visible{
+  transition: opacity 0.3s ease-in-out;
+  .menu-list{
+    @include pill;
+    z-index: 12; // over menu-background
+    display: flex;
+    flex-flow: column;
+    height: fit-content;
+    max-height: 100%;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-top: calc(var(--space_0) * 10);
+    padding-right: calc(var(--space_0) * 8);
+    padding-left: calc(var(--space_0) * 8);
+    padding-bottom: calc(var(--space_0) * 3);
+    li {
+      &:not(:first-child) {
+        padding-top: calc(var(--space_0) * 2);
+        border-top: var(--bw_s) solid $grey_l;
+      }
+      &:not(:last-child) {
+        padding-bottom: calc(var(--space_0) * 2);
+      }
+    }
+    .menu-link {
+      display: flex;
+      justify-content: center;
+      height: calc(var(--fs_l) * 4);
+      transition: opacity 0.15s ease-in-out;
+      html.no-touchevents &:hover,
+      &:active{
+        opacity: 0.3;
+      }
+    }
+    opacity: 0;
+    transform: translate3d(0, calc(var(--vp_ih) * 0.25), 0);
+    transition: transform 0.3s ease-in-out, opacity 0.15s ease-in-out;
+  }
+  .menu-background{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 11;
+    cursor: pointer;
+    background-color: rgba($grey_d, 0);
+    transition: background-color 0.3s ease-in-out;
+  }
+  &.is-visible {
     opacity: 1;
     pointer-events: auto;
-    z-index: 10;
-  }
-
-  .menu-heading{
-    color: $purple;
-    font-weight: normal;
-    text-transform: uppercase;
-  }
-  .menu-shop-links{
-    width: 50%; //use cols??
-    margin-right: $col_sp*4;
-    .menu-item,
-    .menu-link{
-      font-size: $text_l;
-      line-height: $line_l;
+    transition: opacity 0.15s ease-in-out;
+    .menu-list {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
     }
-  }
-  .menu-info-links{
-    padding-bottom: $line_m;
-  }
-  .menu-link{
-    html.no-touchevents &:hover,
-    &:active,
-    &.active{
-      color: $grey;
+    .menu-background {
+      background-color: rgba($grey_d, 0.3);
     }
   }
 }
-
-@media all and (max-width: $break_s){
-  .main-menu-container{
-    align-items: center;
-    padding: var(--header_h) $col_sp * 1.5 var(--header_h) $col_sp * 1.5;
-    .menu-wrapper{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: $col_sp * 0.5;
-      width: 100%;
-    }
-    .menu-heading{
-
-    }
-    .menu-shop-links{
-      width: 100%;
-      margin-right: $col_sp*3;
-      .menu-item,
-      .menu-link{
-        font-size: $text_l_s;
-        line-height: $line_l_s * 1.1;
+.trp-language-switcher-container {
+  //margin-top: var(--space_0);
+  .trp-ls-shortcode-current-language {
+    // the current language is display twice, so hide one
+    display: none;
+  }
+  .trp-ls-shortcode-language {
+    // always show languages-menu-options
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center;
+    a {
+      // is not the current language if has no class
+      padding: calc(var(--space_0) * 2) 0;
+      html.no-touchevents &:hover,
+      &:active {
+        color: $grey_m;
       }
-      margin-bottom: $line_l_s * 1.1;
     }
-    .menu-info-links{
-      padding-bottom: $line_m_s;
-    }
-    .menu-link{
-      white-space: nowrap;
+    .trp-ls-shortcode-disabled-language {
+      // this is the current language
+      margin-right: var(--fs_s);
+      font-weight: 600;
+      pointer-events: none;
+      cursor: default;
     }
   }
 }

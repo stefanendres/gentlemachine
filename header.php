@@ -12,14 +12,12 @@
 		$product = null;
 	}
 ?>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
-		<?php // gm_structured_data($product); ?>
 
 		<meta name="description" content="<?php //echo gm_get_meta()['description']; ?>">
 		<meta name="copyright" content="<?= get_bloginfo('name'); ?>">
@@ -42,8 +40,10 @@
 	<?php do_action( 'storefront_before_site' ); ?>
 
 	<?php //<div id="page" class="hfeed site"> ?>
-		<?php do_action( 'storefront_before_header' ); ?>
-
+		<?php
+			do_action( 'storefront_before_header' );
+			gm_header_container_logo('-mobile'); // add mobile logo
+		?>
 		<header class="site-header">
 
 			<?php
@@ -64,7 +64,6 @@
 			 */
 			do_action( 'storefront_header' );
 			?>
-
 		</header>
 		
 		<?php do_action( 'gm_main_menu' ); ?>
@@ -87,7 +86,7 @@
 		 */
 		do_action( 'storefront_before_content' );
 		?>
-		<div id="content" class="site-content">
+		<div id="content" class="site-content" style="--background_image_url: url(<?= get_field('background_image', 'options'); ?>);">
 			<?php //<div class="col-full"> ?>
 
 			<?php

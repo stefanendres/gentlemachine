@@ -1,79 +1,37 @@
-.woocommerce-checkout{
-  .woocommerce{
-    padding: 0 calc(var(--space_0) * 4);
-    .woocommerce-notices-wrapper,
-    .woocommerce-form-coupon-toggle{
+.woocommerce-checkout {
+  .woocommerce {
+    padding: 0 calc(var(--space_0) * 10);
+
+    /*.woocommerce-notices-wrapper {
       display: inline-flex;
       padding: 0;
+    }*/
+
+    .woocommerce-form-coupon-toggle {
+      display: none;
     }
-    .checkout_coupon{
-      margin-top: calc(var(--space_0) * 0.5);
+
+    .checkout_coupon {
+      display: none;
+      /*margin-top: calc(var(--space_0) * 0.5);
       display: flex;
       align-items: center;
       transition: none; //opacity 0s ease-in-out;
+
       &.processing {
         opacity: 0;
       }
+
       p:not(.form-row) {
         display: none;
       }
-      .form-row:not(.form-row-first){
-        margin-left: var(--space_0);
-      }
-    }
-  }
-}
-.woocommerce-NoticeGroup {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  bottom: var(--fs_m);
-  padding: 0 calc(var(--space_0) * 4);
-  z-index: 1;
-  width: 100%;
-  max-height: calc(var(--vp_h) - var(--fs_m) * 2);
-  ul {
-    flex-wrap: wrap;
-    margin: 0 auto;
-    padding: calc(var(--space_0) * 4);
-    &:after {
-      content: 'OK';
-      display: block;
-      font-size: var(--fs_m);
-      line-height: var(--fs_m);
-      text-align: center;
-      padding: calc(var(--fs_m) * 0.5);
-      margin: var(--fs_m) auto;
-      color: $white;
-      //background-color: $primary;
-      border-radius: var(--fs_m);
-      //border: solid 1px $primary;
-      width: 6em;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.25s ease-in-out;
-    }
-    li{
-      width: 100%;
-      margin-bottom: calc(var(--fs_m) * 0.5);
-    }
-    li strong {
-      font-weight: 600;
-      font-weight: normal;
-      //color: $primary;
-    }
-  }
-  &.closable {
-    ul {
-      &::after {
-        opacity: 1;
-      }
-    }
-    cursor: pointer;
-  }
-}
 
+      .form-row:not(.form-row-first) {
+        margin-left: var(--space_0);
+      }*/
+    }
+  }
+}
 /* LOGIN */
 /*.woocommerce-form-login-toggle,
 .woocommerce-account-fields{
@@ -173,7 +131,7 @@
     display: flex;
     flex-flow: wrap;
     width: 100% * 6/12;
-    padding-right: calc(var(--space_0) * 2);
+    padding-right: calc(var(--space_0) * 5);
   }
 
   .col-1,
@@ -189,7 +147,7 @@
     margin-bottom: var(--fs_l);
     &#order_review_heading {
       position: absolute;
-      left: calc(100% * 6/12 + #{calc(var(--space_0) * 2)});
+      left: calc(100% * 6/12 + #{calc(var(--space_0) * 5)});
     }
   }
 
@@ -197,10 +155,11 @@
     margin-bottom: var(--fs_m);
     label {
       display: block;
-      color: $grey_m;
+      //color: $grey_m;
       margin-bottom: calc(var(--fs_m) * 0.25);
     }
-    input[type='text'] {
+    input[type='text'],
+    .input-text {
       width: 100%;
     }
 
@@ -285,7 +244,7 @@
     align-content: flex-start;
     width: 100% * 6/12;
     margin-top: calc(var(--fs_l) * 3 + var(--fs_m) * 0.25);
-    padding-left: calc(var(--space_0) * 2);
+    padding-left: calc(var(--space_0) * 5);
 
     .shop_table { // same layout as in thankyou.scss
       display: flex;
@@ -311,6 +270,7 @@
           &.product-name,
           &.product-total{
             font-weight: normal;
+            color: $grey_m;
           }
         }
       }
@@ -341,9 +301,22 @@
           &.product-name {
             color: $black;
             margin-bottom: 0;
+            .product-quantity {
+              font-weight: normal;
+              color: $grey_m;
+            }
           }
         }
-
+        &.recurring-totals{
+          border-top: none;
+          th {
+            font-size: var(--fs_l);
+            line-height: var(--fs_l);
+            font-weight: normal;
+            margin-top: var(--fs_l);
+            margin-bottom: var(--fs_l);
+          }
+        }
         &.cart-subtotal,
         &.order-total {
           th {
@@ -387,7 +360,6 @@
               display: flex;
               flex-direction: row;
               flex-wrap: nowrap;
-              white-space: nowrap;
               span.woocommerce-Price-amount{
                 margin-left: 0.75em;
               }
@@ -581,15 +553,6 @@
 
     .button#place_order {
       display: inline-flex;
-      //background-color: $primary;
-      //border-color: $primary;
-      color: $white;
-      html.no-touchevents &:hover,
-      &:active {
-        background-color: transparent;
-        border-color: $grey_m;
-        color: $black;
-      }
     }
 
   }

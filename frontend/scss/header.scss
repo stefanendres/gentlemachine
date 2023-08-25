@@ -1,106 +1,111 @@
+.logo-container-mobile {
+  width: 100%;
+  padding: calc(var(--space_0) * 4) calc(var(--space_0) * 10);
+  img {
+    width: 100%;
+  }
+  display: none; //dev
+}
 .site-header{
 	display: flex;
 	flex-wrap: wrap;
 	position: fixed;
 	top: 0;
 	z-index: 10;
-	width: 100%; //vw
-  padding: calc(var(--space_0) * 2) calc(var(--space_0) * 10);
-	/*will-change: transform;
-	transition: transform 0.4s ease-out;
-	&.hidden{
-		transform: translateY(-100%);
-	}*/
+	width: 100%;
+  padding: calc(var(--space_0) * 4) calc(var(--space_0) * 10);
 }
 
 .main-header-container{
   display: flex;
 	justify-content: space-between;
-	align-items: center;
-
+	align-items: flex-start;
+  position: relative;
 	width: 100%;
-
-	.logo-container{
-		display: flex;
+  height: var(--fs_l);
+  .shop-link-container,
+  .logo-container,
+  .cart-link-container,
+  .myaccount-link-container,
+  .menu-button-container{
+    position: absolute;
     height: var(--fs_l);
-
-		//height: 100%;
-		img,svg{
-			display: flex;
-			width: 100%;
-			height: 100%;
-		}
-
-		/*will-change: transform;
-		transition: transform 0.4s ease-out;
-		.hidden &{
-			transform: translateY(-300%);
-		}*/
+    min-width: var(--fs_l);
+    img,
+    svg {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .shop-link-container{
+    left: 0;
+  }
+  .cart-link-container{
+    left: 25%;
+    transform: translate3d(-50%,0,0);
+    .cart-link{
+      position: relative;
+      .count{
+        position: absolute;
+        top: calc(50% - var(--fs_xs) * 0.5);
+        left: calc(100% - var(--fs_xs) * 0.25);
+        font-size: var(--fs_xs);
+        line-height: var(--fs_xs);
+      }
+    }
+  }
+	.logo-container{
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
 	}
 
-	.header-menu-container{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		>div{
-			display: flex;
-			&:not(:last-child){
-		
-			}
-		}
-	}
-	.cart-link-container{
-	}
-	.cart-link-container,
-	.cart-link{
-		display: flex;
-		flex-wrap: nowrap;
-		//align-items: center;
-		justify-content: center;
-	}
-	.shop-link{
-		&:not(:first-child){ // dev : duplicate el  cache-fix ??
-			display: none;
-		}
-	}
-	.cart-link{
-		
-	}
-	/*.trp-language-switcher-container {
-		.trp-ls-shortcode-current-language {
-			// the current language is display twice, so hide one
-			display: none;
-		}
-		.trp-ls-shortcode-language {
-			// always show languages-menu-options
-			display: flex !important;
-			width: 100% !important;
-			a {
-				// is not the current language if has no class
-				color: $grey;
-				html.no-touchevents &:hover,
-				&:active {
-					color: $black;
-				}
-			}
-			.trp-ls-shortcode-disabled-language {
-				// this is the current language
-				color: $black;
-				pointer-events: none;
-				cursor: default;
-				&:after{
-					content: '/';
-					display: inline-flex;
-					margin-right: 0.125em;
-					margin-left: -0.125em;
-				}
-			}
-		}
-	}*/
-	.menu-button-container{
-		
-	}
+  .myaccount-link-container{
+    left: 75%;
+    transform: translate3d(-50%, 0, 0);
+    .user-name{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: var(--fs_l);
+      min-width: calc(var(--fs_l) * 2);
+      border: var(--bw_l) solid $black;
+      border-radius: 100%;
+      white-space: nowrap;
+      font-size: var(--fs_xs);
+      line-height: var(--fs_xs);
+      font-style: italic;
+      padding: calc(var(--fs_xs) * 0.25) calc(var(--fs_xs) * 0.75);
+    }
+  }
+  .menu-button-container {
+    display: flex;
+    justify-content: flex-end;
+    right: 0;
+    .menu-button {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .menu-open-icon,
+      .menu-close-icon{
+        position: absolute;
+        top: 0;
+        transform-origin: center;
+        transition: transform 0.15s ease-in-out;
+      }
+      .menu-close-icon{
+        transform: scale(0);
+      }
+      &.is-active{
+        .menu-open-icon {
+          transform: scale(0);
+        }
+        .menu-close-icon {
+          transform: scale(1);
+        }
+      }
+    }
+  }
 }
 
 

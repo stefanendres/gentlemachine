@@ -38,6 +38,17 @@ h1, h2, h3, h4, h5, h6, a, p, button {
 	margin: 0;
 }
 
+p{
+	//hyphens: auto;
+	/*strong {
+		font-family: $rounded_bold;
+	}
+	em {
+		font-family: $rounded_bold_italic;
+	}*/
+}
+
+
 a{
 	color: $black;
 	text-decoration: none;
@@ -49,6 +60,18 @@ ul, ol{
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+.product-description-wrapper,
+.subscription-description-wrapper {
+  ul, ol {
+    padding-left: 1em;
+  }
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
 }
 
 button{
@@ -126,14 +149,17 @@ img.ls-is-cached{
 	position: relative;
 	width: 100%;
 	min-height: 100vh;
-	min-height: calc(var(--vp_ih) - var(--h_h));
+	min-height: var(--vp_ih, 100vh);
 	padding-top: var(--h_h);
-	opacity: 0;
-	will-change: opacity;
-	transition: opacity 0.25s ease-in-out;
 	background-color: $white;
-	.page-loaded & {
-		opacity: 1;
+	main {
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 0.25s ease-in-out;
+	
+		.page-loaded & {
+			opacity: 1;
+		}
 	}
 }
 .content-area{

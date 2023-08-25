@@ -122,10 +122,8 @@ function gm_add_custom_actions() {
   //add_action( 'gm_mobile_sub_header', 'gm_sub_header', 1 ); needs?
 
   add_action( 'gm_main_menu', 'gm_menu_container_open', 1 );
-  //add_action( 'gm_main_menu', 'gm_menu_shop_link_list', 2 );
-  //add_action( 'gm_main_menu', 'gm_menu_info_link_list', 3 );
-  //add_action( 'gm_main_menu', 'gm_menu_connect_link_list', 4 );
-  add_action( 'gm_main_menu', 'gm_menu_container_close', 5 );
+  add_action( 'gm_main_menu', 'gm_menu_link_list', 2 );
+  add_action( 'gm_main_menu', 'gm_menu_container_close', 3 );
   
   //shop-archive
   add_action( 'woocommerce_before_shop_loop', 'gm_open_products_list_wrapper', 11 );
@@ -142,8 +140,7 @@ function gm_add_custom_actions() {
   //add_action( 'storefront_page', 'gm_page_content', 21 );
 
   // footer.php
-  //add_action( 'gm_footer', 'gm_footer_container_logo', 10);
-  //add_action( 'gm_footer', 'gm_footer_legal_link_list', 11 );
+  add_action( 'gm_footer', 'footer_content', 10);
 
 };
 add_action('init', 'gm_add_custom_actions');
