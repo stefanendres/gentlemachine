@@ -11,7 +11,7 @@ require_once('modules/main/functions.php');
 require_once('modules/header/snippets.php');
 
 //require_once('modules/page/functions.php');
-//require_once('modules/page/snippets.php');
+require_once('modules/page/snippets.php');
 
 require_once('modules/home/snippets.php');
 

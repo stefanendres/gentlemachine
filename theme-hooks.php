@@ -119,8 +119,6 @@ function gm_add_custom_actions() {
   add_action( 'storefront_header', 'gm_header_container_menu_button', 55 );
   add_action( 'storefront_header', 'gm_header_container_close', 55 );
 
-  //add_action( 'gm_mobile_sub_header', 'gm_sub_header', 1 ); needs?
-
   add_action( 'gm_main_menu', 'gm_menu_container_open', 1 );
   add_action( 'gm_main_menu', 'gm_menu_link_list', 2 );
   add_action( 'gm_main_menu', 'gm_menu_container_close', 3 );
@@ -136,8 +134,7 @@ function gm_add_custom_actions() {
   //add_action( 'woocommerce_after_single_product_summary', 'gm_woocommerce_output_upsells', 5 );
   add_action( 'woocommerce_after_single_product_summary', 'gm_after_single_product_summary', 20 );
 
-  //add_action( 'storefront_page', 'gm_starter_content', 20 );
-  //add_action( 'storefront_page', 'gm_page_content', 21 );
+  add_action( 'storefront_page', 'gm_content_rows', 20 );
 
   // footer.php
   add_action( 'gm_footer', 'footer_content', 10);

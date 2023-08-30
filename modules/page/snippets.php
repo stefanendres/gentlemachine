@@ -11,7 +11,7 @@ function gm_content_rows($id) {
 
   if ($rows): 
     foreach ($rows as $row): ?>
-      <div class="row <?= str_replace('_', '-', $row['acf_fc_layout']); ?> <?= ($row['keep_mobile_layout'] == true) ? 'keep-grid' : 'break-grid'; ?>">
+      <div class="row observe-vp">
         <?php gm_content_columns($row); ?>
       </div>
     <?php endforeach; ?>
@@ -24,31 +24,31 @@ function gm_content_rows($id) {
  * Setup Content Columns
  */
 function gm_content_columns($content) {
-  $columns = $content['columns'];
-  foreach ($columns as $column): ?>
-    <div class="col width-<?= $column['column_width']; ?>">
-    <?php
-    foreach ($column['column_content'] as $column_content): ?>
-      <div
-        class="col-content col-<?= str_replace('_', '-', $column_content['acf_fc_layout']); ?><?= ' width-1_'.$column_content['content_width']; ?>" 
-        style="--content-width:<?= 100/$content_width.'%;'; ?><?= (array_key_exists('content_height', $column_content)) ? ' --content-height:'.$column_content['content_height'].';' : ' '; ?>">
-        <?php gm_content($column_content); ?>
-      </div>
-    <?php endforeach ?>
-    </div>
-  <?php endforeach;
+  $row_width = $content['row_width'];
+  $row_content = $content['row_content'][0];
+  ?>
+  <div class="row-content <?= str_replace('_', '-', $row_content['acf_fc_layout']); ?><?= ' width-'.$row_width ?>">
+    <?php gm_content($row_content); ?>
+  </div>
+  <?php
 }
 
 /*
  * Setup Contents
  */
 function gm_content($content) {
+  //var_dump($content);
+  
   if ($content['acf_fc_layout'] === 'content_image') {
     gm_content_image($content);
-  } else if ($content['acf_fc_layout'] === 'content_image_slider') {
-    gm_content_image_slider($content);
   } else if ($content['acf_fc_layout'] === 'content_textarea') {
     gm_content_textarea($content);
+  } else if ($content['acf_fc_layout'] === 'content_text_small') {
+    gm_content_textsmall($content);
+  } else if ($content['acf_fc_layout'] === 'content_text_large') {
+    gm_content_textlarge($content);
+  } else if ($content['acf_fc_layout'] === 'content_links') {
+    gm_content_linklist($content);
   } else if ($content['acf_fc_layout'] === 'content_spacer') {
     gm_content_spacer($content);
   }
@@ -59,55 +59,15 @@ function gm_content($content) {
 function gm_content_image($content) {
   $content_image_file_id = $content['content_image_file'];
   $content_image_file_ratio = (getimagesize(wp_get_attachment_url($content_image_file_id))) ? (getimagesize(wp_get_attachment_url($content_image_file_id))[1] / getimagesize(wp_get_attachment_url($content_image_file_id))[0]) : 'auto';
-  if (array_key_exists('content_link', $content) && $content['content_link']['link_array']): ?>
-    <a class="content-image-wrapper"
-      href="<?= $content['content_link']['link_array']['url']; ?>"
-      <?= ($content['content_link']['link_array']['target']) ? ' target="'.$content['content_link']['link_array']['target'].'"' : ''; ?>
-      style="--ratio: <?= $content_image_file_ratio ?>">
-      <img class="content-image lazyload"
-        srcset="<?= wp_get_attachment_image_srcset($content_image_file_id); ?>"
-        data-sizes="auto"
-        data-src="<?= wp_get_attachment_url($content_image_file_id); ?>">
-    </a>
-  <?php else: ?>
+  ?>
     <div class="content-image-wrapper"
       style="--ratio: <?= $content_image_file_ratio ?>">
       <img class="content-image lazyload"
         srcset="<?= wp_get_attachment_image_srcset($content_image_file_id); ?>"
         data-sizes="auto"
-        data-src="<?= wp_get_attachment_url($content_image_file_id); ?>">
+        data-src="<?= wp_get_attachment_url($content_image_file_id); ?>"
+        alt="TOOOOOOOOOODOOOOOOOOOOOO">
     </div>
-  <?php endif;
-}
-/*
- * Setup Image-Slider
- */
-function gm_content_image_slider($content) {
-  $content_images_count = count($content['content_slider_files']); ?>
-  <div class="content-slider-container">
-    <div class="swiper" data-slide-count="<?= $content_images_count ?>">
-      <div class="swiper-wrapper">
-        <?php foreach ($content['content_slider_files'] as $content_image_file_id): ?>
-          <?php $content_image_file_ratio = (getimagesize(wp_get_attachment_url($content_image_file_id))) ? (getimagesize(wp_get_attachment_url($content_image_file_id))[1] / getimagesize(wp_get_attachment_url($content_image_file_id))[0]) : 'auto'; ?>
-          <div class="swiper-slide">
-            <div class="content-slider-image-wrapper"
-              style="--ratio: <?= $content_image_file_ratio ?>">
-              <img class="content-slider-image lazyload"
-                data-srcset="<?= wp_get_attachment_image_srcset($content_image_file_id); ?>"
-                sizes="<?= wp_get_attachment_image_sizes($content_image_file_id); ?>"
-                data-src="<?= wp_get_attachment_url($content_image_file_id); ?>"
-                alt="<?= gm_get_context()['site_title'] ?>"/>
-            </div>
-          </div>
-        <?php endforeach ?>
-      </div>
-      <div class="swiper-controls">
-        <div class="swiper-button swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button swiper-button-next"></div>
-      </div>
-    </div>
-  </div>
   <?php
 }
 
@@ -135,15 +95,61 @@ function gm_content_expandables($content) {
 function gm_content_textarea($content) {
   ?>
   <div class="content-textarea-container">
-    <?php if (count($content['content_textarea_headline']) > 0): ?>
-      <h3><?= $content['content_textarea_headline']; ?></h3>
-    <?php endif ?>
-    <?php if (count($content['content_textarea_text']) > 0): ?>
+    <?php if (strlen($content['content_textarea_text']) > 0): ?>
       <?= $content['content_textarea_text']; ?>
     <?php endif ?>
   </div>
   <?php
 }
+
+/*
+ * Setup Text Small
+ */
+function gm_content_textsmall($content) {
+  ?>
+  <small class="content-textsmall-container">
+    <?php if (strlen($content['content_text_small_text']) > 0): ?>
+      <?= $content['content_text_small_text']; ?>
+    <?php endif ?>
+    </small>
+  <?php
+}
+
+/*
+ * Setup Text Small
+ */
+function gm_content_textlarge($content) {
+  ?>
+  <h3 class="content-textlarge-container">
+    <?php if (strlen($content['content_text_large_text']) > 0): ?>
+      <?= $content['content_text_large_text']; ?>
+    <?php endif ?>
+  </h3>
+  <?php
+}
+
+/*
+ * Setup Link-List
+ */
+function gm_content_linklist($content) {
+  ?>
+  <ul class="content-linklist-container">
+    <?php foreach ($content['content_links_list'] as $item): ?>
+      <?php $item = $item['content_links_list_link']; ?>
+      <li class="content-linklist-item">
+        <?php if ($item['target']): ?>
+          <a class="content-linklist-link" target="<?= $item['target'] ?>" rel="noreferrer noopener" href="<?= $item['url'] ?>">
+        <?php else: ?>
+          <a class="content-linklist-link" href="<?= $item['url'] ?>">
+        <?php endif; ?>
+          <?= $item['title'] ?>
+        </a>
+      </li>
+    <?php endforeach ?>
+    </ul>
+  <?php
+}
+
 /*
  * Setup Spacer
  */
