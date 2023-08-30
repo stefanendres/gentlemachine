@@ -4,7 +4,7 @@ add_filter( 'acf/fields/wysiwyg/toolbars' , 'gm_verysimple_toolbar' );
 
 add_action( 'wp_enqueue_scripts', 'gm_add_custom_scripts_and_styles' );
 add_action( 'wp_enqueue_scripts', 'gm_remove_parent_scripts', 99 );
-add_action( 'wp_print_styles', 'gm_remove_parent_styles', 100 );
+add_action( 'wp_enqueue_scripts', 'gm_remove_parent_styles', 100 );
 
 add_action( 'init', 'gm_remove_emoji_scripts_and_styles' );
 

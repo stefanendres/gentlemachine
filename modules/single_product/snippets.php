@@ -41,6 +41,7 @@ function gm_before_single_product_summary() {
         Nicht verfügbar
       </div>
     <?php endif ?>
+    <div class="product-controls">
     <div class="product-description-container">
       <button class="product-description-button">
         <img class="product-button-icon" src="<?= $read_more_icon_url ?>" alt="Read More/Less"/>
@@ -126,7 +127,11 @@ function gm_after_single_product_summary_form() {
  * Setup Single-Product Back-link, after summary closing-tag
  */
 function gm_after_single_product_summary() {
-  ?>
+  global $product;
+  $product_id = $product->get_id();
+  if(!has_term(array('subscription'), 'product_cat', $product_id)) : ?>
+  </div><?php // close product-controls ?>
+  <?php endif; ?>
   <a class="single-product-back-link" href="<?= get_permalink(wc_get_page_id('shop')); ?>">Zurück zum Shop</a>
   <?php
 }

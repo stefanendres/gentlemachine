@@ -4,22 +4,27 @@ function news_thumb($news_item) {
   $arrow_ne_svg_url = wp_get_attachment_url(get_field('arrow_ne_icon', 'options'));
   $news_item_type = get_field('news_post_type', $news_item);
   $news_item_title = get_the_title($news_item);
+  $news_item_color = get_field('news_post_color', $news_item);
   ?>
   <li class="news-thumb-container">
-    <h3><?= $news_item_title ?></h3>
     <?php if ($news_item_type === 'no_page'): ?>
-      <?php news_thumb_content($news_item) ?>
+      <div class="news-thumb-wrapper observe-vp" style="background-color: <?= $news_item_color ?>">
+        <h3 class="news-thumb-title no-interaction"><?= $news_item_title ?></h3>
+        <?php news_thumb_content($news_item) ?>
+      </div>
     <?php elseif ($news_item_type === 'external'): ?>
-      <a class="news-thumb-link" target="_blank" rel="noreferrer noopener" href="<?= get_field('new_post_url', $news_item) ?>">
+      <a class="news-thumb-wrapper observe-vp" style="background-color: <?= $news_item_color ?>" target="_blank" rel="noreferrer noopener" href="<?= get_field('new_post_url', $news_item) ?>">  
+        <h3 class="news-thumb-title"><?= $news_item_title ?></h3>
         <img class="news-thumb-link-icon" src="<?= $arrow_ne_svg_url ?>" alt="<?= $news_item_title ?>"/>
+        <?php news_thumb_content($news_item) ?>
       </a>
-      <?php news_thumb_content($news_item) ?>
     <?php elseif ($news_item_type === 'internal'): ?>
-      <a class="news-thumb-link" href="<?= get_permalink($news_item->ID) ?>">
+      <a class="news-thumb-wrapper observe-vp" style="background-color: <?= $news_item_color ?>" href="<?= get_permalink($news_item->ID) ?>">
+        <h3 class="news-thumb-title"><?= $news_item_title ?></h3>
         <img class="news-thumb-link-icon" src="<?= $arrow_ne_svg_url ?>" alt="<?= $news_item_title ?>"/>
+        <img class="news-thumb-star-icon" src="<?= wp_get_attachment_url(get_field('star_icon', 'options')) ?>" alt="<?= $news_item_title ?>"/>
+        <?php news_thumb_content($news_item) ?>
       </a>
-      <img class="news-thumb-star-icon" src="<?= wp_get_attachment_url(get_field('star_icon', 'options')) ?>" alt="<?= $news_item_title ?>"/>
-      <?php news_thumb_content($news_item) ?>
     <?php endif; ?>
   </li>
   <?php
@@ -30,7 +35,7 @@ function news_thumb_content($news_item) {
   $news_item_title = get_the_title($news_item);
   ?>
   <?php if(count($news_item_slider) > 1): ?>
-    <div class="news-thumb-slider-container swiper">
+    <div class="news-thumb-slider-container swiper" data-slides-count="<?= count($news_item_slider) ?>">
       <div class="swiper-wrapper">
         <?php foreach($news_item_slider as $slider_item): ?>
           <div class="swiper-slide">
@@ -66,4 +71,20 @@ function news_thumb_slide_item($item, $title) {
         alt="<?= $title ?>"/>
     </div>
   <?php endif;
+}
+
+
+function news_content() {
+  $news_page = $post;
+  $news_title_svg_url = wp_get_attachment_url(get_field('page_name_svg'));
+  ?>
+  <section>
+    <img class="news-title lazyload" data-src="<?= $news_title_svg_url ?>" alt="<?= get_the_title($news_page) ?>"/>
+    <ul class="news-container">
+      <?php foreach(get_posts() as $news_item): ?>
+        <?php news_thumb($news_item); ?>
+      <?php endforeach ?>
+    </ul>
+  </section>
+  <?php
 }

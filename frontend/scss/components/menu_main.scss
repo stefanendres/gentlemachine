@@ -7,9 +7,9 @@
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 11; // over header
-  padding-top: calc(var(--h_h) + var(--space_0));
-  padding-bottom: calc(var(--h_h) + var(--space_0));
+  z-index: 9; // under header
+  padding-top: calc(var(--h_h) - var(--space_0));
+  padding-bottom: calc(var(--space_0) * 7);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
@@ -42,7 +42,7 @@
     .menu-link {
       display: flex;
       justify-content: center;
-      height: calc(var(--fs_l) * 4);
+      height: calc(var(--fs_l) * 3);
       transition: opacity 0.15s ease-in-out;
       html.no-touchevents &:hover,
       &:active{

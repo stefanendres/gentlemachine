@@ -8,9 +8,11 @@
   html.no-touchevents &:hover {
   //&.is-visible {
     @include pill;
+    border-radius: var(--br_m);
     transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
     .product-filter-button{
       @include reset_pill;
+      display: none;
     }
     .product-filter-container {
       max-height: calc(var(--vp_ih) - var(--h_h));
@@ -22,37 +24,44 @@
 	.product-filter-container{
 		display: flex;
     flex-direction: column;
-    padding: 0 calc(var(--fs_m) * 3) 0 var(--fs_m); // button-h-padding
-    margin-top: var(--fs_m);
+    padding: 0 calc(var(--fs_s) * 3) 0 var(--fs_s); // button-h-padding
+    margin-top: var(--fs_s);
     overflow: clip;
     max-height: 0;
     opacity: 0;
     transition: opacity 0.15s ease-in-out, max-height 0.15s ease-out;
 
     .bapf_sfilter {
-      margin-bottom: var(--fs_m);
+      margin-bottom: var(--fs_s);
     }
     .bapf_sfilter .bapf_head h3 {
+      font-size: var(--fs_s);
+      line-height: var(--fs_s);
+      letter-spacing: 0.025em;
       font-weight: 600;
-      margin-bottom: calc(var(--fs_m) * 0.5);
+      margin-bottom: calc(var(--fs_s) * 0.5);
     }
     .bapf_sfilter ul li {
       display: flex;
       align-items: center;
-      label {
-        margin-top: calc(var(--fs_m) * 0.125);
+      label, span {
+        margin-top: calc(var(--fs_s) * 0.125);
+
+        font-size: var(--fs_s);
+        line-height: var(--fs_s);
+        letter-spacing: 0.025em;
       }
     }
     .bapf_sfilter .bapf_img_span,
     .bapf_asradio2 ul li input[type=checkbox] {
       // width, height here possible too
-      margin-top: calc(var(--fs_m) * 0.5);
-      margin-bottom: calc(var(--fs_m) * 0.5);
-      margin-right: calc(var(--fs_m) * 0.75);
+      margin-top: calc(var(--fs_s) * 0.5);
+      margin-bottom: calc(var(--fs_s) * 0.5);
+      margin-right: calc(var(--fs_s) * 0.75);
     }
     .bapf_sfilter .bapf_img_span{
-      width: calc(var(--fs_m) * 2);
-      height: calc(var(--fs_m) * 2);
+      width: calc(var(--fs_s) * 2);
+      height: calc(var(--fs_s) * 2);
       background-color: $white !important;
       @include pill;
       html.no-touchevents &:hover,
@@ -71,10 +80,10 @@
       font-weight: 600;
     }
     .bapf_asradio2 ul li input[type=checkbox] {
-      width: calc(var(--fs_m) * 1);
-      height: calc(var(--fs_m) * 1);
-      padding: calc(var(--fs_m) * 0.125);
-      margin-left: calc(var(--fs_m) * 0.25);
+      width: calc(var(--fs_s) * 1);
+      height: calc(var(--fs_s) * 1);
+      padding: calc(var(--fs_s) * 0.125);
+      margin-left: calc(var(--fs_s) * 0.25);
       border: none;
       box-shadow: $shadow;
       border-radius: var(--br_l);

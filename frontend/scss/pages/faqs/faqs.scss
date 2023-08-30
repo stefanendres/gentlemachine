@@ -1,0 +1,60 @@
+.faqs-container{
+  border-bottom: var(--bw_s) solid $grey_l;
+}
+.faqs-item{
+  display: flex;
+  flex-direction: column;
+  .title-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: var(--bw_s) solid $grey_l;
+    cursor: pointer;
+    html.no-touchevents &:hover,
+    &:active {
+      h3 {
+        color: $grey_m;
+      }
+      &:after{
+				color: $grey_m;
+			}
+    }
+    h3 {
+      font-size: var(--fs_l);
+      line-height: var(--fs_l);
+      font-weight: 200;
+      text-align: center;
+      padding: var(--space_0);
+    }
+    &:after{
+      content: '▾';
+      position: absolute;
+      font-size: var(--fs_l);
+      right: calc(var(--space_0)*2);
+      color: $lime;
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+  .content-wrapper{
+    display: flex;
+    justify-content: center;
+    max-height: 0;
+    overflow: clip;
+    transition: max-height 0.3s ease-out;
+  }
+  .text-wrapper{
+    height: 100%; // always high to get height in resize
+    padding: var(--space_0) calc(50% - 16.5em) calc(var(--space_0)*2) calc(50% - 16.5em);
+    border-top: var(--bw_s) solid $grey_l;
+  }
+
+  &.is-expanded{
+    .title-wrapper:after{
+      transform: rotate(180deg);
+    }
+    .content-wrapper{
+      max-height: var(--max_h);
+    }
+  }
+}

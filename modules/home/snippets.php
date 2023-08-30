@@ -2,8 +2,8 @@
 
 function home_content() {
   home_starter();
-  home_starter_text();
   home_featured_products();
+  home_starter_text();
   home_community_teaser();
   home_news_teaser();
   home_carerepair_teaser();
@@ -14,7 +14,7 @@ function home_content() {
 function home_starter() {
   $starter_images = get_field('starter_images');
   ?>
-  <section class="starter">
+  <section class="starter observe-vp">
     <div class="starter-left-column swiper" data-slides-count="<?= count($starter_images['starter_left_column']) ?>">
       <div class="swiper-wrapper">
         <?php foreach ($starter_images['starter_left_column'] as $image_id): ?>
@@ -48,7 +48,7 @@ function home_starter() {
 
 function home_starter_text() {
   ?>
-    <section class="starter-text">
+    <section class="starter-text observe-vp">
       <p><?= get_field('starter_text') ?></p>
     </section>
   <?php
@@ -57,52 +57,67 @@ function home_starter_text() {
 function home_featured_products() {
   $featured_products_ids = wc_get_featured_product_ids();
   ?>
-  <section class="featured-products swiper">
-    <ul class="swiper-wrapper">
-    <?php foreach ($featured_products_ids as $product_id) : ?>
-      <li class="swiper-slide">
-        <?php gm_shop_loop_item(wc_get_product( $product_id )); ?>
-      </li>
-    <?php endforeach; ?>
-    </ul>
+  <section class="featured-products observe-vp">
+    <div class="featured-products-container swiper" data-slides-count="<?= count($featured_products_ids) ?>">
+      <div class="swiper-wrapper">
+        <?php foreach ($featured_products_ids as $product_id) : ?>
+          <div class="swiper-slide">
+            <?php gm_shop_loop_item(wc_get_product( $product_id )); // gm_shop_loop_item() from modules/shop/snippets.php ?> 
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
     <div class="swiper-button swiper-button-prev">
       <img class="swiper-arrow" src="<?= wp_get_attachment_url(get_field('arrow_left_icon', 'options')) ?>" alt="Previous"/>
     </div>
     <div class="swiper-button swiper-button-next">
       <img class="swiper-arrow" src="<?= wp_get_attachment_url(get_field('arrow_right_icon', 'options')) ?>" alt="Next"/>
     </div>
-    </section>
+  </section>
   <?php
 }
 
 function home_community_teaser() {
   $community_teaser_images = get_field('community_teaser');
+  $community_page_url = get_permalink(get_page_by_path('community'));
   ?>
-  <section class="community-teaser">
+  <section class="community-teaser observe-vp">
     <div class="community-teaser-images-container">
-      <img class="community-teaser-image background lazyload"
+      <img class="community-teaser-image background observe-vp lazyload"
         data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_background']) ?>"
         alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      <img class="community-teaser-image overlay-a lazyload"
-        data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_a']) ?>"
-        alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      <img class="community-teaser-image overlay-b lazyload"
-        data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_b']) ?>"
-        alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      <img class="community-teaser-image overlay-c lazyload"
-        data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_c']) ?>"
-        alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      <img class="community-teaser-image overlay-d lazyload"
-        data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_d']) ?>"
-        alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      <img class="community-teaser-image overlay-e lazyload"
-        data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_e']) ?>"
-        alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      <img class="community-teaser-image overlay-f lazyload"
-        data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_f']) ?>"
-        alt="<?= gm_get_context()['site_title'] ?> Community"/>
+      <a class="community-teaser-overlay overlay-a observe-vp" href="<?= $community_page_url ?>">
+        <img class="community-teaser-image lazyload"
+          data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_a']) ?>"
+          alt="<?= gm_get_context()['site_title'] ?> Community"/>
+      </a>
+      <a class="community-teaser-overlay overlay-b observe-vp" href="<?= $community_page_url ?>">
+        <img class="community-teaser-image lazyload"
+          data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_b']) ?>"
+          alt="<?= gm_get_context()['site_title'] ?> Community"/>
+      </a>
+      <a class="community-teaser-overlay overlay-c observe-vp" href="<?= $community_page_url ?>">
+        <img class="community-teaser-image lazyload"
+          data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_c']) ?>"
+          alt="<?= gm_get_context()['site_title'] ?> Community"/>
+      </a>
+      <a class="community-teaser-overlay overlay-d observe-vp" href="<?= $community_page_url ?>">
+        <img class="community-teaser-image lazyload"
+          data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_d']) ?>"
+          alt="<?= gm_get_context()['site_title'] ?> Community"/>
+      </a>
+      <a class="community-teaser-overlay overlay-e observe-vp" href="<?= $community_page_url ?>">
+        <img class="community-teaser-image lazyload"
+          data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_e']) ?>"
+          alt="<?= gm_get_context()['site_title'] ?> Community"/>
+      </a>
+      <a class="community-teaser-overlay overlay-f observe-vp" href="<?= $community_page_url ?>">
+        <img class="community-teaser-image lazyload"
+          data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_f']) ?>"
+          alt="<?= gm_get_context()['site_title'] ?> Community"/>
+      </a>
     </div>
-    <a class="link-community button-style" href="<?= get_permalink(get_page_by_path('community')) ?>">learn more</a>
+    <a class="link-community button-style" href="<?= $community_page_url ?>">learn more</a>
   </section>
   <?php
 }
@@ -114,7 +129,7 @@ function home_news_teaser () {
   $newsletter_link = $news_teaser_content['newsletter_link'];
   $news_page = get_page_by_path('news');
   ?>
-  <section class="news-teaser">
+  <section class="news-teaser observe-vp">
     <img class="news-teaser-title lazyload" data-src="<?= $news_title_svg_url ?>" alt="<?= get_the_title($news_page) ?>"/>
     <ul class="featured-news-container">
       <?php foreach($featured_news_items as $news_item) : ?>
@@ -129,7 +144,7 @@ function home_news_teaser () {
       <?php endif; ?>
         <?= $newsletter_link['title'] ?>
       </a>
-      <a class="link-news" href="<?= get_permalink($news_page) ?>">
+      <a class="link-news button-style" href="<?= get_permalink($news_page) ?>">
         exlpore more
       </a>
     </div>
@@ -143,13 +158,14 @@ function home_carerepair_teaser() {
   $carerepair_teaser_content_right = get_field('carerepair_teaser')['carerepair_right_column'];
   $carerepair_page = get_page_by_path('care-repair');
   ?>
-    <section class="carerepair-teaser">
+    <section class="carerepair-teaser observe-vp">
       <div class="carerepair-teaser-columns">
         <div class="left-column">
           <img class="carerepair-teaser-title lazyload" data-src="<?= wp_get_attachment_url($carerepair_teaser_content_left['title_svg']) ?>" alt="<?= get_the_title($carerepair_page) ?>"/>
           <div class="video-container">
             <p><?= $carerepair_teaser_content_left['teaser_text'] ?></p>
             <video autoplay muted loop playsinline preload="metadata"
+              class="lazyload"
               data-src="<?= wp_get_attachment_url($carerepair_teaser_content_left['video_file']) ?>"
               poster="<?= wp_get_attachment_url($carerepair_teaser_content_left['video_placeholder_image']) ?>"></video>
           </div>
@@ -159,6 +175,7 @@ function home_carerepair_teaser() {
           <div class="video-container">
             <p><?= $carerepair_teaser_content_center['teaser_text'] ?></p>
             <video autoplay muted loop playsinline preload="metadata"
+              class="lazyload"
               data-src="<?= wp_get_attachment_url($carerepair_teaser_content_center['video_file']) ?>"
               poster="<?= wp_get_attachment_url($carerepair_teaser_content_center['video_placeholder_image']) ?>"></video>
           </div>
@@ -168,12 +185,13 @@ function home_carerepair_teaser() {
           <div class="video-container">
             <p><?= $carerepair_teaser_content_right['teaser_text'] ?></p>
             <video autoplay muted loop playsinline preload="metadata"
+              class="lazyload"
               data-src="<?= wp_get_attachment_url($carerepair_teaser_content_right['video_file']) ?>"
               poster="<?= wp_get_attachment_url($carerepair_teaser_content_right['video_placeholder_image']) ?>"></video>
           </div>
         </div>
       </div>
-      <a class="link-carerepair" href="<?= get_permalink($carerepair_page) ?>">
+      <a class="link-carerepair button-style" href="<?= get_permalink($carerepair_page) ?>">
         learn more
       </a>
     </section>
@@ -189,11 +207,10 @@ function home_aboshop_teaser() {
   $featured_abo_image_file_id = $featured_abo->get_image_id();
   $aboshop_page = get_term_by('slug', 'subscription', 'product_cat');
   ?>
-    <section class="aboshop-teaser">
+    <section class="aboshop-teaser observe-vp">
       <img class="aboshop-teaser-title lazyload" data-src="<?= $aboshop_title_svg_url ?>" alt="<?= $aboshop_page->name ?>"/>
-      <?= get_term_link($aboshop_page->term_id, 'product_cat') ?>
       <div class="featured-abo-container">
-        <div class="subscription-product-container">
+        <div class="subscription-product-container observe-vp">
           <div class="subscription-product-content">
             <img class="subscription-title" src="<?= wp_get_attachment_url($featured_abo_image_file_id) ?>" alt="<?= $featured_abo_name ?>"/>
             <div class="subscription-description-wrapper">
@@ -207,7 +224,7 @@ function home_aboshop_teaser() {
             Zur Bestellung
           </a>
         </div>
-        <a class="link-aboshop" href="<?= get_term_link($aboshop_page->term_id, 'product_cat') ?>">
+        <a class="link-aboshop button-style" href="<?= get_term_link($aboshop_page->term_id, 'product_cat') ?>">
           Go to Aboshop
         </a>
       </div>
@@ -220,11 +237,11 @@ function home_faqs_teaser() {
   $faqs_title_svg_url = wp_get_attachment_url($faqs_teaser_content['title_svg']);
   $faqs_page = get_page_by_path('faqs');
   ?>
-  <section class="faqs-teaser">
+  <section class="faqs-teaser observe-vp">
     <img class="faqs-teaser-title lazyload" data-src="<?= $faqs_title_svg_url ?>" alt="<?= get_the_title($faqs_page) ?>"/>
     <ul class="faqs-container">
       <?php foreach($faqs_teaser_content['content_expandable_posts'] as $faqs_item): ?>
-        <li class="faq-item">
+        <li class="faqs-item expandable-item">
           <div class="title-wrapper">
             <h3><?= $faqs_item['content_exp_heading'] ?></h3>
           </div>
@@ -236,7 +253,7 @@ function home_faqs_teaser() {
         </li>
       <?php endforeach; ?>
     </ul>
-    <a class="link-faqs" href="<?= get_permalink($faqs_page) ?>">
+    <a class="link-faqs button-style" href="<?= get_permalink($faqs_page) ?>">
       more Q's
     </a>
   </section>

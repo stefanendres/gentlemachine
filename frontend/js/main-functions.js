@@ -76,6 +76,9 @@ function observeScrollPosFn(page, item, offsetVp, offsetCn) {
     //console.log(i, 'in view!')
     item.isVi = true
     item.el.classList.add('is-in-view')
+    if (!item.el.classList.contains('is-visible')) {
+      item.el.classList.add('is-visible')
+    }
   }
   if (offsetCn !== 0) {
     if ((page.vp.t + page.vp.h*0.5 - offsetCn) > item.d.b || (page.vp.t + page.vp.h - page.vp.h*0.5 + offsetCn) < item.d.t) {
@@ -90,7 +93,7 @@ function observeScrollPosFn(page, item, offsetVp, offsetCn) {
   }
 }
 
-export function updateScrollDirection(page, overlay) {
+export function updateScrollDirection(page) {
     const offset = 0//page.header.d.h
     if (page.vp.t - offset > page.lastScrollTop) {
       document.documentElement.classList.remove('scrolling-up')
@@ -111,60 +114,6 @@ export function updateScrollDirection(page, overlay) {
     }
     page.lastScrollTop = ((page.vp.t - offset) <= 0) ? offset : (page.vp.t - offset) // For Mobile or negative scrolling
   //}
-}
-
-/*export function updateMenuScrollTo(page) {
-  page.subheader.menuScrollTo.items.forEach((item) => {
-    if (page.vp.t >= item.target.d.t) {
-      item.target.isBelowVp = false
-      item.el.classList.add('to-top')
-      item.el.classList.remove('to-bottom')
-    } else {
-      item.target.isBelowVp = true
-      item.el.classList.remove('to-top')
-      item.el.classList.add('to-bottom')
-    }
-    if (item.target.el.classList.contains('is-in-view')) {
-      item.el.classList.add('is-active')
-      item.isAc = true
-    } else {
-      item.el.classList.remove('is-active')
-      item.isAc = false
-    }
-  })
-}
-
-export function updateSubheaderMenus(page) {
-  const scrollTop = (document.scrollingElement.scrollTop || document.documentElement.scrollTop) - page.d.h / 3 // 33% page-height puffer for symetric scroll-start and -end
-  if (page.subheader.menuScrollTo.cr && page.subheader.menuScrollTo.cr.scrollWidth > page.vp.w) {
-    page.subheader.menuScrollTo.cr.scrollLeft = (scrollTop / page.d.h) * page.subheader.menuScrollTo.cr.scrollWidth
-  }
-  if (page.subheader.menuExternal.cr && page.subheader.menuExternal.cr.scrollWidth > page.vp.w) {
-    page.subheader.menuExternal.cr.scrollLeft = (scrollTop / page.d.h) * page.subheader.menuExternal.cr.scrollWidth
-  }
-}*/
-
-export function initSwiper(item, Swiper, Navigation, Pagination) {
-  const swiperCr = item.cr.querySelector('.swiper')
-  if (swiperCr.getAttribute('data-slide-count') > 1) {
-    item.swiper = new Swiper({
-      el: swiperCr,
-      modules: [Pagination, Navigation],
-      loopedSlides: swiperCr.getAttribute('data-slide-count'),
-      //loop: true, // iframe looping not possible
-      rewind: true,
-      slidesPerView: 'auto',
-      grabCursor: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }
-    })
-  }
 }
 
 export function fixPage(page) {

@@ -1,0 +1,17 @@
+section.faqs-teaser{
+  display: flex;
+  flex-flow: column;
+  padding: calc(var(--space_0) * 4) calc(var(--space_0) * 15);
+  margin-top: calc(var(--space_0) * 8);
+  margin-bottom: calc(var(--space_0) * 15);
+}
+.faqs-teaser-title {
+  width: auto;
+  height: calc(var(--fs_l) * 4);
+  margin-bottom: calc(var(--space_0) * 8);
+  animation: wobble 360s both infinite;
+}
+.link-faqs{
+  margin-top: calc(var(--space_0) * 4);
+  margin-left: auto;
+}

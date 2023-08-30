@@ -121,7 +121,7 @@ function gm_menu_container_open() {
 
 function gm_menu_container_close() {
   ?>
-  <div class="menu-background" aria-hidden></div>
+  <div class="menu-background" aria-hidden="true"></div>
   </nav>
  <?php
 }
@@ -139,7 +139,7 @@ function gm_menu_link_list() {
         ?>
         <a class="menu-link<?= (gm_get_current_page_slug() === $slug) ? ' active' : '' ?>" href="<?= get_term_link(get_term_by('slug', $slug, 'product_cat')->term_id, 'product_cat') ?>">
           <span style="color:transparent;position:absolute;pointer-events:none;">Aboshop</span>
-          <img class="menu-title" src="<?= wp_get_attachment_image_src(get_field('aboshop_name_svg', 'options'))[0]; ?>"/>
+          <img class="menu-title" src="<?= wp_get_attachment_image_src(get_field('aboshop_name_svg', 'options'))[0]; ?>" alt="Aboshop"/>
         </a>
       </li>
       <?php gm_menu_item('faqs'); ?>
@@ -156,7 +156,7 @@ function gm_menu_item($slug) {
     <li class="menu-item">
       <a class="menu-link<?= (gm_get_current_page_slug() === $slug) ? ' active' : '' ?>" href="<?= get_permalink($page); ?>">
         <span style="color:transparent;position:absolute;pointer-events:none;"><?= $page->post_title; ?></span>
-        <img class="menu-title" src="<?= wp_get_attachment_image_src(get_field('page_name_svg', $page->ID))[0]; ?>"/>
+        <img class="menu-title" src="<?= wp_get_attachment_image_src(get_field('page_name_svg', $page->ID))[0]; ?>" alt="<?= $page->post_title; ?>"/>
       </a>
     </li>
   <?php endif;

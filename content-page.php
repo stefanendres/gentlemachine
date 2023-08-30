@@ -14,7 +14,7 @@
     if (is_front_page()) {
         home_content();
     } else if (gm_get_current_page_slug() === 'news') {
-        var_dump('news');
+        news_content();
     } else {
         do_action( 'storefront_page' );
     }

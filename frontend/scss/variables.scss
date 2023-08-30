@@ -4,8 +4,10 @@ $grey_d: 	#4d4d4d;
 $grey_m: #999;
 $grey_l: #e6e6e6;
 $white: #fff; // mind head.php theme-color
+$cream: #F8F3E6;
 $yellow: #FFF27E;
 $red: #f00;
+$lime: #5DFF42;
 
 //layout
 $break_xs: 375px;
@@ -24,7 +26,7 @@ $rounded_bold_italic: 'HelveticaRounded-BoldItalic', Helvetica, sans-serif;
   --fs_s: 16px; 
   --fs_m: 21px;
   --fs_l: 32px;
-  --fs_xl: 36px;
+  --fs_xl: 42px;
 
   --ls_xl: -0.025em;
   --ls_xxl: -0.0375em;
@@ -60,7 +62,7 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
     --fs_s: #{100*21vw/1920};
     --fs_m: #{100*27vw/1920};
     --fs_l: #{100*42vw/1920};
-    --fs_xl: #{100*48vw/1920};
+    --fs_xl: #{100*64vw/1920};
 
     --space_0: #{100*8vw/1920};
     --dist_y_0: 7.5vh;
@@ -83,6 +85,13 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
     --fs_m: #{100*21vw/1920};
     --fs_l: #{100*27vw/1920};
     --fs_xl: #{100*32vw/1920};
+
+                --fs_xxs: #{100*0.75*12vw/1920};
+                --fs_xs: #{100*0.75*18vw/1920};
+                --fs_s: #{100*0.75*21vw/1920};
+                --fs_m: #{100*0.75*27vw/1920};
+                --fs_l: #{100*0.75*42vw/1920};
+                --fs_xl: #{100*0.75*64vw/1920};
   
     --space_0: #{100*6vw/1920};
     --dist_y_0: 7.5vh;

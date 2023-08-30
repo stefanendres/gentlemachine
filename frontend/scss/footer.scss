@@ -1,93 +1,39 @@
 .site-footer {
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
-  width: 100vw;
-  height: auto;
-
-  background-color: $lightgrey;
-
-  opacity: 0;
-  transition: opacity 0s ease-in-out;
-
-  .loaded &{
-    opacity: 1;
-    transition: opacity 0.125s ease-in-out 0.25s;
-  }
-
-  //html.touchevents &{
-		box-shadow: 0px -25vh 0px 0px $black, 0px 25vh 0px 0px $black; // because footer (touchscreen scroll overflows)
-	//}
-
-  body.woocommerce-order-received &,
-  body.error404 & {
-  }
-}
-.main-footer-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-	padding: $col_sp * 2 $col_sp * 4;
+  z-index: 1;
   width: 100%;
+  padding: calc(var(--space_0) * 8) calc(var(--space_0) * 15) calc(var(--space_0) * 15) calc(var(--space_0) * 15);
 
+}
+.footer-menus-container{
+  display: flex;
+  gap: calc(var(--space_0) * 12);
+}
+.footer-menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
-  visibility: hidden;
-
-
-
-  .logo-container{
-    display: flex;
-    width: $col_x * 3;
-    height: 100%;
-    img,svg{
-      display: flex;
-      width: 100%;
-      height: 100%;
+  li, h4, a {
+    font-size: var(--fs_xs);
+    line-height: var(--fs_xs);
+    letter-spacing: 0.025em;
+  }
+  li {
+    margin: var(--space_0) 0;
+  }
+  a {
+    padding: var(--space_0) 0;
+    html.no-touchevents &:hover,
+    &:active{
+      color: $grey_m;
     }
   }
-  .menu{
-    .menu-list{
-      display: flex;
-      flex-direction: row;
-    }
-    .menu-item{
-      &:not(:last-child){
-        margin-right: 1em;
-      }
-    }
-    .menu-link{
-    	color: $lightgrey;
-    	html.no-touchevents &:hover,
-    	&:active,
-    	&.active {
-    		color: $grey;
-    	}
-    }
+  h4 {
+    font-weight: 600;
   }
 }
-
-@media all and (max-width: $break_s) {
-  .main-footer-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: $col_sp * 3 $col_sp * 1.5 $col_sp * 1.5 $col_sp * 1.5;
-
-    .logo-container{
-      width: $col_x * 6;
-      margin-bottom: $col_sp * 3;
-    }
-    .menu{
-      .menu-list{
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .menu-item{
-        margin: 0.25em 0.5em;
-        &:not(:last-child){
-          margin-right: 0.5em;
-        }
-      }
-    }
-  }
+.footer-cta-link {
+  margin-left: 100px;
 }

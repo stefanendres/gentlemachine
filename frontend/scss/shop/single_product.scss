@@ -12,9 +12,17 @@
   top: calc(var(--space_0) * 4);
   right: calc(var(--space_0) * 10);
 }
+.product-controls{
+  position: sticky;
+  bottom: calc(var(--space_0) * 4);
+  left: calc(var(--space_0) * 10);
+  right: calc(var(--space_0) * 10);
+  z-index: 10;
+}
+
 .product-description-container,
 .summary {
-  position: fixed;
+  position: absolute;
   bottom: calc(var(--space_0) * 4);
 }
 

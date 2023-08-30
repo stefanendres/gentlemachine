@@ -8,16 +8,13 @@ if( function_exists('acf_add_options_page') ) {
 require_once('modules/main/functions.php');
 //require_once('modules/main/snippets.php');
 
-require_once('modules/header/functions.php');
 require_once('modules/header/snippets.php');
 
 //require_once('modules/page/functions.php');
 //require_once('modules/page/snippets.php');
 
-require_once('modules/home/functions.php');
 require_once('modules/home/snippets.php');
 
-require_once('modules/news/functions.php');
 require_once('modules/news/snippets.php');
 
 require_once('modules/shop/functions.php');
@@ -26,7 +23,6 @@ require_once('modules/shop/snippets.php');
 require_once('modules/single_product/functions.php');
 require_once('modules/single_product/snippets.php');
 
-require_once('modules/footer/functions.php');
 require_once('modules/footer/snippets.php');
 
 require_once('theme-custom-functions.php');
@@ -103,3 +99,6 @@ function fix_svg() {
         </style>';
 }
 add_action( 'admin_head', 'fix_svg' );
+
+
+add_filter( 'image_editor_output_formats', function() { return array( 'image/webp' ); } );

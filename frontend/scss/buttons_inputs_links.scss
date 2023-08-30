@@ -58,6 +58,14 @@
     }
   }
 }
+@mixin cta_l() {
+  font-size: var(--fs_l);
+  line-height: var(--fs_l);
+  font-weight: 300;
+  height: calc(var(--space_0) * 12);
+  padding-left: var(--fs_l);
+  padding-right: var(--fs_l);
+}
 .button-style,
 button:not(.menu-button),
 input:not([type='radio']):not([type='text']):not(.input-text):not([type='password']):not([type='checkbox']):not([type='email']),
@@ -70,14 +78,21 @@ select,
 .woocommerce-MyAccount-navigation-link a,
 .woocommerce-MyAccount-content .woocommerce-Addresses a.edit,
 .xoo-el-tabs li,
-.subscription-product-link {
+.subscription-product-link,
+.link-newsletter-signup,
+.footer-cta-link {
   @include pill;
   @include button(var(--fs_m));
   &:not(.product-filter-button):not(.product-description-button){
     @include button_interaction();
   }
 }
+.link-newsletter-signup,
+.footer-cta-link{
+  @include cta_l;
+}
 .button-style,
+.product-filter-button,
 .single_add_to_cart_button,
 .single-product-checkout-link,
 .single-product-back-link,

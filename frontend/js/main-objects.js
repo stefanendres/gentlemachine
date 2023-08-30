@@ -1,11 +1,11 @@
 
 export let page = {
-  siteUrl: document.querySelector('body').getAttribute('data-site-url'),
+/*  siteUrl: document.querySelector('body').getAttribute('data-site-url'),
   siteTitle: document.querySelector('body').getAttribute('data-site-title'),
   url: document.querySelector('body').getAttribute('data-page-url'),
   title: document.querySelector('body').getAttribute('data-page-title'),
   template: document.querySelector('body').getAttribute('data-template-slug'),
-  slug: document.querySelector('body').getAttribute('data-page-slug'),
+  slug: document.querySelector('body').getAttribute('data-page-slug'),  */
   d : {
     h: undefined,
     sbW: undefined
@@ -30,6 +30,7 @@ export let page = {
       h: undefined
     },
     isVi: undefined,
+    links: document.querySelectorAll('.header-link'),
     menu: {
       cr: document.querySelector('.main-menu-container'),
       btn: document.querySelector('.menu-button'),

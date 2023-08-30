@@ -9,9 +9,12 @@ Template: storefront
 
 @import 'variables';
 @import 'fonts';
+@import 'animations';
 @import 'main';
 @import 'buttons_inputs_links';
-//@import 'components/flickity';
+
+@import 'components/slider/swiper/swiper';
+@import 'components/slider/slider';
 //@import 'components/cookie';
 
 @import 'header';
@@ -29,10 +32,24 @@ Template: storefront
 @import 'shop/login_signup';
 //@import 'shop/thankyou';
 
+@import 'pages/home/main';
+@import 'pages/home/starter';
+@import 'pages/home/featured_products';
+@import 'pages/home/community_teaser';
+@import 'pages/home/news_teaser';
+@import 'pages/home/carerepair_teaser';
+@import 'pages/home/aboshop_teaser';
+@import 'pages/home/faqs_teaser';
+
+@import 'pages/news/news_overview';
+@import 'pages/news/news_thumb';
+
+@import 'pages/faqs/faqs';
+
 //@import 'pages/layout';
 //@import 'pages/404';
 //@import 'pages/terms_imprint_privacy';
 
-//@import 'footer';
+@import 'footer';
 
 
