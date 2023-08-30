@@ -153,42 +153,18 @@ function home_news_teaser () {
 }
 
 function home_carerepair_teaser() {
-  $carerepair_teaser_content_left = get_field('carerepair_teaser')['carerepair_left_column'];
-  $carerepair_teaser_content_center = get_field('carerepair_teaser')['carerepair_center_column'];
-  $carerepair_teaser_content_right = get_field('carerepair_teaser')['carerepair_right_column'];
+  $carerepair_teaser_content = get_field('carerepair_teaser');
   $carerepair_page = get_page_by_path('care-repair');
   ?>
     <section class="carerepair-teaser observe-vp">
-      <div class="carerepair-teaser-columns">
-        <div class="left-column">
-          <img class="carerepair-teaser-title lazyload" data-src="<?= wp_get_attachment_url($carerepair_teaser_content_left['title_svg']) ?>" alt="<?= get_the_title($carerepair_page) ?>"/>
-          <div class="video-container">
-            <p><?= $carerepair_teaser_content_left['teaser_text'] ?></p>
-            <video autoplay muted loop playsinline preload="metadata"
-              class="lazyload"
-              data-src="<?= wp_get_attachment_url($carerepair_teaser_content_left['video_file']) ?>"
-              poster="<?= wp_get_attachment_url($carerepair_teaser_content_left['video_placeholder_image']) ?>"></video>
-          </div>
-        </div>
-        <div class="center-column">
-          <img class="carerepair-teaser-title lazyload" data-src="<?= wp_get_attachment_url($carerepair_teaser_content_center['title_svg']) ?>" alt="<?= get_the_title($carerepair_page) ?>"/>
-          <div class="video-container">
-            <p><?= $carerepair_teaser_content_center['teaser_text'] ?></p>
-            <video autoplay muted loop playsinline preload="metadata"
-              class="lazyload"
-              data-src="<?= wp_get_attachment_url($carerepair_teaser_content_center['video_file']) ?>"
-              poster="<?= wp_get_attachment_url($carerepair_teaser_content_center['video_placeholder_image']) ?>"></video>
-          </div>
-        </div>
-        <div class="right-column">
-          <img class="carerepair-teaser-title lazyload" data-src="<?= wp_get_attachment_url($carerepair_teaser_content_right['title_svg']) ?>" alt="<?= get_the_title($carerepair_page) ?>"/>
-          <div class="video-container">
-            <p><?= $carerepair_teaser_content_right['teaser_text'] ?></p>
-            <video autoplay muted loop playsinline preload="metadata"
-              class="lazyload"
-              data-src="<?= wp_get_attachment_url($carerepair_teaser_content_right['video_file']) ?>"
-              poster="<?= wp_get_attachment_url($carerepair_teaser_content_right['video_placeholder_image']) ?>"></video>
-          </div>
+      <div class="carerepair-teaser-container">
+        <img class="carerepair-teaser-title lazyload" data-src="<?= wp_get_attachment_url($carerepair_teaser_content['title_svg']) ?>" alt="<?= get_the_title($carerepair_page) ?>"/>
+        <div class="video-container">
+          <p><?= $carerepair_teaser_content['teaser_text'] ?></p>
+          <video autoplay muted loop playsinline preload="metadata"
+            class="lazyload observe-vp"
+            data-src="<?= wp_get_attachment_url($carerepair_teaser_content['video_file']) ?>"
+            poster="<?= wp_get_attachment_url($carerepair_teaser_content['video_placeholder_image']) ?>"></video>
         </div>
       </div>
       <a class="link-carerepair button-style" href="<?= get_permalink($carerepair_page) ?>">

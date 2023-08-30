@@ -139,12 +139,12 @@ window.onload = () => {
 
     /* home * starter */
     if (document.querySelector('.home')) {
-      initStarterSwiper(starterSliderRight, Swiper, Autoplay, EffectCoverflow, FreeMode, 600, 1200)
+      initStarterSwiper(starterSliderLeft, Swiper, Autoplay, EffectCoverflow, FreeMode, 600, 1200)
       setTimeout(() => {
         initStarterSwiper(starterSliderCenter, Swiper, Autoplay, EffectCoverflow, FreeMode, 600, 1200)
       }, 300)
       setTimeout(() => {
-        initStarterSwiper(starterSliderLeft, Swiper, Autoplay, EffectCoverflow, FreeMode, 600, 1200)
+        initStarterSwiper(starterSliderRight, Swiper, Autoplay, EffectCoverflow, FreeMode, 600, 1200)
       }, 600)
 
       initFeaturedProductsSwiper(featuredProductsSlider, Swiper, Navigation)
