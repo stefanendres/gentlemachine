@@ -5,7 +5,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 0 calc(var(--space_0) * 9);
+  padding: calc(var(--space_0) * 6) calc(var(--space_0) * 9) calc(var(--space_0) * 7) calc(var(--space_0) * 9);
 }
 .woocommerce-shop .product {
   width: 25%;

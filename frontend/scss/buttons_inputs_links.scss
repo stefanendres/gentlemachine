@@ -80,7 +80,8 @@ select,
 .xoo-el-tabs li,
 .subscription-product-link,
 .link-newsletter-signup,
-.footer-cta-link {
+.footer-cta-link,
+.content-linklist-link {
   @include pill;
   @include button(var(--fs_m));
   &:not(.product-filter-button):not(.product-description-button){
@@ -88,7 +89,8 @@ select,
   }
 }
 .link-newsletter-signup,
-.footer-cta-link{
+.footer-cta-link,
+.content-linklist-link{
   @include cta_l;
 }
 .button-style,

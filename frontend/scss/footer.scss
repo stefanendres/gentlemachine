@@ -16,9 +16,9 @@
   justify-content: flex-start;
 
   li, h4, a {
-    font-size: var(--fs_xs);
-    line-height: var(--fs_xs);
-    letter-spacing: 0.025em;
+    font-size: var(--fs_s);
+    line-height: var(--fs_s);
+    letter-spacing: 0.0125em
   }
   li {
     margin: var(--space_0) 0;

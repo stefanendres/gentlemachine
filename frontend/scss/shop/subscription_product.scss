@@ -35,8 +35,9 @@
   p,
   strong {
     font-weight: 600;
-    font-size: var(--fs_xs);
-    line-height: var(--fs_xs);
+    font-size: var(--fs_s);
+    line-height: var(--fs_s);
+    letter-spacing: 0.0125em;
     margin-bottom: calc(var(--fs_xs)*0.5);
   }
 

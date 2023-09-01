@@ -38,21 +38,9 @@ h1, h2, h3, h4, h5, h6, a, p, button {
 	margin: 0;
 }
 
-p{
-	//hyphens: auto;
-	/*strong {
-		font-family: $rounded_bold;
-	}
-	em {
-		font-family: $rounded_bold_italic;
-	}*/
-}
-
-
 a{
 	color: $black;
 	text-decoration: none;
-	text-decoration-thickness: 1px;
 	cursor: pointer;
 }
 
@@ -72,9 +60,13 @@ ul, ol{
   }
   ul {
     list-style: disc;
+	padding-left: 1em;
+	margin-left: 0.375em;
   }
   ol {
     list-style: decimal;
+	padding-left: 0.875em;
+	margin-left: 0.5em;
   }
 }
 
@@ -165,7 +157,22 @@ img.ls-is-cached{
 			opacity: 1;
 		}
 	}
+
+	&:before,
+	&:after {
+		content: ' ';
+		position: absolute;
+		z-index: 2; // over footer
+		left: calc(var(--space_0) * 10);
+		right: calc(var(--space_0) * 10);
+		border-top: var(--bw_s) solid $grey_l;
+		pointer-events: none;
+	}
+	&:after{
+		bottom: 0;
+	}
 }
+
 .content-area{
 	width: 100%;
 }

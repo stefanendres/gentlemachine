@@ -14,10 +14,8 @@ function gm_content_rows($id) {
       <div class="row observe-vp">
         <?php gm_content_columns($row); ?>
       </div>
-    <?php endforeach; ?>
-  <?php else: 
-    the_content();
-  endif;
+    <?php endforeach;
+  endif;// else: the_content(); endif;
 }
 
 /*
@@ -53,6 +51,7 @@ function gm_content($content) {
     gm_content_spacer($content);
   }
 }
+
 /*
  * Setup Image
  */
