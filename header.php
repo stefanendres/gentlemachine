@@ -68,15 +68,6 @@
 		
 		<?php do_action( 'gm_main_menu' ); ?>
 		
-		<?php if (gm_is_shop_page()): ?>
-			<div class="product-filter is-visible">
-				<button class="product-filter-button" name="Filter Products">Filter</button>
-				<div class="product-filter-container">
-					<?= do_shortcode("[br_filters_group group_id=58]"); ?>
-				</div>
-			</div>
-		<?php endif ?>
-
 		<?php
 		/**
 		 * Functions hooked in to storefront_before_content

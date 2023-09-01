@@ -16,6 +16,17 @@ function gm_close_products_list_wrapper() {
   <?php
 }
 
+function gm_shop_products_filter() {
+  ?>
+  <div class="product-filter is-visible">
+    <button class="product-filter-button" name="Filter Products">Filter</button>
+    <div class="product-filter-container">
+      <?= do_shortcode("[br_filters_group group_id=58]"); ?>
+    </div>
+  </div>
+  <?php
+}
+
 /*
  * Setup Single-Product in loop
  */
