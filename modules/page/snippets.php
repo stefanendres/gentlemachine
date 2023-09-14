@@ -2,7 +2,7 @@
 /*
  * Setup Content Rows
  */
-function gm_content_rows($id) {
+function gm_page_content($id) {
   if ($id) {
     $rows = get_field('gm_layout', $id);
   } else {
@@ -12,7 +12,7 @@ function gm_content_rows($id) {
   if ($rows): 
     foreach ($rows as $row): ?>
       <div class="row observe-vp">
-        <?php gm_content_columns($row); ?>
+        <?php gm_row_content($row); ?>
       </div>
     <?php endforeach;
   endif;// else: the_content(); endif;
@@ -21,7 +21,7 @@ function gm_content_rows($id) {
 /*
  * Setup Content Columns
  */
-function gm_content_columns($content) {
+function gm_row_content($content) {
   $row_width = $content['row_width'];
   $row_content = $content['row_content'][0];
   ?>

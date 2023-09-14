@@ -15,7 +15,7 @@ Template: storefront
 
 @import 'components/slider/swiper/swiper';
 @import 'components/slider/slider';
-//@import 'components/cookie';
+@import 'components/cookie';
 
 @import 'header';
 @import 'components/menu_main';
@@ -30,7 +30,7 @@ Template: storefront
 @import 'shop/shop_notifications';
 @import 'shop/my_account';
 @import 'shop/login_signup';
-//@import 'shop/thankyou';
+@import 'shop/thankyou';
 
 @import 'pages/home/main';
 @import 'pages/home/starter';
@@ -42,7 +42,6 @@ Template: storefront
 @import 'pages/home/faqs_teaser';
 
 @import 'pages/news/news_overview';
-@import 'pages/news/news_thumb';
 
 @import 'pages/faqs/faqs';
 

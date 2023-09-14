@@ -105,3 +105,25 @@
     }
   }
 }
+
+@media all and (max-width: $break_s) {
+  .main-menu-container{
+    padding: calc(var(--space_0) * 2 + var(--mh_h)) calc(var(--space_0) * 2) calc(var(--space_0) * 2) calc(var(--space_0) * 2);
+    .menu-list{
+      width: 100%;
+      .menu-link{
+        height: calc(var(--fs_l) * 2.7);
+      }
+    }
+  }
+}
+
+@media all and (max-width: $break_xs) {
+  .main-menu-container {
+    .menu-list {
+      .menu-link {
+        height: calc(var(--fs_l) * 1.5);
+      }
+    }
+  }
+}

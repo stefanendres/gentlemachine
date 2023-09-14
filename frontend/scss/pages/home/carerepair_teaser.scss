@@ -4,13 +4,14 @@ section.carerepair-teaser{
   padding: calc(var(--space_0) * 4) calc(var(--space_0) * 15);
   margin-top: calc(var(--space_0) * 8);
 }
-.carerepair-teaser-container{
 
+.carerepair-teaser-container{
   .carerepair-teaser-title {
     width: auto;
+    max-width: 100%;
     height: calc(var(--fs_l) * 3);
     padding: 0 var(--br_m);
-    margin-bottom: calc(var(--space_0) * 2);
+    margin-bottom: calc(var(--space_0) * 4);
   }
 
   .right-column .carerepair-teaser-title {
@@ -55,4 +56,15 @@ section.carerepair-teaser{
 .link-carerepair {
   margin-top: calc(var(--space_0) * 3);
   margin-left: auto;
+}
+
+@media all and (max-width: $break_s) {
+  section.carerepair-teaser {
+    padding: calc(var(--space_0) * 4);
+  }
+  .carerepair-teaser-container {
+    .carerepair-teaser-title {
+      padding: 0;
+    }
+  }
 }

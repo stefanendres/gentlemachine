@@ -6,7 +6,7 @@ if( function_exists('acf_add_options_page') ) {
 
 
 require_once('modules/main/functions.php');
-//require_once('modules/main/snippets.php');
+require_once('modules/main/snippets.php');
 
 require_once('modules/header/snippets.php');
 

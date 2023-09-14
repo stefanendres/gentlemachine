@@ -23,5 +23,23 @@ section.news-teaser {
     justify-content: space-between;
     width: 100%;
     padding: calc(var(--space_0) * 2) 0;
+    gap: calc(var(--space_0) * 4);
+  }
+}
+
+@media all and (max-width: $break_s) {
+  section.news-teaser {
+    padding: calc(var(--space_0) * 4) calc(var(--space_0) * 3);
+    .news-teaser-links-container{
+      flex-direction: column-reverse;
+      align-items: center;
+      /*.link-newsletter-signup{
+        padding-top: calc(var(--space_0) * 4);
+        padding-bottom: calc(var(--space_0) * 4);
+      }*/
+      .link-news{
+        margin-left: auto;
+      }
+    }
   }
 }

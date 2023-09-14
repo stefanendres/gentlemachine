@@ -23,7 +23,7 @@
 .swiper-vertical > .swiper-wrapper {
   flex-direction: column;
 }
-.swiper-wrapper {
+.swiper-initialized .swiper-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
@@ -46,7 +46,7 @@
 .swiper-slide {
   flex-shrink: 0;
   width: 100%;
-  height: 100%;
+  //height: 100%;
   position: relative;
   transition-property: transform;
 }

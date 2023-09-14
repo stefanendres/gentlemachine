@@ -1,6 +1,9 @@
 .term-subscription {
-  .site-content {
+  //body {
     background-color: $yellow;
+  //}
+  .product-filter{
+    display: none;
   }
   .products {
     display: flex;
@@ -17,5 +20,24 @@
     //bottom: calc(var(--space_0)*4);
     display: flex;
     margin-top: calc(var(--space_0)*4);
+  }
+}
+
+@media all and (max-width: #{$break_m}) {
+  .term-subscription {
+    .product {
+      width: 50%;
+    }
+  }
+}
+
+@media all and (max-width: #{$break_s}) {
+  .term-subscription {
+    .products {
+      padding: calc(var(--space_0) * 2);
+    }
+    .product {
+      width: 100%;
+    }
   }
 }

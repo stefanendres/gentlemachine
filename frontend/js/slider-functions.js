@@ -3,7 +3,7 @@ export function initStarterSwiper(item, Swiper, Autoplay, EffectCoverflow, FreeM
     item.swiper = new Swiper({
       el: item.cr,
       modules: [Autoplay, EffectCoverflow, FreeMode],
-      effect: "coverflow",
+      effect: 'coverflow',
       coverflowEffect: {
         rotate: 75,
         stretch: 0,
@@ -35,15 +35,16 @@ export function initStarterSwiper(item, Swiper, Autoplay, EffectCoverflow, FreeM
   }
 }
 
-export function initFeaturedProductsSwiper(item, Swiper, Navigation) {
+export function initProductsSwiper(item, Swiper, Navigation) {
   if (item.slidesCount > 1) {
     item.swiper = new Swiper({
       el: item.cr,
       modules: [Navigation],
       rewind: true,
       speed: 600,
-      slidesPerView: 3,
-      slidesPerColumn: 3,
+      //slidesPerView: 3,
+      slidesPerView: 'auto',
+      //slidesPerColumn: 3,
       grabCursor: true,
       navigation: {
         nextEl: '.swiper-button-next',

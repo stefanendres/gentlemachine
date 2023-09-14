@@ -22,9 +22,6 @@ import {
   initSwiper
 } from '../frontend/js/main-functions.js'
 import { getCookie, setCookie } from '../frontend/js/main-functions.js' //this is imported automatically????
-//import { resizeExpandables } from './expandable-functions.js'
-//import { expandableItems } from './expandable-objects.js'
-//import { expandableItems } from './expandable-objects.js'
 //import { initFeaturedProductsSwiper } from '../frontend/js/slider-functions.js'
 //import { featuredProductsSwiper } from '../frontend/js/slider-objects.js'
 
@@ -147,7 +144,7 @@ window.onload = () => {
         initStarterSwiper(starterSliderRight, Swiper, Autoplay, EffectCoverflow, FreeMode, 600, 900)
       }, 600)
 
-      initFeaturedProductsSwiper(featuredProductsSlider, Swiper, Navigation)
+      initProductsSwiper(featuredProductsSlider, Swiper, Navigation)
 
       window.addEventListener('scroll', () => {
         if (starterSliderLeft.stopped) {
@@ -155,12 +152,16 @@ window.onload = () => {
           starterSliderLeft.stopped = false
         }
         if (starterSliderCenter.stopped) {
-          starterSliderCenter.swiper.autoplay.start()
-          starterSliderCenter.stopped = false
+          setTimeout(() => {
+            starterSliderCenter.swiper.autoplay.start()
+            starterSliderCenter.stopped = false
+          }, 300)
         }
         if (starterSliderRight.stopped) {
-          starterSliderRight.swiper.autoplay.start()
-          starterSliderRight.stopped = false
+          setTimeout(() => {
+            starterSliderRight.swiper.autoplay.start()
+            starterSliderRight.stopped = false
+          }, 600)
         }
       })
     }
@@ -170,6 +171,15 @@ window.onload = () => {
         setTimeout(() => {
           initNewsThumbSwiper(newsSlider, Swiper, Autoplay, Pagination, 2700, 900)
         }, (i*1800))
+      })
+    }
+    /* home * carerepair video */
+    if (document.querySelector('.video-container') && Modernizr.touchevents) {
+      const video = document.querySelector('.video-container video')
+      window.addEventListener('touchstart', () => {
+        if (video.paused) {
+          video.play()
+        }
       })
     }
     /* home & faqs * expandables */
@@ -186,6 +196,90 @@ window.onload = () => {
           resize()
         })
       })
+    }
+
+    /* shop archive * product-filter */
+    if (document.querySelector('.archive')) {
+      updateProductFilterState(productFilter)
+      productFilter.btn.addEventListener('click', () => {
+        toggleProductFilter(productFilter)
+      })
+      document.querySelector('ul.products').addEventListener('click', () => {
+        closeProductFilter(productFilter)
+      })
+      productFilter.cr.addEventListener('click', () => {
+        setTimeout(() => {
+          updateProductFilterState(productFilter)
+        }, 100);
+      })
+    }
+
+    /* single-product * slider */
+    if (document.querySelector('.single-product')) {
+      if (window.innerWidth <= page.breakpoints.break_s && singleProductSlider){
+        initProductsSwiper(singleProductSlider, Swiper, Navigation)
+      }
+      if (addToCartButton) {
+        addToCartButton.el.addEventListener('click', () => {
+          setTimeout(() => {
+            if (addToCartButton.el.classList.contains('added')) {
+              addToCartButton.el.classList.remove('added')
+            }
+          }, 6000);
+        })
+      }
+      if (document.querySelector('.woocommerce-error')) {
+        const error = document.querySelector('.woocommerce-error')
+        error.classList.add('closable')
+        error.addEventListener('click', () => {
+          error.classList.add('closed')
+        })
+      }
+    }
+
+    /* checkout * make woocommerce-notice closable */
+    // additional woocommerce notice is an overlay and should be closable
+    if (document.querySelector('form.checkout')) {
+      const form = document.querySelector('form.checkout')
+      form.addEventListener('submit', () => {
+        setTimeout(() => {
+          if (document.querySelector('.woocommerce-NoticeGroup')) {
+            const noticeGroup = document.querySelector('.woocommerce-NoticeGroup')
+            noticeGroup.classList.add('closable')
+            noticeGroup.addEventListener('click', () => {
+              noticeGroup.classList.add('closed')
+            })
+          }
+          console.log(document.querySelector('.woocommerce-error'))
+          if (document.querySelector('.woocommerce-error')) {
+            const noticeGroup = document.querySelector('.woocommerce-error')
+            noticeGroup.classList.add('closable')
+            noticeGroup.addEventListener('click', () => {
+              noticeGroup.classList.add('closed')
+            })
+          }
+        }, 3000)
+      })
+      if (document.querySelector('.ppc-button-wrapper')) {
+        window.addEventListener('blur', () => {
+          setTimeout(() => {
+            if (document.querySelector('.woocommerce-NoticeGroup')) {
+              const noticeGroup = document.querySelector('.woocommerce-NoticeGroup')
+              noticeGroup.classList.add('closable')
+              noticeGroup.addEventListener('click', () => {
+                noticeGroup.classList.add('closed')
+              })
+            }
+            if (document.querySelector('.woocommerce-error')) {
+              const noticeGroup = document.querySelector('.woocommerce-error')
+              noticeGroup.classList.add('closable')
+              noticeGroup.addEventListener('click', () => {
+                noticeGroup.classList.add('closed')
+              })
+            }
+          }, 6000)
+        })
+      }
     }
     
   }
@@ -204,15 +298,15 @@ window.onload = () => {
   }, 10)
 
 
-  /*if (getCookie('nuejazz-cn-accepted') !== 'confirmed') {
+  if (getCookie('gentlemachine_shop-cn-accepted') !== 'confirmed') {
     setTimeout(() => {
       page.cookieNotice.cr.classList.add('is-visible')
     }, 300)
     page.cookieNotice.btn.addEventListener('click', () => {
-      setCookie('nuejazz-cn-accepted', 'confirmed', 365)
+      setCookie('gentlemachine_shop-cn-accepted', 'confirmed', 365)
       page.cookieNotice.cr.classList.remove('is-visible')
     })
-  }*/
+  }
 
 
 }

@@ -1,5 +1,7 @@
 // shop notifications
+
 .single-product .woocommerce-error,
+.checkout .woocommerce-error,
 .woocommerce-NoticeGroup/*, //checkout
 /*.woocommerce-notices-wrapper>div */{
   display: flex;
@@ -15,8 +17,11 @@
   padding: calc(var(--space_0) * 4) calc(var(--space_0) * 8);
 
   @include pill;
+  color: $grey_m;
 
-  &:after {
+  transition: opacity 0.15s ease-in-out, transform 0.6s ease-in-out;
+
+  &.closable:after {
     display: flex;
     content: '×';
     position: absolute;
@@ -32,13 +37,20 @@
       color: $black;
     }
   }
+  &.closed{
+    opacity: 0;
+    transform: translate3d(0,var(--vp_ih),0);
+    pointer-events: none;
+  }
 }
-
+.woocommerce-checkout .woocommerce-notices-wrapper, 
+.woocommerce-account, 
 .woocommerce-cart {
   .woocommerce-message,
   .woocommerce-info {
     padding: calc(var(--space_0) * 4) calc(var(--space_0) * 8);
     @include pill;
+    color: $grey_m;
   }
 }
 .woocommerce-shop {
@@ -51,10 +63,12 @@
     display: inline-flex;
     padding: calc(var(--space_0) * 4) calc(var(--space_0) * 8);
     @include pill;
+    color: $grey_m;
   }
 }
 
 .woocommerce-checkout {
+  .woocommerce-error,
   .woocommerce-NoticeGroup {
     ul, li {
       width: 100%;
@@ -62,14 +76,20 @@
     li {
       flex-direction: unset;
     }
+    li, strong{
+      color: $grey_m;
+    }
+    strong {
+      font-weight: 600;
+    }
   }
 }
-
+.checkout .woocommerce-error li,
 .single-product .woocommerce-error li,
 .woocommerce-NoticeGroup li,
 .woocommerce-message {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;

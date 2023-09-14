@@ -62,11 +62,20 @@
   font-size: var(--fs_l);
   line-height: var(--fs_l);
   font-weight: 300;
-  height: calc(var(--space_0) * 12);
+  height: auto;
+  min-height: calc(var(--space_0) * 12);
   padding-left: var(--fs_l);
   padding-right: var(--fs_l);
+  @media all and (max-width: $break_s) {
+    padding-top: calc(var(--space_0) * 4);
+    padding-bottom: calc(var(--space_0) * 4);
+    border-radius: var(--br_xl);
+    white-space: unset;
+    text-align: center;
+  }
 }
 .button-style,
+.woocommerce-account .button,
 button:not(.menu-button),
 input:not([type='radio']):not([type='text']):not(.input-text):not([type='password']):not([type='checkbox']):not([type='email']),
 select,
@@ -81,7 +90,10 @@ select,
 .subscription-product-link,
 .link-newsletter-signup,
 .footer-cta-link,
-.content-linklist-link {
+.content-linklist-link,
+.woocommerce-checkout-payment ul li label,
+#payment #place_order,
+.return-to-shop-container a { 
   @include pill;
   @include button(var(--fs_m));
   &:not(.product-filter-button):not(.product-description-button){
@@ -90,7 +102,8 @@ select,
 }
 .link-newsletter-signup,
 .footer-cta-link,
-.content-linklist-link{
+.content-linklist-link,
+.return-to-shop-container a{
   @include cta_l;
 }
 .button-style,
@@ -107,7 +120,8 @@ select,
 
 p>a,
 .xoo-aff-checkbox_single a,
-a.xoo-el-lostpw-tgr {
+a.xoo-el-lostpw-tgr,
+.cookie-notice-container a {
   @include link(var(--fs_m));
 }
 

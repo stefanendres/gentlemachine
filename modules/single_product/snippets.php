@@ -5,6 +5,7 @@
  */
 function gm_before_single_product_summary() {
   global $product;
+  $product_id = $product->get_id();
   $product_image_file_id = $product->get_image_id();
   $product_image_ids = $product->get_gallery_image_ids();
   $product_images_count = count($product_image_ids);
@@ -13,7 +14,7 @@ function gm_before_single_product_summary() {
   if(!has_term(array('subscription'), 'product_cat', $product_id)) : 
     if ($product_images_count > 0): ?>
     <div class="product-images-container slider-container">
-      <div class="swiper" data-slide-count="<?= $product_images_count ?>">
+      <div class="swiper" data-slides-count="<?= $product_images_count ?>">
         <div class="swiper-wrapper">
           <?php foreach ($product_image_ids as $id): ?>
             <?php
@@ -28,10 +29,11 @@ function gm_before_single_product_summary() {
             </div>
           <?php endforeach ?>
         </div>
-        <div class="swiper-controls">
-          <div class="swiper-button swiper-button-prev"></div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button swiper-button-next"></div>
+        <div class="swiper-button swiper-button-prev">
+          <img class="swiper-arrow" src="<?= wp_get_attachment_url(get_field('arrow_left_icon', 'options')) ?>" alt="Previous"/>
+        </div>
+        <div class="swiper-button swiper-button-next">
+          <img class="swiper-arrow" src="<?= wp_get_attachment_url(get_field('arrow_right_icon', 'options')) ?>" alt="Next"/>
         </div>
       </div>
     </div>
@@ -106,7 +108,7 @@ function gm_single_product_summary() {
       </div>
     <?php endif ?>
   </div>
-  <?php if (!is_user_logged_in()): ?>
+  <?php if (!is_user_logged_in() && !has_term(array('subscription'), 'product_cat', $product_id)): ?>
     <div class="summary-lock" style="display:none;pointer-events:none;">
   <?php endif;
 }
@@ -115,7 +117,7 @@ function gm_single_product_summary() {
  * Setup Single-Product after summary-form
  */
 function gm_after_single_product_summary_form() {
-  if (!is_user_logged_in()): ?>
+  if (!is_user_logged_in() && !has_term(array('subscription'), 'product_cat', $product_id)): ?>
     </div><?php // close <div class="summary-wrapper-lock">
   endif; ?>
   <a class="single-product-checkout-link" href="<?= gm_get_context()['site_url'];?>/checkout">Zur Kasse</a>

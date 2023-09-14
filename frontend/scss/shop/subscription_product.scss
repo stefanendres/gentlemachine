@@ -74,6 +74,8 @@
   right: 0;
   bottom: 0;
 
+  padding-top: var(--h_h);
+
   .summary {
     width: 100%;
     right: 0;
@@ -92,6 +94,35 @@
   .subscription-product-content {
     .subscription-price {
       margin-top: calc(var(--space_0)*4);
+    }
+  }
+}
+
+
+@media all and (max-width: $break_s) {
+  .subscription-product-container {
+    padding: calc(var(--space_0)*4);
+  }
+
+  .subscription-product-content {
+    .subscription-title {
+      margin-top: var(--space_0);
+    }
+
+    ul,
+    li {
+      font-weight: 300;
+      font-size: var(--fs_l);
+    }
+  }
+  .single-product .product-type-subscription {
+    top: calc(-1 * var(--mh_h));
+    padding-top: var(--mh_h);
+    .subscription-product-container {
+      width: calc(100% - var(--space_0) * 8);
+    }
+    .summary {
+      margin-top: calc(var(--space_0) * 4);
     }
   }
 }

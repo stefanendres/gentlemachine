@@ -11,9 +11,10 @@
  * @hooked storefront_page_header          - 10
  * @hooked storefront_page_content         - 20
  */
+    $slug = gm_get_current_page_slug();
     if (is_front_page()) {
         home_content();
-    } else if (gm_get_current_page_slug() === 'news') {
+    } else if ($slug === 'news') {
         news_content();
     } else {
         do_action( 'storefront_page' );

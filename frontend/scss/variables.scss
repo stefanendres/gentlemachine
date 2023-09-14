@@ -21,22 +21,23 @@ $rounded_bold: 'HelveticaRounded-Bold', Helvetica, sans-serif;
 $rounded_bold_italic: 'HelveticaRounded-BoldItalic', Helvetica, sans-serif;
 
 :root {
-  --fs_xxs: 12px;
-  --fs_xs: 14px;
-  --fs_s: 16px; 
-  --fs_m: 21px;
-  --fs_l: 32px;
-  --fs_xl: 42px;
+  --fs_xxs: 8px;
+  --fs_xs: 10px;
+  --fs_s: 12px; 
+  --fs_m: 14px;
+  --fs_l: 21px;
+  --fs_xl: 28px;
 
   --ls_xl: -0.025em;
   --ls_xxl: -0.0375em;
 
-  --space_0: 8px;
+  --space_0: 4px;
   //--dist_y_0: 5vh;
 
   --br_s: 4px;
-  --br_m: 16px;
-  --br_l: 48px;
+  --br_m: 12px;
+  --br_l: 24px;
+  --br_xl: 36px;
 
   --bw_s: 1px; // maybe try 1
   --bw_m: 2px;
@@ -45,8 +46,8 @@ $rounded_bold_italic: 'HelveticaRounded-BoldItalic', Helvetica, sans-serif;
   --vp_h: 100vh; // fallback
 }
 
-$shadow: 0 calc(var(--space_0)*0.25) calc(var(--space_0)*0.5) calc(var(--space_0)*0.25) rgba($grey_d, 0.6);
-$shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--space_0)*0.25) rgba($grey_d, 0.9);
+$shadow: 0 calc(var(--space_0)*0.25) calc(var(--space_0)*0.5) calc(var(--space_0)*0.25) rgba($grey_d, 0.4);
+$shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--space_0)*0.25) rgba($grey_d, 0.8);
 
 /*@media all and (min-width: #{$break_xs + 1px}) {
   :root{
@@ -70,6 +71,7 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
     --br_s: #{100*8vw/1920};
     --br_m: #{100*16vw/1920};
     --br_l: #{100*48vw/1920};
+    --bw_xl: #{100*72vw/1920};
 
     --bw_s: 1px;//#{100*1.75vw/1920};
     --bw_m: #{100*3vw/1920};
@@ -79,19 +81,12 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
 
 @media all and (min-width: #{$break_m + 1px}) {
   :root {
-    --fs_xxs: #{100*10vw/1920};
-    --fs_xs: #{100*14vw/1920};
-    --fs_s: #{100*16vw/1920};
-    --fs_m: #{100*21vw/1920};
-    --fs_l: #{100*27vw/1920};
-    --fs_xl: #{100*32vw/1920};
-
-                --fs_xxs: #{100*0.75*12vw/1920};
-                --fs_xs: #{100*0.75*18vw/1920};
-                --fs_s: #{100*0.75*21vw/1920};
-                --fs_m: #{100*0.75*27vw/1920};
-                --fs_l: #{100*0.75*42vw/1920};
-                --fs_xl: #{100*0.75*64vw/1920};
+    --fs_xxs: #{100*0.75*12vw/1920};
+    --fs_xs: #{100*0.75*18vw/1920};
+    --fs_s: #{100*0.75*21vw/1920};
+    --fs_m: #{100*0.75*27vw/1920};
+    --fs_l: #{100*0.75*42vw/1920};
+    --fs_xl: #{100*0.75*64vw/1920};
   
     --space_0: #{100*6vw/1920};
     --dist_y_0: 7.5vh;
@@ -99,6 +94,7 @@ $shadow_double: 0 calc(var(--space_0)*0.5) calc(var(--space_0)*0.75) calc(var(--
     --br_s: #{100*8vw/1920};
     --br_m: #{100*16vw/1920};
     --br_l: #{100*48vw/1920};
+    --bw_xl: #{100*72vw/1920};
   
     --bw_s: #{100*1.75vw/1920};
     --bw_m: #{100*3vw/1920};

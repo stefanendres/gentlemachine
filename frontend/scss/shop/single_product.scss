@@ -1,6 +1,9 @@
 // builds upon shop_products.scss styles
 .single-product .product {
   position: relative;
+  .swiper-button{
+    display: none;
+  }
 }
 .single-product-image-wrapper{
   aspect-ratio: var(--ratio);
@@ -11,6 +14,7 @@
 .single-product .product-stock-notice {
   top: calc(var(--space_0) * 4);
   right: calc(var(--space_0) * 10);
+  z-index: 2;
 }
 .product-controls{
   position: sticky;
@@ -178,10 +182,22 @@
           }
         }
         .single_add_to_cart_button{
-          &.disabled{
+          transition: background-color 0.3s ease-in-out;
+          &.disabled,
+          &.loading {
+            color: $grey_d;
             background-color: rgba($white, 0.6);
             box-shadow: none;
             pointer-events: none;
+          }
+          &.loading{
+            pointer-events: auto;
+            cursor: progress;
+          }
+          &.added:after{
+            content: ' ✔\fe0e';
+            margin-left: 0.5em;
+            color: $lime;
           }
         }
         .added_to_cart.wc-forward{
@@ -205,15 +221,80 @@
 
 
 @media all and (max-width: #{$break_s}) {
+  .single-product .product {
+    .swiper-button {
+      display: flex;
+      width: calc(var(--space_0) * 10);
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      transform: translate3d(0, -50%, 0);
+      img {
+        width: 100%;
+        transition: transform 0.3s ease-out;
+      }
+      &-prev {
+        left: var(--space_0);
+      }
+  
+      &-next {
+        right: var(--space_0);
+      }
+      html.no-touchevents &:hover,
+      &:active {
+        img {
+          transform: scale(0.9) !important;
+        }
+      }
+    }
+  }
+  .single-product .product-stock-notice {
+    right: calc(var(--space_0) * 4);
+  }
+
   .product-images-container{
     .swiper-wrapper{ // dev!!!
       //display: flex;
       //flex-direction: row;
     }
   }
-  .product-description-container{
+
+  .product-controls {
+    position: relative;
     bottom: unset;
-    top: calc(var(--h_h) + var(--space_0) * 4);
+    left: unset;
+    right: unset;
+    padding: calc(var(--space_0) * 6) calc(var(--space_0) * 4) calc(var(--space_0) * 5) calc(var(--space_0) * 4);
+  }
+
+  .product-description-container,
+  .summary {
+    position: relative;
+    bottom: unset;
+  }
+
+  .product-description-container{
+    left: unset;
+    width: 100%;
+    .product-description-button{
+      display: none;
+    }
+    .product-description-wrapper{
+      max-height: 100%;
+      padding: calc(var(--space_0) * 2) calc(var(--space_0) * 4) calc(var(--space_0) * 6) calc(var(--space_0) * 4);
+      margin-bottom: calc(var(--space_0) * 4);
+      border-bottom: var(--bw_s) solid $grey_l;
+      opacity: 1;
+      h3,p{
+        padding: 0;
+      }
+    }
+  }
+  .summary-lock{
+    display: flex !important;
+    height: var(--bw_s);
+    overflow: hidden;
+    margin-bottom: calc(var(--space_0) * 4);
   }
   .summary {
     position: relative;
@@ -222,30 +303,42 @@
     width: 100%;
     flex-flow: row wrap;
     justify-content: center;
-    .product-tags{
-      padding-top: calc(var(--space_0) * 2);
-      padding-bottom: calc(var(--space_0) * 2);
+    .product-tags,
+    .product-prices{
+      padding-bottom: calc(var(--space_0) * 4);
     }
     .variations_form {
       flex-wrap: wrap;
-      .variations {
+      padding-top: calc(var(--space_0) * 4);
+      padding-bottom: calc(var(--space_0) * 4);
+      border-top: var(--bw_s) solid $grey_l;
+      .variations{
+        width: 100%;
         tbody {
           flex-flow: row wrap;
           justify-content: center;
+          width: 100%;
+          gap: calc(var(--space_0) * 4);
+          padding-bottom: calc(var(--space_0) * 4);
+          border-bottom: var(--bw_s) solid $grey_l;
         }
       }
       .single_variation_wrap{
         width: 100%;
+        padding-top: calc(var(--space_0) * 4);
+        padding-bottom: calc(var(--space_0) * 4);
+        border-bottom: var(--bw_s) solid $grey_l;
         .woocommerce-variation-add-to-cart{
           justify-content: center;
+          gap: calc(var(--space_0) * 4);
+          .quantity {
+            @include pill;
+          }
         }
       }
     }
   }
   .single-product-back-link {
-    position: relative;
-    bottom: unset;
-    right: unset;
-    transform: none;
+    display: none;
   }
 }

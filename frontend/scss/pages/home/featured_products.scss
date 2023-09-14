@@ -14,7 +14,7 @@ section.featured-products {
 
   
   .swiper-slide{
-    //width: 33.333% !important;
+    width: 33.333%;
     padding: var(--space_0);
     padding-top: 0;
   }
@@ -23,8 +23,10 @@ section.featured-products {
     position: absolute;
     top: 50%;
     z-index: 4;
+    width: calc(var(--space_0) * 28);
     transform: translate3d(0,-50%,0);
     img {
+      width: 100%;
       transition: transform 0.3s ease-out;
     }
     
@@ -58,6 +60,32 @@ section.featured-products {
       z-index: 2;
       img {
         transform: scale(0.9)
+      }
+    }
+  }
+}
+
+@media all and (max-width: $break_s) {
+  section.featured-products {
+    .featured-products-container {
+      margin: 0 calc(var(--space_0) * 3) calc(var(--space_0) * 2) calc(var(--space_0) * 3);
+    }
+    .swiper-slide {
+      width: 50%;
+    }
+    .swiper-button{
+      width: calc(var(--space_0) * 10);
+      &-prev {
+        left: var(--space_0);
+      }
+      &-next {
+        right: var(--space_0);
+      }
+      html.no-touchevents &:hover,
+      &:active {
+        img {
+          transform: scale(0.9) !important;
+        }
       }
     }
   }

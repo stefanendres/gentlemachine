@@ -66,13 +66,13 @@
         input {
           filter: saturate(0);
         }
-        display: flex;
-        align-items: center;
+        //display: flex;
+        //align-items: center;
         margin-bottom: 0;
         font-weight: normal;
-        a {
-          margin-left: 0.25em;
-        }
+        //a {
+        //  margin-left: 0.25em;
+        //}
       }
     }
   }
@@ -90,5 +90,11 @@
         text-decoration: none;
       }
     }
+  }
+}
+
+@media all and (max-width: #{$break_s}) {
+  .xoo-el-form-container.xoo-el-form-inline {
+    width: 100%;
   }
 }

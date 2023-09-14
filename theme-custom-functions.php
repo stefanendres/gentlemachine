@@ -174,28 +174,6 @@ function gm_verysimple_toolbar( $toolbars )
 	return $toolbars;
 }
 
-
-/*
- * Replace Product-Image with Cover-Image
- 
-function gm_get_image($image, $product, $size, $attr, $placeholder) {
-   $image = '';
-    if ( get_field('cover_image', $product->get_id()) ) {
-      $image = wp_get_attachment_image( get_field('cover_image', $product->get_id()), $size, false, $attr );
-    } elseif ( $product->get_parent_id() ) {
-      $parent_product = wc_get_product( $product->get_parent_id() );
-      if ( $parent_product ) {
-        $image = $parent_product->get_image( $size, $attr, $placeholder );
-      }
-    }
-
-    if ( ! $image && $placeholder ) {
-      $image = wc_placeholder_img( $size, $attr );
-    }
-
-    return $image;
-}
-*/
 /**
  * Change number of products that are displayed per page (shop page)
  */

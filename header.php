@@ -19,17 +19,17 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-		<meta name="description" content="<?php //echo gm_get_meta()['description']; ?>">
+		<meta name="description" content="<?= gm_get_meta()['description']; ?>">
 		<meta name="copyright" content="<?= get_bloginfo('name'); ?>">
 		<meta property="og:type" content="website">
 		<meta property="og:title" content="<?= wp_title('–', true, 'right').''.get_bloginfo('name'); ?>">
 		<meta property="og:site_name" content="<?= get_bloginfo('name'); ?>">
 		<meta property="og:url" content="<?= get_bloginfo('url'); ?>">
-		<meta name="og:description" content="<?php //echo gm_get_meta()['description']; ?>">
-		<meta name="og:image" content="<?php //echo gm_get_meta()['image']; ?>">
-		<meta property="og:image:type" content="<?php //echo getimagesize(gm_get_meta()['image'])['mime']; ?>" />
-		<meta property="og:image:width" content="<?php //echo getimagesize(gm_get_meta()['image'])[0]; ?>" />
-		<meta property="og:image:height" content="<?php //echo getimagesize(gm_get_meta()['image'])[1]; ?>" />
+		<meta name="og:description" content="<?= gm_get_meta()['description']; ?>">
+		<meta name="og:image" content="<?= gm_get_meta()['image']; ?>">
+		<meta property="og:image:type" content="<?= getimagesize(gm_get_meta()['image'])['mime']; ?>" />
+		<meta property="og:image:width" content="<?= getimagesize(gm_get_meta()['image'])[0]; ?>" />
+		<meta property="og:image:height" content="<?= getimagesize(gm_get_meta()['image'])[1]; ?>" />
 
 		<?php wp_head(); ?>
 		<script type="text/javascript" src="<?= gm_get_context()['theme_url']; ?>/modernizr.js"></script>
@@ -78,7 +78,5 @@
 		do_action( 'storefront_before_content' );
 		?>
 		<div id="content" class="site-content" style="--background_image_url: url(<?= get_field('background_image', 'options'); ?>);">
-			<?php //<div class="col-full"> ?>
-
-			<?php
+			<?php //<div class="col-full"> 
 			do_action( 'storefront_content_top' );

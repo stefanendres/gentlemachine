@@ -1,64 +1,41 @@
-#cookie-notice {
-  z-index: 8 !important;
-  &.cookie-notice-hidden{
-    opacity: 0;
-    transform: translate3d(0,100%,0);
-    pointer-events: none;
+.cookie-notice-container {
+  position: fixed;
+  bottom: calc(var(--space_0) * 4);
+  left: 50%;
+  z-index: 10;
+  transform: translate3d(-50%,150%,0);
+  transition: transform 0.6s ease-in-out;
+  @include pill;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100% - var(--space_0) * 30);
+  //width: 100%;
+  padding: calc(var(--space_0) * 4);
+  padding-left: calc(var(--space_0) * 5);
+  gap: calc(var(--space_0) * 2) calc(var(--space_0) * 4);
+  background-color: $white;
+  p,a,button{
+    font-size: var(--fs_xs);
+    line-height: var(--fs_xs);
+    letter-spacing: 0.025em;
   }
-  transition: opacity 0.15s ease-in-out, transform 0.3s ease-in-out;
-  * {
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
+  button {
+    padding: calc(var(--fs_xs)*0.75) var(--fs_xs);
+    height: unset;
   }
-  .cookie-notice-container {
-    display: flex !important;
-    align-items: baseline;
-    flex-wrap: wrap;
-    padding: $col_sp $col_sp * 4;
-    text-align: left;
-  }
-  .cn-text-container {
-
-  }
-  .cn-buttons-container{
-    display: flex !important;
-    align-items: center;
-  }
-  .cn-button {
-    font-family: $g_regular;
-  	font-weight: normal;
-    margin: 0;
-  }
-  .cn-set-cookie,
-  .cn-more-info {
-    margin-left: 0;
-    &:active,
-    html.no-touchevents &:hover {
-      border-color: $purple;
-      background-color: $purple;
-      color: $white;
-    }
-  }
-  #cn-close-notice{
-    display: none;
+  &.is-visible{
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @media all and (max-width: $break_s){
-  #cookie-notice {
-    bottom: 0;
-    .cookie-notice-container {
-      padding: $col_sp $col_sp * 1.5;
-    }
-    .cn-text-container {
+  .cookie-notice-container {
+    width: 100%;
+    max-width: calc(100% - var(--space_0) * 8);
+    p {
       text-align: center;
-    }
-    .cn-buttons-container {
-      justify-content: center;
-      width: 100%;
-      margin: $col_sp*0.5 0;
     }
   }
 }

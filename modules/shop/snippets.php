@@ -18,11 +18,11 @@ function gm_close_products_list_wrapper() {
 
 function gm_shop_products_filter() {
   ?>
-  <div class="product-filter is-visible">
-    <button class="product-filter-button" name="Filter Products">Filter</button>
+  <div class="product-filter">
     <div class="product-filter-container">
       <?= do_shortcode("[br_filters_group group_id=58]"); ?>
     </div>
+    <button class="product-filter-button" name="Filter Products">Filter</button>
   </div>
   <?php
 }
@@ -84,17 +84,13 @@ function gm_shop_loop_item($product) {
 
 
 /*
- * Show links to all categories, if return to shop
+ * Show links shops, if return to shop
  */
 function gm_cart_emtpy_shop_links() {
-  $args = array(
-    'taxonomy' => "product_cat",
-    'parent' => null
-  );
-  $product_categories = get_terms($args); ?>
+  ?>
   <div class="return-to-shop-container">
-    <h2 class="return-to-shop-heading">Weiter einkaufen</h2>
-    <!-- link -->
+    <a class="return-to-shop-link link-shop" href="<?= get_permalink(wc_get_page_id('shop')); ?>">Weiter zu unseren Produkten</a>
+    <a class="return-to-shop-link link-aboshop" href="<?= get_term_link(get_term_by('slug', 'subscription', 'product_cat')->term_id, 'product_cat') ?>">Weiter zu unseren Abos</a>
   </div>
   <?php
 }
@@ -124,18 +120,18 @@ function gm_translate_may_also_like( $translated ) {
  * Custom Thank You text
  */
 function gm_filter_woocommerce_thankyou_order_received_text( $var, $order ) {
- return 'Thank you.<br>Your Order has been received.';
+ return 'Thank you! Your Order has been received.';
 }
 
 /*
 * Custom Thank You background
-
-function gm_add_background_content_thankyou() {
+*/
+/*function gm_add_background_content_thankyou() {
   ?>
   <div class="thankyou-background" style="background-image: url(<?= gm_get_context()['theme_url'].'/svg/thankyou-seed.svg'; ?>);"></div>
   <?php
-}
-*/
+}*/
+
 
 
 /* 

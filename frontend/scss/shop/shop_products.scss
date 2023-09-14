@@ -1,11 +1,15 @@
 .woocommerce-products-header {
-  //display: none;
+  //display: none; //ne to update / indicat filter state
+}
+.shop-products-wrapper{
+  position: relative;
 }
 .woocommerce-shop .products{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   padding: calc(var(--space_0) * 6) calc(var(--space_0) * 9) calc(var(--space_0) * 7) calc(var(--space_0) * 9);
+  min-height: calc(var(--vp_ih) - var(--h_h));
 }
 .woocommerce-shop .product {
   width: 25%;
@@ -82,4 +86,15 @@
   @include button(var(--fs_m));
   background-color: rgba($white, 0.6);
   box-shadow: none;
+}
+
+
+@media all and (max-width: $break_s) {
+  .woocommerce-shop .products {
+    padding: calc(var(--space_0) * 4) calc(var(--space_0) * 3) calc(var(--space_0) * 16) calc(var(--space_0) * 3);
+    min-height: calc(var(--vp_ih) - var(--mh_h));
+  }
+  .woocommerce-shop .product {
+    width: 50%;
+  }
 }

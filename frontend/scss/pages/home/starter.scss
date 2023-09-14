@@ -11,10 +11,10 @@ section.starter {
   //overflow: clip;
   //height: calc(var(--vp_ih, 100vh) * 0.333);
   height: 66.666vh;
-  height: calc(var(--vp_ih, 100vh) * 0.666);
+  height: calc(var(--vp_ih, 100vh) * 0.66666);
   //margin-top: calc(-8.333vh + var(--space_0) * 4);
   //margin-bottom: calc(-8.333vh + var(--space_0) * 4);
-  //overflow: hidden;
+  overflow: hidden;
   padding-top: 0;
   padding-bottom: 0;
   position: relative;
@@ -27,18 +27,6 @@ section.starter {
     overflow-x: visible;
     overflow-y: clip;
     cursor: grab;
-    /*&::after{
-      content: ' ';
-      position: absolute;
-      top: -1px;
-      left: 0;
-      right: 0;
-      bottom: -1px;
-      //box-shadow: inset 0 2.5vh 2.5vh -1.25vh $white, inset 0 -2.5vh 2.5vh -1.25vh $white;
-      //box-shadow: inset 0 12.5vh 5vh -7.5vh $white, inset 0 -12.5vh 5vh -7.5vh $white;
-      z-index: 5;
-      pointer-events: none;
-    }*/
     opacity: 0;
     transition: opacity 0.6s ease-out;
     &.swiper-initialized {
@@ -74,5 +62,20 @@ section.starter-text {
     font-size: var(--fs_xl);
     line-height: var(--fs_xl);
     font-weight: 300;
+  }
+}
+
+
+@media all and (max-width: $break_s) {
+  section.starter,
+  section.starter-text {
+    padding: calc(var(--space_0) * 2) calc(var(--space_0) * 4);
+  }
+  
+  section.starter {
+    height: 33.333vh;
+    height: calc(var(--vp_ih, 100vh) * 0.33333);
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }

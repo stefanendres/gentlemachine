@@ -1,10 +1,11 @@
 .site-footer {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   z-index: 1;
   width: 100%;
   padding: calc(var(--space_0) * 8) calc(var(--space_0) * 15) calc(var(--space_0) * 15) calc(var(--space_0) * 15);
-
+  background-color: $white;
 }
 .footer-menus-container{
   display: flex;
@@ -35,5 +36,19 @@
   }
 }
 .footer-cta-link {
-  margin-left: 100px;
+  //margin-left: 100px;
+}
+
+@media all and (max-width: $break_s) {
+  .site-footer{
+    padding: calc(var(--space_0) * 6) calc(var(--space_0) * 4);
+    flex-wrap: wrap;
+    gap: calc(var(--space_0) * 5);
+  }
+  .footer-menus-container {
+    display: flex;
+    padding: 0 calc(var(--space_0) * 4);
+    gap: calc(var(--space_0) * 8);
+    justify-content: space-between;
+  }
 }

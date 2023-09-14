@@ -119,3 +119,10 @@
   }
 
 }
+
+@media all and (max-width: $break_s) {
+  .news-thumb-container {
+    width: 100%;
+    padding: calc(var(--space_0)*2) var(--space_0);
+  }
+}

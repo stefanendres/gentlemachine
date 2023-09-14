@@ -27,15 +27,16 @@ export function resizePage(page) {
 
   page.header.d.h = page.header.cr.getBoundingClientRect().height
   document.documentElement.style.setProperty('--h_h', page.header.d.h + 'px')
-  //page.header.menu.d.h = page.header.menu.wr.getBoundingClientRect().height
-  
 
+  page.header.mobileLogo.d.h = page.header.mobileLogo.cr.getBoundingClientRect().height
+  document.documentElement.style.setProperty('--mh_h', page.header.d.h + page.header.mobileLogo.d.h + 'px')
+  
   // orientationchange event "polyfill"
   if ((1 - page.vp.lastRatio) <= 0 && (1 - (window.innerWidth / window.innerHeight)) > 0) {
-    window.location.reload()
+    //window.location.reload()
     //console.log('orientationchange from landscape to portrait')
   } else if ((1 - page.vp.lastRatio) > 0 && (1 - (window.innerWidth / window.innerHeight)) <= 0) {
-    window.location.reload()
+    //window.location.reload()
     //console.log('orientationchange from portrait to landscape')
   } else {
     //console.log('no orientationchange')

@@ -1,98 +1,156 @@
 .product-filter {
-	position: fixed;
-	top: calc(var(--h_h) - var(--space_0) * 3);
-	left: calc(var(--space_0) * 2);
-	z-index: 10;
-  padding: calc(var(--space_0) * 4);
+	position: sticky;
+  top: calc(var(--vp_ih) - var(--h_h) + var(--space_0) * 16);
+  left: calc(var(--space_0) * 10);
+	z-index: 11;
+  width: 25%;
+
   transition: background-color 0.15s ease-in-out, box-shadow 0s ease-in-out 0s, border-radius 0s ease-in-out 0.15s;
-  html.no-touchevents &:hover {
-  //&.is-visible {
-    @include pill;
-    border-radius: var(--br_m);
-    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out;
+  //html.no-touchevents &:hover,
+  &.is-visible{
     .product-filter-button{
-      @include reset_pill;
-      display: none;
+      &:after{
+        transform: rotate(0deg);
+      }
     }
     .product-filter-container {
-      max-height: calc(var(--vp_ih) - var(--h_h));
+      max-height: calc(var(--vp_ih) - var(--h_h) - var(--space_0) * 26);
+      @include pill;
+      overflow-x: clip;
+      overflow-y: scroll;
+      border-radius: var(--br_m);
       opacity: 1;
-      transition: max-height 0.3s ease-out;
+      transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0s ease-in-out, max-height 0.3s ease-out 0.15s;
     }
   }
-
-	.product-filter-container{
-		display: flex;
-    flex-direction: column;
-    padding: 0 calc(var(--fs_s) * 3) 0 var(--fs_s); // button-h-padding
-    margin-top: var(--fs_s);
-    overflow: clip;
-    max-height: 0;
-    opacity: 0;
-    transition: opacity 0.15s ease-in-out, max-height 0.15s ease-out;
-
-    .bapf_sfilter {
-      margin-bottom: var(--fs_s);
+  &.is-active {
+    .product-filter-button:after{
+      color: $lime;
     }
-    .bapf_sfilter .bapf_head h3 {
+  }
+}
+
+.product-filter-container,
+.product-filter-button{
+  position: absolute;
+}
+
+.product-filter-button{
+  bottom: calc(var(--space_0) * 8);
+  &:after {
+    content: '▾';
+    //font-size: var(--fs_l);
+    margin-left: 0.375em;
+    //color: $lime;
+    pointer-events: none;
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+  }
+  html.no-touchevents &:hover,
+  &:active{
+    &:after{
+      color: $grey_m;
+    }
+  }
+}
+
+.product-filter-container{
+  display: flex;
+  flex-flow: column;
+  bottom: calc(var(--space_0) * 18);
+  z-index: 1;
+  padding: calc(var(--space_0) * 4) calc(var(--space_0) * 12) calc(var(--space_0) * 4) calc(var(--space_0) * 4);
+  max-height: 0;
+  overflow-x: clip;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out, max-height 0.15s ease-out;
+
+  .bapf_sfilter {
+    margin-bottom: var(--fs_s);
+  }
+  .bapf_sfilter .bapf_head h3 {
+    font-size: var(--fs_s);
+    line-height: var(--fs_s);
+    letter-spacing: 0.025em;
+    font-weight: 600;
+    margin-bottom: calc(var(--fs_s) * 0.5);
+  }
+  .bapf_sfilter ul li {
+    display: flex;
+    align-items: center;
+    label, span {
+      margin-top: calc(var(--fs_s) * 0.125);
+
       font-size: var(--fs_s);
       line-height: var(--fs_s);
       letter-spacing: 0.025em;
-      font-weight: 600;
-      margin-bottom: calc(var(--fs_s) * 0.5);
     }
-    .bapf_sfilter ul li {
-      display: flex;
-      align-items: center;
-      label, span {
-        margin-top: calc(var(--fs_s) * 0.125);
-
-        font-size: var(--fs_s);
-        line-height: var(--fs_s);
-        letter-spacing: 0.025em;
-      }
-    }
-    .bapf_sfilter .bapf_img_span,
-    .bapf_asradio2 ul li input[type=checkbox] {
-      // width, height here possible too
-      margin-top: calc(var(--fs_s) * 0.5);
-      margin-bottom: calc(var(--fs_s) * 0.5);
-      margin-right: calc(var(--fs_s) * 0.75);
-    }
-    .bapf_sfilter .bapf_img_span{
-      width: calc(var(--fs_s) * 2);
-      height: calc(var(--fs_s) * 2);
-      background-color: $white !important;
-      @include pill;
-      html.no-touchevents &:hover,
-      &:active{
-        box-shadow: $shadow_double;
-      }
-    }
-    .bapf_sfilter.brchecked_default input:checked+label .bapf_img_span {
-      transform: none;
-      //filter: invert(1);
+  }
+  .bapf_sfilter .bapf_img_span,
+  .bapf_asradio2 ul li input[type=checkbox] {
+    // width, height here possible too
+    margin-top: calc(var(--fs_s) * 0.5);
+    margin-bottom: calc(var(--fs_s) * 0.5);
+    margin-right: calc(var(--fs_s) * 0.75);
+  }
+  .bapf_sfilter .bapf_img_span{
+    width: calc(var(--fs_s) * 2);
+    height: calc(var(--fs_s) * 2);
+    background-color: $white !important;
+    @include pill;
+    html.no-touchevents &:hover,
+    &:active{
       box-shadow: $shadow_double;
-      //box-shadow: none;
-      //border: var(--bw_s) solid $black;
     }
-    .checked {
-      font-weight: 600;
+  }
+  .bapf_sfilter.brchecked_default input:checked+label .bapf_img_span {
+    transform: none;
+    //filter: invert(1);
+    box-shadow: $shadow_double;
+    //box-shadow: none;
+    //border: var(--bw_s) solid $black;
+  }
+  .checked {
+    font-weight: 600;
+  }
+  .bapf_asradio2 ul li input[type=checkbox] {
+    width: calc(var(--fs_s) * 1);
+    height: calc(var(--fs_s) * 1);
+    padding: calc(var(--fs_s) * 0.125);
+    margin-left: calc(var(--fs_s) * 0.25);
+    border: none;
+    box-shadow: $shadow;
+    border-radius: var(--br_l);
+    &:checked {
+      background-color: $black;
+      box-shadow: none;
+      border: var(--bw_s) solid $black;
     }
-    .bapf_asradio2 ul li input[type=checkbox] {
-      width: calc(var(--fs_s) * 1);
-      height: calc(var(--fs_s) * 1);
-      padding: calc(var(--fs_s) * 0.125);
-      margin-left: calc(var(--fs_s) * 0.25);
-      border: none;
-      box-shadow: $shadow;
-      border-radius: var(--br_l);
-      &:checked {
-        background-color: $black;
-        box-shadow: none;
-        border: var(--bw_s) solid $black;
+  }
+}
+
+
+@media all and (max-width: $break_s) {
+  .product-filter {
+    top: calc(100vh - var(--mh_h) + var(--space_0) * 16);
+    left: calc(var(--space_0) * 4);
+    &.is-visible {
+      .product-filter-container {
+        max-height: calc(var(--vp_ih) - var(--mh_h) - var(--space_0) * 18);
       }
     }
-	}
-
+  }
+  .product-filter-button {
+    bottom: calc(var(--space_0) * 5);
+  }
+  
+  .product-filter-container {
+    bottom: calc(var(--space_0) * 16);
+  }
 }

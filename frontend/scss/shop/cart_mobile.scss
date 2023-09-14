@@ -1,0 +1,137 @@
+.woocommerce-cart-form {
+  padding: 0 calc(var(--space_0) * 4);
+  table {
+    .product-name {
+      width: 50%;
+      padding-right: var(--space_0);
+    }
+    th{
+      &.product-price,
+      &.product-quantity{
+        visibility: hidden;
+        width: 0;
+      }
+      &.product-subtotal{
+        width: 50%;
+        text-align: right;
+      }
+    }
+    td{
+      &.product-name{
+        dl.variation{
+          flex-flow: row wrap;
+          dt {
+            display: none;
+          }
+        }
+        .product-tag{
+          .product-tag-name{
+            display: none;
+          }
+        }
+      }
+      &.product-price,
+      &.product-quantity {
+        position: relative;
+        text-align: center;
+        padding: 0 calc(var(--fs_m) * 0.5); // '×' and '=' width
+        &:after {
+          display: flex;
+          //align-items: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          transform: translate3d(50%, 0, 0);
+          color: $grey_m;
+        }
+      }
+      &.product-price{
+        display: flex;
+        justify-content: center;
+        width: 20%;
+        &:after{
+          content: '×';
+        }
+      }
+      &.product-quantity {
+        width: 10%;
+        &:after {
+          content: '=';
+        }
+      }
+      &.product-subtotal{
+        width: 20%;
+        text-align: right;
+      }
+
+      &.actions .coupon {
+        padding-top: calc(var(--space_0)*3);
+        .input-text,
+        .button{
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+.cart-collaterals{
+  padding: 0 calc(var(--space_0) * 4);
+}
+
+.cart_totals{
+  .shop_table{
+    .cart-subtotal,
+    .order-total{
+      th, td {
+        width: 50%;
+      }
+      td {
+        justify-content: flex-end;
+      }
+    }
+    tr.shipping{
+      th{
+        width: 20%;
+        align-items: flex-start;
+        padding-top: calc(var(--space_0) * 2);
+      }
+      td {
+        width: 80%;
+      }
+      li {
+        padding: calc(var(--space_0) * 2) 0;
+        &:not(:last-child) {
+          border-bottom: var(--bw_s) solid $grey_l;
+        }
+      }
+      label {
+        white-space: unset;
+      }
+      .shipping-calculator-form{
+        padding: calc(var(--space_0) * 2) 0;
+        input{
+          width: 100%;
+        }
+        button[type='submit'] {
+          margin-top: var(--space_0);
+          margin-left: auto;
+        }
+      }
+    }
+    .order-total{
+      td{
+        flex-flow: column;
+        align-items: flex-end;
+        justify-content: center;
+        .includes_tax,
+        .includes_tax span{
+          font-size: var(--fs_xs);
+          line-height: var(--fs_s);
+          letter-spacing: 0.025em;
+        }
+      }
+    }
+  }
+}

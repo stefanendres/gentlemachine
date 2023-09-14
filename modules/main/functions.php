@@ -13,11 +13,11 @@ function gm_get_context() {
 };
 
 function gm_get_meta() {
-  $data = NULL;
+  /*$data = NULL;
   if (gm_is_product_page()) {
     $data = [
-      'description' => get_field('gm_product_description'),
-      'image' => wp_get_attachment_url($product->get_image_id())
+      'description' => get_field('gm_product_description', $product),
+      'image' => NULL//var_dump($product)
     ];
   } else {
     $data = [
@@ -25,20 +25,11 @@ function gm_get_meta() {
       'image' => get_field('meta_image', 'options')
     ];
   }
-  return $data;
-}
-
-function gm_get_mail_addresses($type) {
-  $mail_addresses = get_field('mail_addresses', 'options');
-  $mail_addresses_array = [];
-  if ($mail_addresses) {
-    foreach ($mail_addresses as $mail_address) {
-      if ($mail_address['mail_address']['type'] === $type || !$type) {
-        array_push($mail_addresses_array, array('name' => $mail_address['mail_address']['name'], 'address' => $mail_address['mail_address']['address']));
-      }
-    }
-    return $mail_addresses_array;
-  }
+  return $data;*/
+  return [
+    'description' => get_field('meta_description', 'options'),
+    'image' => get_field('meta_image', 'options')
+  ];
 }
 
 function gm_is_product_page() {

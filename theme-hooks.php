@@ -45,7 +45,7 @@ function gm_remove_parent_themes_actions() {
   remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
 
   remove_action( 'woocommerce_before_shop_loop', 'wc_print_notices', 10 );
-  remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+  //remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
   remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 
@@ -64,7 +64,6 @@ function gm_remove_parent_themes_actions() {
 	remove_action( 'storefront_footer', 'storefront_footer_widgets', 10 );
 	remove_action( 'storefront_footer', 'storefront_credit', 20 );
 	remove_action( 'storefront_footer', 'storefront_handheld_footer_bar', 999 );
-
 
   remove_action( 'woocommerce_before_single_product', 'wc_print_notices', 10 );
 
@@ -95,10 +94,7 @@ function gm_remove_parent_themes_actions() {
 	remove_action( 'woocommerce_after_single_product_summary', 'storefront_single_product_pagination', 30 );
 	remove_action( 'storefront_after_footer', 'storefront_sticky_single_add_to_cart', 999 );
 
-
-  //remove_action( 'storefront_page', 'storefront_page_content', 20 ); WARNING: Removes content on my-account, cart, checkout,....
 };
-
 
 add_action( 'init', 'gm_remove_parent_themes_actions');
 
@@ -135,7 +131,7 @@ function gm_add_custom_actions() {
   //add_action( 'woocommerce_after_single_product_summary', 'gm_woocommerce_output_upsells', 5 );
   add_action( 'woocommerce_after_single_product_summary', 'gm_after_single_product_summary', 20 );
 
-  add_action( 'storefront_page', 'gm_content_rows', 20 );
+  add_action( 'storefront_page', 'gm_page_content', 21 );
 
   // footer.php
   add_action( 'gm_footer', 'footer_content', 10);
@@ -155,18 +151,20 @@ add_filter( 'woocommerce_variation_is_active', 'gm_variation_is_active', 10, 2 )
 // change text for single-product varations select options
 add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'custom_dropdown_args', 10 );
 
+add_filter( 'woocommerce_cart_is_empty', 'gm_cart_emtpy_shop_links', 12 );
+
+// custom thank you text
+add_filter( 'woocommerce_thankyou_order_received_text', 'gm_filter_woocommerce_thankyou_order_received_text', 10, 2 );
+
+// background thank you
+//add_action( 'woocommerce_thankyou', 'gm_add_background_content_thankyou' );
+
 /*
 // custom cross-sells text
 add_filter( 'gettext', 'gm_translate_may_also_like' );
 
 // custom create account text
 add_filter( 'gettext', 'gm_translate_create_account', 20, 3 );
-
-// custom thank you text
-add_filter( 'woocommerce_thankyou_order_received_text', 'gm_filter_woocommerce_thankyou_order_received_text', 10, 2 );
-
-// background thank you
-add_action( 'woocommerce_thankyou', 'gm_add_background_content_thankyou' );
 
 // replace product-image with cover-image
 add_filter( 'woocommerce_product_get_image', 'gm_get_image' , 10, 5);

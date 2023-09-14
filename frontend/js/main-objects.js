@@ -1,11 +1,4 @@
-
 export let page = {
-/*  siteUrl: document.querySelector('body').getAttribute('data-site-url'),
-  siteTitle: document.querySelector('body').getAttribute('data-site-title'),
-  url: document.querySelector('body').getAttribute('data-page-url'),
-  title: document.querySelector('body').getAttribute('data-page-title'),
-  template: document.querySelector('body').getAttribute('data-template-slug'),
-  slug: document.querySelector('body').getAttribute('data-page-slug'),  */
   d : {
     h: undefined,
     sbW: undefined
@@ -19,6 +12,12 @@ export let page = {
     orientation: (window.innerWidth >= window.innerHeight) ? 'landscape' : 'portrait',
     isSmall: (window.matchMedia("(max-width: 800px)").matches) ? true : false,
     lastRatio: undefined
+  },
+  breakpoints: { // always sync with variables.scss!!!
+    break_xs: 375,
+    break_s: 800,
+    break_m: 1200,
+    break_l: 1600,
   },
   scrolledOnce: false,
   lastScrollTop: undefined,
@@ -37,6 +36,12 @@ export let page = {
       bg: document.querySelector('.menu-background'),
       links: document.querySelectorAll('.main-menu-container a'),
       isVi: false
+    },
+    mobileLogo: {
+      cr: document.querySelector('.logo-container-mobile'),
+      d: {
+        h: undefined
+      }
     }
   },
 
@@ -49,8 +54,8 @@ export let page = {
   },
   internalLinks: document.querySelectorAll('a:not([target="_blank"]):not(.remove):not(.shipping-calculator-button):not(.xoo-el-lostpw-tgr)'),
   cookieNotice: {
-    cr: document.querySelector('.cookie-cr'),
-    btn: document.querySelector('.cookie-cr button')
+    cr: document.querySelector('.cookie-notice-container'),
+    btn: document.querySelector('.cookie-notice-container button')
   }
 }
 
