@@ -69,6 +69,10 @@
   gap: calc(var(--space_0) * 4);
 }
 
+.content-spacer {
+  height: calc(var(--space_0) * 10 * var(--c_h));
+}
+
 @media all and (max-width: $break_m) {
   .row-content {
     padding: calc(var(--space_0) * 2) 0;

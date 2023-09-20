@@ -5,7 +5,8 @@ $grey_m: #999;
 $grey_l: #e6e6e6;
 $white: #fff; // mind head.php theme-color
 $cream: #F8F3E6;
-$yellow: #FFF27E;
+//$yellow: #FFF27E;
+$yellow: var(--bg_color_a, #FFF27E);
 $red: #f00;
 $lime: #5DFF42;
 

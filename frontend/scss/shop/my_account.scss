@@ -59,8 +59,14 @@
         margin-bottom: calc(var(--fs_m)*0.5);
       }
     }
-    .coin-balance-container{
+    .coin-balance-container,
+    .customer-flour-id-container,
+    .qr-code-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: calc(var(--space_0) * 4) 0;
+      padding-bottom: 0;
       margin-top: calc(var(--space_0) * 4);
       border-top: var(--bw_s) solid $grey_l;
       h3 {
@@ -68,6 +74,8 @@
         font-weight: 600;
         text-align: center;
       }
+    }
+    .coin-balance-container{
       .coin-balance{
         display: flex;
         justify-content: center;
@@ -92,6 +100,31 @@
         }
       }
     }
+    .customer-flour-id-container {
+      .customer-flour-id-value {
+        @include pill;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(var(--space_0) * 8);
+        padding: calc(var(--fs_m)*0.5) var(--fs_m);
+        margin-right: calc(-2 * var(--space_0));
+        z-index: 1;
+      }
+    }
+    .qr-code-container {
+      .qr-code{
+        @include pill;
+        padding: var(--br_l);
+        display: flex;
+        aspect-ratio: 1;
+        width: calc(var(--space_0) * 48);
+        height: calc(var(--space_0) * 48);
+        margin-top: calc(var(--space_0) * 4);
+        margin-bottom: calc(var(--space_0) * 4);
+      }
+    }
+
     td.product-name {
       a {
         margin: 0;
@@ -233,6 +266,12 @@
     .woocommerce-MyAccount-content {
       width: 100%;
       padding: calc(var(--space_0) * 4);
+      .qr-code-container {
+        .qr-code {
+          width: 100%;
+          height: auto;
+        }
+      }
       table {
         * {
           font-size: var(--fs_xs);

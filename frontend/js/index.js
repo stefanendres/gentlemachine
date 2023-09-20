@@ -81,7 +81,6 @@ window.onload = () => {
 
 
   let init = () => {
-    console.log('index->init()')
     /* internal links / page transitions */
     page.internalLinks.forEach(link => {
       link.addEventListener('click', (ev) => {

@@ -137,9 +137,11 @@ function gm_filter_woocommerce_thankyou_order_received_text( $var, $order ) {
 /* 
  * My Account Coin balance
  */
-function gm_coin_balance($current_user) {
+function gm_member_fields($current_user) {
   $user_id = 'user_' . $current_user->ID;
   $user_coin_balance = (!get_field('coin_credit', $user_id)) ? 0 : get_field('coin_credit', $user_id);
+  $user_qr_code_id = (!get_field('qr_code', $user_id)) ? NULL : get_field('qr_code', $user_id);
+  $customer_flour_id = (!get_field('customer_flour_id', $user_id)) ? NULL : get_field('customer_flour_id', $user_id);
   ?>
   <div class="coin-balance-container">
     <h3><?= get_field('coin_summary_headline', 'options'); ?></h3>
@@ -148,6 +150,19 @@ function gm_coin_balance($current_user) {
       <img class="coin-balance-icon" src="<?= wp_get_attachment_url(get_field('coin_icon', 'options')); ?>">
     </div>
   </div>
+  <?php if ($customer_flour_id): ?>
+  <div class="customer-flour-id-container">
+    <h3>Kundennummer</h3>
+    <div class="customer-flour-id-value"><?= $customer_flour_id; ?></div>
+  </div>
+  <?php endif ?>
+  <?php if ($user_qr_code_id): ?>
+  <div class="qr-code-container">
+    <img class="qr-code" src="<?= wp_get_attachment_url($user_qr_code_id) ?>"/>
+  </div>
+  <?php endif ?>
   <?php
 }
+
+
 ?>

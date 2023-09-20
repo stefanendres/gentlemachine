@@ -12,7 +12,7 @@
 		$product = null;
 	}
 ?>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> style="--bg_color_a:<?= get_field('background_color_a', 'options') ?>;">
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0">
@@ -30,7 +30,11 @@
 		<meta property="og:image:type" content="<?= getimagesize(gm_get_meta()['image'])['mime']; ?>" />
 		<meta property="og:image:width" content="<?= getimagesize(gm_get_meta()['image'])[0]; ?>" />
 		<meta property="og:image:height" content="<?= getimagesize(gm_get_meta()['image'])[1]; ?>" />
-
+		<link rel="apple-touch-icon-precomposed" href="<?= gm_get_meta()['icon']; ?>"/>
+		<link rel="icon" type="image/png" href="<?= gm_get_meta()['icon']; ?>"/>
+		<meta name="msapplication-TileImage" content="<?= gm_get_meta()['icon']; ?>" />
+		<meta name="msapplication-TileColor" content="#FFFFFF" />
+		<meta name="theme-color" content="#FFFFFF">
 		<?php wp_head(); ?>
 		<script type="text/javascript" src="<?= gm_get_context()['theme_url']; ?>/modernizr.js"></script>
 	</head>

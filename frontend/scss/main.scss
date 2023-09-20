@@ -186,7 +186,7 @@ img.ls-is-cached {
 .site-content {
   display: flex;
 
-  body:not(.woocommerce-account):not(.term-subscription) &{
+  body:not(.woocommerce-account):not(.term-subscription):not(.post-template-default) &{
     align-items: center;
     justify-content: center;
   }

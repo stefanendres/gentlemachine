@@ -28,7 +28,8 @@ function gm_get_meta() {
   return $data;*/
   return [
     'description' => get_field('meta_description', 'options'),
-    'image' => get_field('meta_image', 'options')
+    'image' => get_field('meta_image', 'options'),
+    'icon' => get_field('meta_icon', 'options'),
   ];
 }
 

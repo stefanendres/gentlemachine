@@ -63,4 +63,4 @@ $allowed_html = array(
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
 
-gm_coin_balance($current_user);
+gm_member_fields($current_user);

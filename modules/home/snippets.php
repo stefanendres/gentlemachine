@@ -144,7 +144,7 @@ function home_news_teaser () {
       <?php endif; ?>
         <?= $newsletter_link['title'] ?>
       </a>
-      <a class="link-news button-style" href="<?= get_permalink($news_page) ?>">
+      <a class="link-news-back button-style" href="<?= get_permalink($news_page) ?>">
         exlpore more
       </a>
     </div>
@@ -215,7 +215,7 @@ function home_faqs_teaser() {
   ?>
   <section class="faqs-teaser observe-vp">
     <img class="faqs-teaser-title lazyload" data-src="<?= $faqs_title_svg_url ?>" alt="<?= get_the_title($faqs_page) ?>"/>
-    <ul class="faqs-container">
+    <ul class="faqs-container content-expandables-container">
       <?php foreach($faqs_teaser_content['content_expandable_posts'] as $faqs_item): ?>
         <li class="faqs-item expandable-item">
           <div class="title-wrapper">

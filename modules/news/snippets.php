@@ -79,8 +79,10 @@ function news_content() {
   $news_title_svg_url = wp_get_attachment_url(get_field('page_name_svg'));
   ?>
   <section>
-    <img class="news-title lazyload" data-src="<?= $news_title_svg_url ?>" alt="<?= get_the_title($news_page) ?>"/>
-    <ul class="news-container">
+    <div class="news-title-container observe-vp">
+      <img class="news-title lazyload" data-src="<?= $news_title_svg_url ?>" alt="<?= get_the_title($news_page) ?>"/>
+    </div>
+    <ul class="news-container observe-vp">
       <?php foreach(get_posts() as $news_item): ?>
         <?php news_thumb($news_item); ?>
       <?php endforeach ?>

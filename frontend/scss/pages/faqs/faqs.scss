@@ -1,7 +1,7 @@
-.faqs-container{
+.content-expandables-container{
   border-bottom: var(--bw_s) solid $grey_l;
 }
-.faqs-item{
+.expandable-item{
   display: flex;
   flex-direction: column;
   .title-wrapper{
@@ -61,7 +61,7 @@
 }
 
 @media all and (max-width: $break_s) {
-  .faqs-item {
+  .expandable-item {
     .title-wrapper{
       h3 {
         font-size: var(--fs_m);

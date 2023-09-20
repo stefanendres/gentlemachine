@@ -103,6 +103,8 @@ function gm_remove_parent_styles() {
   wp_dequeue_style("wc-blocks-style-cart");
   wp_dequeue_style("wc-blocks-style-checkout");
   wp_dequeue_style("wc-blocks-style-mini-cart-contents");
+  wp_dequeue_style("wc-blocks-vendors");
+  wp_dequeue_style("wc-all-blocks");
   wp_dequeue_style("storefront-gutenberg-blocks");
   //wp_dequeue_style("xoo-el-style");
   //wp_dequeue_style("xoo-el-fonts");

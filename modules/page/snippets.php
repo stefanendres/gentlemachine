@@ -47,6 +47,8 @@ function gm_content($content) {
     gm_content_textlarge($content);
   } else if ($content['acf_fc_layout'] === 'content_links') {
     gm_content_linklist($content);
+  } else if ($content['acf_fc_layout'] === 'content_expandables') {
+    gm_content_expandables($content);
   } else if ($content['acf_fc_layout'] === 'content_spacer') {
     gm_content_spacer($content);
   }
@@ -75,16 +77,20 @@ function gm_content_image($content) {
  */
 function gm_content_expandables($content) {
   ?>
-  <div class="content-expandables-container">
-    <?php foreach ($content['content_expandable_posts'] as $item): ?>
-      <div class="content-expandables-item-container">
-        <h3><?= $item['content_exp_heading'] ?></h3> <?php // add toggle button? ?>
-        <div class="text-content-wrapper collapsed">
-          <?= $item['content_exp_text'] ?>
+  <ul class="content-expandables-container">
+    <?php foreach($content['content_expandable_posts'] as $item): ?>
+      <li class="expandable-item">
+        <div class="title-wrapper">
+          <h3><?= $item['content_exp_heading'] ?></h3>
         </div>
-      </div>
-    <?php endforeach ?>
-  </div>
+        <div class="content-wrapper">
+          <div class="text-wrapper">
+            <?= $item['content_exp_text'] ?>
+          </div>
+        </div>
+      </li>
+    <?php endforeach; ?>
+  </ul>
   <?php
 }
 
@@ -153,7 +159,9 @@ function gm_content_linklist($content) {
  * Setup Spacer
  */
 function gm_content_spacer($content) {
-  // could add <hr>
+  // could add <hr>?>
+  <div class="content-spacer" style="--c_h: <?= $content['content_height'] ?>"></div>
+  <?php
 }
 
 

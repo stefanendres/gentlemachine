@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
 
   .subscription-title {
     display: flex;
@@ -26,6 +27,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     padding-top: calc(var(--space_0)*4);
     padding-bottom: calc(var(--space_0)*2);
     border-top: var(--bw_s) solid $grey_l;
@@ -50,6 +52,7 @@
 
   ul {
     margin-bottom: calc(var(--fs_xs)*0.5);
+    margin-left: 0;
   }
 
   .subscription-price {
@@ -59,7 +62,8 @@
 }
 
 //single-product styles
-.single-product .product-type-subscription{
+.single-product .product-type-subscription,
+.single-product .product-type-variable-subscription{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,6 +102,15 @@
   }
 }
 
+@media all and (max-width: $break_m) {
+  .subscription-product-content {
+    ul,
+    li {
+      font-weight: 300;
+      font-size: var(--fs_l);
+    }
+  }
+}
 
 @media all and (max-width: $break_s) {
   .subscription-product-container {
@@ -108,14 +121,15 @@
     .subscription-title {
       margin-top: var(--space_0);
     }
-
-    ul,
+    /*ul,
     li {
       font-weight: 300;
       font-size: var(--fs_l);
-    }
+    }*/
   }
-  .single-product .product-type-subscription {
+
+  .single-product .product-type-subscription,
+  .single-product .product-type-variable-subscription {
     top: calc(-1 * var(--mh_h));
     padding-top: var(--mh_h);
     .subscription-product-container {
