@@ -139,4 +139,21 @@
       margin-top: calc(var(--space_0) * 4);
     }
   }
+  .single-product .product-type-variable-subscription {
+    .summary {
+      .variations_form {
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: none;
+        flex-wrap: unset;
+        .variations tbody{
+          border-bottom: 0;
+        }
+        .single_variation_wrap{
+          padding-top: 0;
+          border-bottom: none;
+        }
+      }
+    }
+  }
 }
