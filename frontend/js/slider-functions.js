@@ -59,11 +59,11 @@ export function initNewsThumbSwiper(item, Swiper, Autoplay, Pagination, delay, s
     item.swiper = new Swiper({
       el: item.cr,
       modules: [Autoplay, Pagination],
-      autoplay: {
-        delay: delay,
-        pauseOnMouseEnter: true,
-        //disableOnInteraction: true,
-      },
+      //autoplay: {
+      //  delay: delay,
+      //  pauseOnMouseEnter: true,
+      //  disableOnInteraction: true,
+      //},
       loop: true,
       speed: speed,
       grabCursor: true,
