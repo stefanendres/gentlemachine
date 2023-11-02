@@ -8,13 +8,8 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-
 		<main id="main" class="site-main" role="main">
-
-			<div class="page-content">
-				404
-			</div>
-
+			<?php gm_cart_emtpy_shop_links() ?>
 		</main>
 	</div>
 

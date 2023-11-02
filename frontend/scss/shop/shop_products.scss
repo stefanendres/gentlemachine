@@ -55,16 +55,20 @@
     margin-right: calc(-2 * var(--space_0));
   }
 
-  transition: max-width 0.3s ease-out;
+  transition: max-width 0.3s ease-out, box-shadow 0.15s ease-in-out;
   
   &:hover {
     max-width: 12.5vw; // rough max-width, change for 1 col layout
-    transition: max-width 0.3s ease-out 0.15s;
+    transition: max-width 0.3s ease-out 0.15s, box-shadow 0.15s ease-in-out;
 
     .product-tag-name {
       opacity: 1;
       transition: opacity 0.15s ease-in-out 0.3s;
     }
+  }
+  html.no-touchevents &:hover,
+  &:active {
+    box-shadow: $shadow_double;
   }
 }
 .product-tag-icon {

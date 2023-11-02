@@ -27,6 +27,7 @@ Template: storefront
 @import 'shop/subscription_product';
 @import 'shop/cart';
 @import 'shop/checkout';
+@import 'shop/checkout_orderpay';
 @import 'shop/shop_notifications';
 @import 'shop/my_account';
 @import 'shop/login_signup';
@@ -47,9 +48,7 @@ Template: storefront
 
 @import 'pages/page_layout';
 
-//@import 'pages/layout';
-//@import 'pages/404';
-//@import 'pages/terms_imprint_privacy';
+@import 'pages/404';
 
 @import 'footer';
 

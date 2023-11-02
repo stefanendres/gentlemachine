@@ -226,7 +226,7 @@
     }
   }
 }
-//.woocommerce-order-pay #order_review, //TODO if make payment changeable in future
+
 .woocommerce-checkout-review-order {
   display: flex;
   flex-flow: wrap;
@@ -437,7 +437,7 @@
       }
     }
   }
-
+  
   .woocommerce-checkout-payment {
     display: flex;
     flex-direction: column;
@@ -553,14 +553,17 @@
 
   .woocommerce-terms-and-conditions-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     padding: 0 calc(var(--space_0)*4);
     margin-bottom: calc(var(--space_0)*4);
     border-bottom: var(--bw_s) solid $grey_l;
 
     p,
-    a {
+    a,
+    .woocommerce-terms-and-conditions-checkbox-text {
       font-size: var(--fs_s);
       line-height: var(--fs_m);
       letter-spacing: 0.025em;
@@ -606,7 +609,8 @@
           min-width: 1em;
           max-width: 1em;
           padding: calc(var(--fs_m) * 0.25);
-          content: '◂';
+          margin-left: 0.5em;
+          content: ' ✔\fe0e';
           font-size: var(--fs_m);
           line-height: var(--fs_m);
           background-color: transparent;
@@ -620,9 +624,7 @@
         html.no-touchevents &:hover,
         &:active {
           &::after {
-            //background-color: $primary;
-            //border-color: $primary;
-            color: $white;
+            border-color: $grey_d;
           }
         }
       }
@@ -632,33 +634,24 @@
           &::after {
             //background-color: $primary;
             //border-color: $primary;
-            color: $white;
-          }
-
-          html.no-touchevents &:hover,
-          &:active {
-            &::after {
-              background-color: transparent;
-              border-color: $grey_m;
-            }
+            color: $lime;
           }
         }
       }
 
       &.woocommerce-invalid {
-        input {
-          box-shadow: none;
-        }
-
         .woocommerce-form__input-checkbox#terms {
           &::after {
-            //border-color: $primary;
-            //box-shadow: inset 0 0 0 1px $primary;
+            border-color: $red;
           }
+        }
+        .woocommerce-terms-and-conditions-checkbox-text{
+          color: $red;
         }
       }
 
       .woocommerce-form__label.woocommerce-form__label-for-checkbox {
+        display: flex;
         cursor: pointer;
       }
 

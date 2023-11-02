@@ -1,7 +1,7 @@
 // shop notifications
 
 .single-product .woocommerce-error,
-.checkout .woocommerce-error,
+.checkout>.woocommerce-error,
 .woocommerce-NoticeGroup/*, //checkout
 /*.woocommerce-notices-wrapper>div */{
   display: flex;
@@ -72,9 +72,10 @@
   .woocommerce-error,
   .woocommerce-NoticeGroup {
     ul, li {
-      width: 100%;
+      //width: 100%;
     }
     li {
+      width: 100%;
       flex-direction: unset;
     }
     li, strong{
@@ -180,7 +181,7 @@
 
 @media all and (max-width: $break_s) {
   .single-product .woocommerce-error,
-  .checkout .woocommerce-error,
+  .checkout>.woocommerce-error,
   .woocommerce-NoticeGroup {
     top: calc(var(--h_h) + var(--space_0) * 2);
     left: calc(var(--space_0) * 4);

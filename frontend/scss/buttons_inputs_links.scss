@@ -76,6 +76,7 @@
 }
 .button-style,
 .woocommerce-account .button,
+.subscription-actions .button,
 button:not(.menu-button),
 input:not([type='radio']):not([type='text']):not(.input-text):not([type='password']):not([type='checkbox']):not([type='email']),
 select,
@@ -92,6 +93,7 @@ select,
 .footer-cta-link,
 .content-linklist-link,
 .woocommerce-checkout-payment ul li label,
+.woocommerce-order-pay ul li label[for],
 #payment #place_order,
 .return-to-shop-container a { 
   @include pill;

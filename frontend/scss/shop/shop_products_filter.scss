@@ -91,6 +91,12 @@
       line-height: var(--fs_s);
       letter-spacing: 0.025em;
     }
+    html.no-touchevents &:hover,
+    &:active {
+      span, label{
+        color: $grey_m;
+      }
+    }
   }
   .bapf_sfilter .bapf_img_span,
   .bapf_asradio2 ul li input[type=checkbox] {
@@ -104,17 +110,10 @@
     height: calc(var(--fs_s) * 2);
     background-color: $white !important;
     @include pill;
-    html.no-touchevents &:hover,
-    &:active{
-      box-shadow: $shadow_double;
-    }
   }
   .bapf_sfilter.brchecked_default input:checked+label .bapf_img_span {
     transform: none;
-    //filter: invert(1);
     box-shadow: $shadow_double;
-    //box-shadow: none;
-    //border: var(--bw_s) solid $black;
   }
   .checked {
     font-weight: 600;

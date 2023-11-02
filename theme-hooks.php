@@ -156,19 +156,7 @@ add_filter( 'woocommerce_cart_is_empty', 'gm_cart_emtpy_shop_links', 12 );
 // custom thank you text
 add_filter( 'woocommerce_thankyou_order_received_text', 'gm_filter_woocommerce_thankyou_order_received_text', 10, 2 );
 
-// background thank you
-//add_action( 'woocommerce_thankyou', 'gm_add_background_content_thankyou' );
-
 /*
-// custom cross-sells text
-add_filter( 'gettext', 'gm_translate_may_also_like' );
-
-// custom create account text
-add_filter( 'gettext', 'gm_translate_create_account', 20, 3 );
-
-// replace product-image with cover-image
-add_filter( 'woocommerce_product_get_image', 'gm_get_image' , 10, 5);
-
 // show 1000 products per shop page
 add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
 */

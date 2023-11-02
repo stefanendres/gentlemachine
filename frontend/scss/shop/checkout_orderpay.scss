@@ -1,0 +1,156 @@
+.woocommerce-order-pay{
+    .woocommerce-info {
+      //font-size: var(--fs_xl);
+      //line-height: var(--fs_xl);
+      //font-weight: 300;
+      color: $grey_m;
+      text-align: center;
+      margin-top: var(--fs_xl);
+      margin-bottom: var(--fs_xl);
+    }
+    #order_review {
+      .shop_table{
+        width: 100%;
+        border-collapse: collapse;
+        border: calc(var(--bw_s) * 2) solid $white;
+        a {
+          margin: calc(var(--space_0) * 2);
+    
+          &.button {
+            width: auto;
+          }
+        }
+        th,
+        td {
+          padding: calc(var(--space_0) * 2);
+          border: var(--bw_s) solid $grey_l;
+          text-align: left;
+        }
+      }
+      #payment{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    
+        //margin: calc(var(--space_0) * 4) 0;
+        ul {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+        }
+    
+        li {
+          //.wc_payment_method
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: calc(var(--space_0) * 4) 0;
+          border-top: var(--bw_s) solid $grey_l;
+          border-bottom: var(--bw_s) solid $grey_l;
+          &:first-child {
+            margin-top: calc(var(--space_0) * 4);
+          }
+          &:last-child {
+            margin-bottom: calc(var(--space_0) * 4);
+          }
+    
+          img,
+          input {
+            display: none;
+          }
+    
+          label {
+            position: relative;
+            justify-content: center;
+            min-width: 50%;
+            padding-right: calc(var(--space_0)*3);
+            font-weight: 600;
+    
+            &::after {
+              content: '  ';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: calc(var(--space_0)*3);
+              display: flex;
+              align-items: center;
+              opacity: 0;
+              background-color: transparent;
+              border-color: $grey_m;
+              transition: background-color 0.25s ease-in-out, opacity 0.25s ease-in-out;
+            }
+    
+            a {
+              display: none;
+            }
+          }
+    
+          input:checked~label {
+            &::after {
+              content: ' ✔\fe0e';
+              opacity: 1;
+              margin-left: 0.5em;
+              color: $lime;
+            }
+    
+            html.no-touchevents &:hover,
+            &:active {
+              background-color: transparent;
+              border-color: $grey_m;
+              color: $black;
+            }
+          }
+    
+          .payment_box {
+            margin-top: calc(var(--space_0)*3);
+            padding: 0 calc(var(--space_0) * 4);
+            color: $grey_m;
+    
+            p {
+              max-width: 33em;
+              margin: 0 auto;
+              font-size: var(--fs_s);
+              line-height: var(--fs_m);
+              letter-spacing: 0.025em;
+              color: $grey_m;
+            }
+    
+            a {
+              color: $grey_d;
+              text-decoration: underline;
+    
+              &:active,
+              html.no-touchevents &:hover {
+                color: $black;
+              }
+            }
+    
+            fieldset {
+              border: none;
+              padding: 0;
+              margin: 0;
+              margin-top: calc(var(--space_0)*4);
+              @include pill;
+    
+              #wc_braintree_paypal_container {
+                padding: calc(var(--space_0)*4);
+                padding-bottom: 0;
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+        .update-all-subscriptions-payment-method-wrap{
+          margin-bottom: calc(var(--space_0)*4);
+          input{
+            filter: saturate(0);
+          }
+        }
+        .form-row { // submit container
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+}

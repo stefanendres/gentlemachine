@@ -82,10 +82,24 @@ function gm_single_product_summary() {
   <div class="product-tags">
     <?php if (is_user_logged_in()): ?>
       <?php foreach ($product_tags as $product_tag): ?>
-        <div class="product-tag product-tag-<?= $product_tag['slug'] ?>">
-          <img class="product-tag-icon" src="<?= $product_tag['icon_url'] ?>" alt="<?= gm_get_context()['site_title'] ?> – <?= $product_tag['name']; ?> Icon"/>
-          <span class="product-tag-name"><?= $product_tag['name']; ?></span>
-        </div>
+        <?php if (has_term('buy', 'product_tag')): ?>
+          <div class="product-tag product-tag-<?= $product_tag['slug'] ?>">
+            <img class="product-tag-icon" src="<?= $product_tag['icon_url'] ?>" alt="<?= gm_get_context()['site_title'] ?> – <?= $product_tag['name']; ?> Icon"/>
+            <span class="product-tag-name"><?= $product_tag['name']; ?></span>
+          </div>
+        <?php else: ?>
+          <?php if (has_active_subscription()): ?>
+            <div class="product-tag product-tag-<?= $product_tag['slug'] ?>">
+              <img class="product-tag-icon" src="<?= $product_tag['icon_url'] ?>" alt="<?= gm_get_context()['site_title'] ?> – <?= $product_tag['name']; ?> Icon"/>
+              <span class="product-tag-name"><?= $product_tag['name']; ?></span>
+            </div>
+          <?php else: ?>
+            <a class="product-tag product-tag-signup-link product-tag-<?= $product_tag['slug'] ?>" href="<?= get_term_link(get_term_by('slug', 'subscription', 'product_cat')->term_id, 'product_cat') ?>">
+              <img class="product-tag-icon" src="<?= $product_tag['icon_url'] ?>" alt="<?= gm_get_context()['site_title'] ?> – <?= $product_tag['name']; ?> Icon"/>
+              <span class="product-tag-name">Subscribe to <?= $product_tag['name']; ?></span>
+            </a>
+          <?php endif ?>    
+        <?php endif ?>
       <?php endforeach ?>
     <?php else: ?>
       <?php foreach ($product_tags as $product_tag): ?>
@@ -108,22 +122,43 @@ function gm_single_product_summary() {
       </div>
     <?php endif ?>
   </div>
+  <?php if (has_term('buy', 'product_tag') && is_user_logged_in()): ?>
+    <!--nolock-->
+  <?php elseif (!has_term('buy', 'product_tag') && has_active_subscription()): ?>
+    <!--nolock-->
+  <?php else: ?>
+    <?php if (!has_term(array('subscription'), 'product_cat', $product_id)): ?>
+      <div class="summary-lock" style="display:none;pointer-events:none;">
+    <?php endif ?>
+  <?php endif;
+}
+/* 
   <?php if (!is_user_logged_in() && !has_term(array('subscription'), 'product_cat', $product_id)): ?>
     <div class="summary-lock" style="display:none;pointer-events:none;">
   <?php endif;
-}
+*/
 
 /*
  * Setup Single-Product after summary-form
  */
 function gm_after_single_product_summary_form() {
-  if (!is_user_logged_in() && !has_term(array('subscription'), 'product_cat', $product_id)): ?>
-    </div><?php // close <div class="summary-wrapper-lock">
-  endif; ?>
-  <a class="single-product-checkout-link" href="<?= gm_get_context()['site_url'];?>/checkout">Zur Kasse</a>
-  <?php
+  if (has_term('buy', 'product_tag') && is_user_logged_in()): ?>
+    <!--nolock-->
+    <a class="single-product-checkout-link" href="<?= gm_get_context()['site_url'];?>/checkout">Zur Kasse</a>
+  <?php elseif (!has_term('buy', 'product_tag') && has_active_subscription()): ?>
+    <!--nolock-->
+    <a class="single-product-checkout-link" href="<?= gm_get_context()['site_url'];?>/checkout">Zur Kasse</a>
+  <?php else: ?>
+    <?php if (!has_term(array('subscription'), 'product_cat', $product_id)): ?>
+      </div><!-- close -->
+    <?php endif ?>
+  <?php endif;
 }
-
+/*
+if (!is_user_logged_in() && !has_term(array('subscription'), 'product_cat', $product_id)): ?>
+  </div><?php // close <div class="summary-wrapper-lock">
+endif; ?>
+*/
 
 /*
  * Setup Single-Product Back-link, after summary closing-tag

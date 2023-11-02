@@ -230,6 +230,23 @@
         text-align: left;
       }
     //}
+    .woocommerce-OrderUpdates{//ol
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--space_0) * 4);
+    }
+    .woocommerce-OrderUpdate{//li
+      @include pill;
+      display: inline-flex;
+      width: auto;
+      padding: calc(var(--space_0) * 4) calc(var(--space_0) * 6);
+      .woocommerce-OrderUpdate-meta{
+        color: $grey_m;
+      }
+      .woocommerce-OrderUpdate-description{
+        max-width: 33em;
+      }
+    }
     .woocommerce-customer-details{
       margin-top: calc(var(--space_0) * 8);
       h2 {

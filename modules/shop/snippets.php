@@ -96,41 +96,13 @@ function gm_cart_emtpy_shop_links() {
 }
 
 /*
- * Custom Up-Sells text
- 
-function gm_translate_may_also_like( $translated ) {
- $translated = str_ireplace( 'You may also like&hellip;', 'Other Colors:', $translated );
- return $translated;
-}
-*/
-
-/*
- * Custom Create Account? text
- 
- function gm_translate_create_account( $translated_text, $text, $domain ) {
-  switch ( $translated_text ) {
-    case 'Create an account?' :
-      $translated_text = __( 'Subscribe if you want to receive promotional discounts and special offers from PCG', 'woocommerce' );
-      break;
-  }
-  return $translated_text;
-}
-*/
-/*
  * Custom Thank You text
  */
 function gm_filter_woocommerce_thankyou_order_received_text( $var, $order ) {
  return 'Thank you! Your Order has been received.';
 }
 
-/*
-* Custom Thank You background
-*/
-/*function gm_add_background_content_thankyou() {
-  ?>
-  <div class="thankyou-background" style="background-image: url(<?= gm_get_context()['theme_url'].'/svg/thankyou-seed.svg'; ?>);"></div>
-  <?php
-}*/
+
 
 
 

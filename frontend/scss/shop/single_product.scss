@@ -32,7 +32,7 @@
 
 .product-description-container {
   z-index: 10;
-  width: 25%;
+  width: 30%;
   left: calc(var(--space_0) * 10);
   .product-description-button {
     height: calc(var(--space_0) * 8);
@@ -79,17 +79,22 @@
 
 .summary {
   z-index: 9;
-  width: 75%;
+  width: 50%;
   right: calc(var(--space_0) * 10);
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
+  gap: calc(var(--space_0) * 2) 0;
+  gap: calc(var(--space_0) * 2);
   .product-prices {
     display: flex;
-    padding: 0 calc(var(--space_0) * 2);
-    .logged-in .product:not(.outofstock) & {
-      padding-right: 0;
-    }
+    //padding: 0 calc(var(--space_0) * 2);
+    //margin-right: calc(var(--space_0) * 2);
+    /*.logged-in .product:not(.outofstock) & {
+      //padding-right: 0;
+      padding: 0;
+    }*/
     .product-price{
       display: flex;
       justify-content: center;
@@ -98,19 +103,26 @@
       @include button(var(--fs_m));
       height: calc(var(--space_0) * 8);
       min-width: calc(var(--space_0) * 8);
+      pointer-events: none;
     }
   }
   .product-tags{
-    padding-top: 0;
-    padding-bottom: 0;
-
-    .product-tag-signup-link {
+    //padding-top: 0;
+    //padding-bottom: 0;
+    padding: 0;
+    gap: calc(var(--space_0) * 2);
+    .product-tag{
+    //.product-tag-signup-link {
       max-width: 100% !important;
-      &:not(:last-child){
-        margin-right: calc(var(--space_0) * 2);
-      }
       .product-tag-name{
         opacity: 1;
+      }
+      pointer-events: none;
+      &.product-tag-signup-link{
+        pointer-events: auto;
+      }
+      &:not(:last-child) {
+        margin-right: unset;
       }
     }
   }
@@ -157,7 +169,7 @@
       }
       .woocommerce-variation-add-to-cart{ // names could change for simple-products!!! (but for now variable-products are good)
         display: flex;
-        padding-right: calc(var(--space_0) * 2);
+        //padding-right: calc(var(--space_0) * 2);
         gap: calc(var(--space_0) * 2);
         .quantity{
           label {
@@ -206,17 +218,22 @@
       }
     }
   }
+  p.first-payment-date {
+    display: none;
+  }
   .single-product-checkout-link{
     height: calc(var(--space_0) * 8);
+    //margin-left: calc(var(--space_0) * 2);
   }
 }
 
 .single-product-back-link {
   position: absolute;
   bottom: 0;
-  right: calc(var(--space_0) * 10);
+  z-index: 1;
+  left: calc(var(--space_0) * 10);
   height: calc(var(--space_0) * 8);
-  transform: translate3d(0, calc(var(--space_0) * -16), 0); // -8 = summary-height, -4 = summary-bottom
+  transform: translate3d(0, calc(var(--space_0) * -16), 0); // -8 = description-button-height, -4 = description-button-bottom
 }
 
 
@@ -276,6 +293,7 @@
   .product-description-container{
     left: unset;
     width: 100%;
+    pointer-events: none;
     .product-description-button{
       display: none;
     }
@@ -303,15 +321,23 @@
     width: 100%;
     flex-flow: row wrap;
     justify-content: center;
-    .product-tags,
-    .product-prices{
+    gap: 0;
+    .product-tags{
+      flex-wrap: wrap;
+      justify-content: center;
       padding-bottom: calc(var(--space_0) * 4);
+      padding-right: calc(var(--space_0) * 4);
+      gap: calc(var(--space_0) * 4);
+    }
+    .product-prices {
+      padding-bottom: calc(var(--space_0) * 4) !important;
     }
     .variations_form {
       flex-wrap: wrap;
       padding-top: calc(var(--space_0) * 4);
       padding-bottom: calc(var(--space_0) * 4);
       border-top: var(--bw_s) solid $grey_l;
+      width: 100%;
       .variations{
         width: 100%;
         tbody {
