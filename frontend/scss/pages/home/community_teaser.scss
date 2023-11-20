@@ -42,6 +42,7 @@ section.community-teaser{
   transition: transform 0.3s cubic-bezier(0, 0, 0, 1);
   img {
     width: 100%;
+    //dev animation-play-state: paused !important;
   }
   html.no-touchevents &:hover,
   &:active {
@@ -57,9 +58,9 @@ section.community-teaser{
   }
   --unit: 0.31285vw;
   &.overlay-a {
-    left: calc(var(--unit)*11*1.35);
-    top: calc(var(--unit)*10*1.35);
-    width: calc(var(--unit)*26*1.35);
+    left: calc(var(--unit)*21*1.35);
+    top: calc(var(--unit)*16*1.35);
+    width: calc(var(--unit)*28*1.35);
     transition-delay: 0.3s;
 
     &.is-in-view {
@@ -70,22 +71,23 @@ section.community-teaser{
   }
 
   &.overlay-b {
-    left: calc(var(--unit)*59*1.35);
-    top: calc(var(--unit)*30*1.35);
-    width: calc(var(--unit)*24*1.35);
-    transition-delay: 0.6s;
+    left: calc(var(--unit)*136*1.35);
+    top: calc(var(--unit)*42*1.35);
+    width: calc(var(--unit)*36*1.35);
+    transform-origin: center 66%;
+    transition-delay: 0.3s;
 
     &.is-in-view {
       img {
-        animation: move_h_rotate 16s infinite ease-in-out alternate-reverse;
+        animation: rotate_triangle 45s infinite steps(60);
       }
     }
   }
 
   &.overlay-c {
-    left: calc(var(--unit)*120*1.35);
+    left: calc(var(--unit)*92*1.35);
     top: calc(var(--unit)*14*1.35);
-    width: calc(var(--unit)*28*1.35);
+    width: calc(var(--unit)*36*1.35);
     transition-delay: 0.9s;
 
     &.is-in-view {
@@ -96,9 +98,9 @@ section.community-teaser{
   }
 
   &.overlay-d {
-    left: calc(var(--unit)*198*1.35);
-    top: calc(var(--unit)*18*1.35);
-    width: calc(var(--unit)*21*1.35);
+    left: calc(var(--unit)*203.8*1.35);
+    top: calc(var(--unit)*28*1.35);
+    width: calc(var(--unit)*27*1.35);
     transition-delay: 0.6s;
 
     &.is-in-view {
@@ -111,26 +113,12 @@ section.community-teaser{
   &.overlay-e {
     left: calc(var(--unit)*28*1.35);
     top: calc(var(--unit)*61*1.35);
-    width: calc(var(--unit)*32*1.35);
+    width: calc(var(--unit)*42*1.35);
     transition-delay: 0s;
 
     &.is-in-view {
       img {
         animation: move_h 32s infinite alternate-reverse linear;
-      }
-    }
-  }
-
-  &.overlay-f {
-    left: calc(var(--unit)*145*1.35);
-    top: calc(var(--unit)*46*1.35);
-    width: calc(var(--unit)*28*1.35);
-    transform-origin: center 66%;
-    transition-delay: 0.3s;
-
-    &.is-in-view {
-      img {
-        animation: rotate_triangle 45s infinite steps(60);
       }
     }
   }
@@ -151,24 +139,19 @@ section.community-teaser{
   .community-teaser-overlay {
     --unit: 0.31285vw;
     &.overlay-a{
-      left: calc(var(--unit)*4*1.35);
-      top: calc(var(--unit)*107*1.35);
-      width: calc(var(--unit)*64*1.35);
+      left: calc(var(--unit)*6*1.35);
+      top: calc(var(--unit)*120*1.35);
+      width: calc(var(--unit)*60*1.35);
     }
-    &.overlay-b{
-      left: calc(var(--unit)*4*1.35);
-      top: calc(var(--unit)*17*1.35);
-      width: calc(var(--unit)*82*1.35);
-      &.is-in-view {
-        img {
-          animation: move_h_rotate_mobile 16s infinite ease-in-out alternate-reverse;
-        }
-      }
+    &.overlay-b {
+      left: calc(var(--unit)*32*1.35);
+      top: calc(var(--unit)*28*1.35);
+      width: calc(var(--unit)*76*1.35);
     }
     &.overlay-c{  
-      left: calc(var(--unit)*150*1.35);
-      top: calc(var(--unit)*42*1.35);
-      width: calc(var(--unit)*72*1.35);
+      left: calc(var(--unit)*136*1.35);
+      top: calc(var(--unit)*48*1.35);
+      width: calc(var(--unit)*76*1.35);
       &.is-in-view {
         img {
           animation: move_v_mobile 16s infinite ease-in-out alternate-reverse;
@@ -176,9 +159,9 @@ section.community-teaser{
       }
     }
     &.overlay-d{
-      left: calc(var(--unit)*24*1.35);
-      top: calc(var(--unit)*188*1.35);
-      width: calc(var(--unit)*52*1.35);
+      left: calc(var(--unit)*127*1.35);
+      top: calc(var(--unit)*172*1.35);
+      width: calc(var(--unit)*56*1.35);
     }
     &.overlay-e{
       left: calc(var(--unit)*60*1.35);
@@ -189,11 +172,6 @@ section.community-teaser{
           animation: move_h_mobile 21s infinite alternate-reverse linear;
         }
       }
-    }
-    &.overlay-f{
-      left: calc(var(--unit)*141*1.35);
-      top: calc(var(--unit)*162*1.35);
-      width: calc(var(--unit)*68*1.35);
     }
   }
 

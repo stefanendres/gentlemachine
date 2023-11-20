@@ -1,8 +1,11 @@
 .logo-container-mobile {
+  display: flex;
+  justify-content: center;
   width: 100%;
   z-index: 10;
   img {
-    width: 100%;
+    //width: 100%;
+    height: var(--fs_l);
   }
   display: none;
 }
@@ -85,19 +88,31 @@
   .myaccount-link-container{
     left: 75%;
     transform: translate3d(-50%, 0, 0);
-    .user-name{
+    .header-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .user-icon{
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: var(--fs_l);
-      min-width: calc(var(--fs_l) * 2);
+      height: var(--fs_l);
+      width: var(--fs_l);
+      aspect-ratio: 1;
       border: var(--bw_l) solid $black;
       border-radius: 100%;
+      //padding: calc(var(--fs_m) * 0.125);
+      font-size: var(--fs_m);
+      line-height: calc(var(--fs_m) * 0.9);
+      text-transform: uppercase;
+    }
+    .user-name {
       white-space: nowrap;
       font-size: var(--fs_xs);
       line-height: var(--fs_xs);
-      font-style: italic;
-      padding: calc(var(--fs_xs) * 0.25) calc(var(--fs_xs) * 0.75);
+      padding: calc(var(--fs_xs) * 0.625);
     }
   }
   .menu-button-container {
@@ -156,7 +171,12 @@
       }
     }
     .myaccount-link-container{
+      display: flex;
+      align-items: center;
       left: 66.666%;
+      .user-name{
+        display: none;
+      }
     }
   }
 }

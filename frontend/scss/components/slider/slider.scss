@@ -11,3 +11,16 @@ img,
     -o-user-drag: none;
     user-drag: none;
 }
+section.news-teaser,
+.news-container {
+    .swiper{
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+        &.swiper-initialized {
+            opacity: 1;
+        }
+    }
+    .swiper-slide {
+        height: 100%;
+    }
+}

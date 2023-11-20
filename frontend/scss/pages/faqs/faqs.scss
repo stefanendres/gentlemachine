@@ -41,12 +41,14 @@
     display: flex;
     justify-content: center;
     max-height: 0;
+    overflow: hidden;
     overflow: clip;
     transition: max-height 0.3s ease-out;
   }
   .text-wrapper{
     height: 100%; // always high to get height in resize
     padding: var(--space_0) calc(50% - 16.5em) calc(var(--space_0)*2) calc(50% - 16.5em);
+    padding: var(--space_0) calc(0% - 16.5em) calc(var(--space_0)*2) calc(0% - 16.5em);
     border-top: var(--bw_s) solid $grey_l;
   }
 

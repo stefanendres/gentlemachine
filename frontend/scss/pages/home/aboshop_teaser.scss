@@ -22,6 +22,8 @@ section.aboshop-teaser{
   overflow: clip;
   .subscription-product-container{
     aspect-ratio: unset;
+    //aspect-ratio: 3/4;
+    max-width: 40%;
     opacity: 0;
     transform: translate3d(0, calc(var(--space_0)*8), 0) scale(0.75);
     transition: opacity 0.3s ease-in-out, transform 0.6s ease-out;
@@ -30,12 +32,12 @@ section.aboshop-teaser{
       opacity: 1;
       transform: translate3d(0, 0, 0) scale(1);
     }
-    .subscription-product-content{
-      margin-bottom: calc(var(--space_0) * 4);
-    }
+    /*.subscription-product-content{
+      margin-bottom: calc(var(--space_0) * 6);
+    }*/
   }
   .link-aboshop {
-    margin-top: calc(var(--space_0) * 4);
+    margin-top: calc(var(--space_0) * 8);
   }
 }
 
@@ -45,5 +47,8 @@ section.aboshop-teaser{
   }
   .featured-abo-container {
     padding: calc(var(--space_0)*6);
+    .subscription-product-container {
+      max-width: 100%;
+    }
   }
 }

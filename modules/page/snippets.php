@@ -11,7 +11,7 @@ function gm_page_content($id) {
 
   if ($rows): 
     foreach ($rows as $row): ?>
-      <div class="row observe-vp">
+      <div class="row">
         <?php gm_row_content($row); ?>
       </div>
     <?php endforeach;
@@ -25,7 +25,7 @@ function gm_row_content($content) {
   $row_width = $content['row_width'];
   $row_content = $content['row_content'][0];
   ?>
-  <div class="row-content <?= str_replace('_', '-', $row_content['acf_fc_layout']); ?><?= ' width-'.$row_width ?>">
+  <div class="row-content observe-vp <?= str_replace('_', '-', $row_content['acf_fc_layout']); ?><?= ' width-'.$row_width ?>">
     <?php gm_content($row_content); ?>
   </div>
   <?php
@@ -51,6 +51,8 @@ function gm_content($content) {
     gm_content_expandables($content);
   } else if ($content['acf_fc_layout'] === 'content_spacer') {
     gm_content_spacer($content);
+  } else if ($content['acf_fc_layout'] === 'content_line') {
+    gm_content_line($content);
   }
 }
 
@@ -62,7 +64,7 @@ function gm_content_image($content) {
   $content_image_file_ratio = (getimagesize(wp_get_attachment_url($content_image_file_id))) ? (getimagesize(wp_get_attachment_url($content_image_file_id))[1] / getimagesize(wp_get_attachment_url($content_image_file_id))[0]) : 'auto';
   ?>
     <div class="content-image-wrapper"
-      style="--ratio: <?= $content_image_file_ratio ?>">
+      style="--ratio: 1/<?= $content_image_file_ratio ?>">
       <img class="content-image lazyload"
         srcset="<?= wp_get_attachment_image_srcset($content_image_file_id); ?>"
         data-sizes="auto"
@@ -161,6 +163,15 @@ function gm_content_linklist($content) {
 function gm_content_spacer($content) {
   // could add <hr>?>
   <div class="content-spacer" style="--c_h: <?= $content['content_height'] ?>"></div>
+  <?php
+}
+
+/*
+ * Setup Line
+ */
+function gm_content_line($content) {
+  // could add <hr>?>
+  <div class="content-line"></div>
   <?php
 }
 

@@ -82,41 +82,36 @@ function home_community_teaser() {
   $community_page_url = get_permalink(get_page_by_path('community'));
   ?>
   <section class="community-teaser observe-vp">
-    <div class="community-teaser-images-container">
+    <a class="community-teaser-images-container" href="<?= $community_page_url ?>">
       <img class="community-teaser-image background observe-vp lazyload"
         data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_background']) ?>"
         alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      <a class="community-teaser-overlay overlay-a observe-vp" href="<?= $community_page_url ?>">
+      <div class="community-teaser-overlay overlay-a observe-vp">
         <img class="community-teaser-image lazyload"
           data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_a']) ?>"
           alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      </a>
-      <a class="community-teaser-overlay overlay-b observe-vp" href="<?= $community_page_url ?>">
+      </div>
+      <div class="community-teaser-overlay overlay-b observe-vp">
         <img class="community-teaser-image lazyload"
           data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_b']) ?>"
           alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      </a>
-      <a class="community-teaser-overlay overlay-c observe-vp" href="<?= $community_page_url ?>">
+      </div>
+      <div class="community-teaser-overlay overlay-c observe-vp">
         <img class="community-teaser-image lazyload"
           data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_c']) ?>"
           alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      </a>
-      <a class="community-teaser-overlay overlay-d observe-vp" href="<?= $community_page_url ?>">
+      </div>
+      <div class="community-teaser-overlay overlay-d observe-vp">
         <img class="community-teaser-image lazyload"
           data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_d']) ?>"
           alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      </a>
-      <a class="community-teaser-overlay overlay-e observe-vp" href="<?= $community_page_url ?>">
+      </div>
+      <div class="community-teaser-overlay overlay-e observe-vp">
         <img class="community-teaser-image lazyload"
           data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_e']) ?>"
           alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      </a>
-      <a class="community-teaser-overlay overlay-f observe-vp" href="<?= $community_page_url ?>">
-        <img class="community-teaser-image lazyload"
-          data-src="<?= wp_get_attachment_url($community_teaser_images['community_teaser_overlay_f']) ?>"
-          alt="<?= gm_get_context()['site_title'] ?> Community"/>
-      </a>
-    </div>
+      </div>
+    </a>
     <a class="link-community button-style" href="<?= $community_page_url ?>">learn more</a>
   </section>
   <?php
@@ -191,14 +186,16 @@ function home_aboshop_teaser() {
             <img class="subscription-title" src="<?= wp_get_attachment_url($featured_abo_image_file_id) ?>" alt="<?= $featured_abo_name ?>"/>
             <div class="subscription-description-wrapper">
               <?= get_field('gm_product_description', $featured_abo_id) ?>
-              <div class="subscription-price">
-                <?= WC_Subscriptions_Product::get_price( $featured_abo ) . ' € / ' . WC_Subscriptions_Product::get_period( $featured_abo ) ?>
-              </div>
             </div>
           </div>
-          <a class="subscription-product-link" href="<?= get_permalink($featured_abo_id); ?>">
-            Zur Bestellung
-          </a>
+          <div class="subscription-add-to-cart">
+            <a class="subscription-product-link" href="<?= get_permalink($featured_abo_id); ?>">
+              Zur Bestellung
+            </a>
+            <div class="subscription-price">
+              <?= WC_Subscriptions_Product::get_price( $featured_abo ) . ' € / ' . WC_Subscriptions_Product::get_period( $featured_abo ) ?>
+            </div>
+          </div>
         </div>
         <a class="link-aboshop button-style" href="<?= get_term_link($aboshop_page->term_id, 'product_cat') ?>">
           Go to Aboshop

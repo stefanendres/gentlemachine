@@ -57,7 +57,7 @@
     transform: translate3d(calc(var(--unit)*64), 0, 0);
   }
 }
-
+/*
 @keyframes move_h_rotate {
   0% {
     transform: translate3d(0, 0, 0) rotate(0);
@@ -85,7 +85,7 @@
     transform: translate3d(0, 0, 0) rotate(1440deg);
   }
 }
-
+*/
 @keyframes move_v {
   0% {
     transform: translate3d(0, 0, 0);

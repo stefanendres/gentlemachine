@@ -220,6 +220,11 @@ window.onload = () => {
       }
       if (addToCartButton) {
         addToCartButton.el.addEventListener('click', () => {
+          if (document.querySelector('.product-type-variable-subscription')) {
+            setTimeout(() => {
+              window.location.replace(window.location.origin+'/checkout')
+            }, 3000);
+          }
           setTimeout(() => {
             if (addToCartButton.el.classList.contains('added')) {
               addToCartButton.el.classList.remove('added')

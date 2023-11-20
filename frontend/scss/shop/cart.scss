@@ -44,10 +44,10 @@
         right: var(--space_0);
         bottom: 0;
         a.remove{
-          color: $grey_l;
+          color: $red;
           html.no-touchevents &:hover,
           &:active {
-            color: $red;
+            color: $grey_m;
           }
         }
       }
@@ -142,6 +142,9 @@
           pointer-events: none;
         }
       }
+      .subscription-details {
+        display: none;
+      }
     }
     .product-name {
       width: 100% * 8/12;
@@ -182,6 +185,10 @@
     margin-top: var(--fs_xl);
     margin-bottom: var(--fs_xl);
     //color: $grey_m;
+  }
+  .recurring-totals th {
+    font-weight: 300 !important;
+    text-align: left;
   }
   .shop_table {
     display: flex;

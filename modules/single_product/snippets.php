@@ -59,9 +59,6 @@ function gm_before_single_product_summary() {
         <img class="subscription-title" src="<?= wp_get_attachment_url($product_image_file_id) ?>" alt="<?= $product->get_title() ?>"/>
         <div class="subscription-description-wrapper">
           <?= get_field('gm_product_description') ?>
-          <!--<div class="subscription-price">
-            <?= WC_Subscriptions_Product::get_price( $product ) . ' € / ' . WC_Subscriptions_Product::get_period( $product ) ?>
-          </div>-->
         </div>
         <div class="subscription-price">
           <?= WC_Subscriptions_Product::get_price( $product ) . ' € / ' . WC_Subscriptions_Product::get_period( $product ) ?>

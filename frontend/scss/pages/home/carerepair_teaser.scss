@@ -22,6 +22,7 @@ section.carerepair-teaser{
     position: relative;
     width: 100%;
     border-radius: var(--br_m);
+    overflow: hidden;
     overflow: clip;
     background-color: $cream;
 
@@ -65,6 +66,11 @@ section.carerepair-teaser{
   .carerepair-teaser-container {
     .carerepair-teaser-title {
       padding: 0;
+    }
+    .video-container{
+      video{
+        aspect-ratio: 16/9;
+      }
     }
   }
 }

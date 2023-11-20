@@ -122,6 +122,7 @@ function gm_add_custom_actions() {
   //shop-archive
   add_action( 'woocommerce_before_shop_loop', 'gm_open_products_list_wrapper', 11 );
   add_action( 'woocommerce_before_shop_loop', 'gm_shop_products_filter', 12 );
+  add_action( 'woocommerce_before_shop_loop', 'gm_shop_infotext', 13);
   add_action( 'woocommerce_before_shop_loop_item', 'gm_shop_loop_item', 10 );
   add_action( 'woocommerce_after_shop_loop', 'gm_close_products_list_wrapper', 10 );
   //single-product
@@ -156,7 +157,5 @@ add_filter( 'woocommerce_cart_is_empty', 'gm_cart_emtpy_shop_links', 12 );
 // custom thank you text
 add_filter( 'woocommerce_thankyou_order_received_text', 'gm_filter_woocommerce_thankyou_order_received_text', 10, 2 );
 
-/*
 // show 1000 products per shop page
 add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
-*/

@@ -81,10 +81,12 @@ function gm_header_container_myaccount_link() {
     <a class="header-link<?= (gm_is_page_active($page_id)) ? ' active' : '' ?>" href="<?= get_permalink( $page_id); ?>">
       <span style="color:transparent;position:absolute;pointer-events:none;"><?= get_post($page_id)->post_title ?></span>
       <?php if (is_user_logged_in()) : ?>
+        <div class="user-icon">
+          <?= wp_get_current_user()->first_name[0] ?>
+        </div>
         <div class="user-name">
           <?= wp_get_current_user()->display_name ?>
         </div>
-        <?php //var_dump(wp_get_current_user()) ?>
       <?php else: ?>
         <img class="login-icon" src="<?= $login_icon_url ?>" alt="Log in / Sign in"/>
       <?php endif; ?>

@@ -57,7 +57,7 @@ section.starter-text {
   padding-left: calc(var(--space_0) * 15);
   padding-right: calc(var(--space_0) * 15);
   margin-top: calc(var(--space_0) * 8);
-  p {
+  p, a {
     font-size: var(--fs_xl);
     line-height: var(--fs_xl);
     font-weight: 300;

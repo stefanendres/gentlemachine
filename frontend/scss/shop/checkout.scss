@@ -245,6 +245,7 @@
     tfoot {
       tr {
         min-height: calc(var(--fs_m) * 3);
+        padding: 0.25em 0;
         border-top: 1px solid $grey_l;
       }
     }
@@ -291,7 +292,7 @@
 
       .product-total {
         text-align: right;
-        width: 25%;
+        width: 40%;
       }
 
       th {
@@ -305,13 +306,25 @@
 
       td {
         &.product-name {
-          width: 75%;
+          width: 60%;
           color: $black;
           margin-bottom: 0;
 
           .product-quantity {
             font-weight: normal;
             color: $grey_m;
+          }
+        }
+        &.product-total{
+          .subscription-price,
+          .subscription-price *{
+            font-size: var(--fs_s);
+            line-height: var(--fs_m);
+            letter-spacing: 0.025em;
+          }
+          .subscription-price {
+            display: block;
+            padding: 0.5em 0;
           }
         }
       }
@@ -609,7 +622,7 @@
           min-width: 1em;
           max-width: 1em;
           padding: calc(var(--fs_m) * 0.25);
-          margin-left: 0.5em;
+          //margin-left: 0.5em;
           content: ' ✔\fe0e';
           font-size: var(--fs_m);
           line-height: var(--fs_m);

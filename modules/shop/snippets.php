@@ -27,6 +27,15 @@ function gm_shop_products_filter() {
   <?php
 }
 
+function gm_shop_infotext(){
+  if (is_product_category( 'subscription' )): ?>
+  <div class="infotext-container">
+    <p><?= get_field('shop_infotext', 'options') ?></p>
+  </div>
+  <?php endif;
+
+}
+
 /*
  * Setup Single-Product in loop
  */
@@ -70,14 +79,16 @@ function gm_shop_loop_item($product) {
         <img class="subscription-title" src="<?= wp_get_attachment_url($product_image_file_id) ?>" alt="<?= $product_name ?>"/>
         <div class="subscription-description-wrapper">
           <?= get_field('gm_product_description', $product_id) ?>
-          <div class="subscription-price">
-            <?= WC_Subscriptions_Product::get_price( $product ) . ' € / ' . WC_Subscriptions_Product::get_period( $product ) ?>
-          </div>
         </div>
       </div>
-      <a class="subscription-product-link" href="<?= get_permalink($product_id); ?>">
-        Zur Bestellung
-      </a>
+      <div class="subscription-add-to-cart">
+        <a class="subscription-product-link" href="<?= get_permalink($product_id); ?>">
+          Zur Bestellung
+        </a>
+        <div class="subscription-price">
+          <?= WC_Subscriptions_Product::get_price( $product ) . ' € / ' . WC_Subscriptions_Product::get_period( $product ) ?>
+        </div>
+      </div>
     </div>
   <?php endif;
 }
